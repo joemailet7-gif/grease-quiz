@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Qui sóc? — Grease (v4.6b)</title>
+<title>Qui sóc? — Grease (FINAL)</title>
 <style>
   :root{--bg:#0e0d13;--panel:#17161f;--text:#f6f6fb;--accent:#ff2d55;--accent2:#ffd400;--muted:#cfcfe6;--ok:#32d74b;--bad:#ff453a;--line:#262433;
         --lightbtn:#e9e9ef;--lighttxt:#14131b;--blue:#2d7fff;}
@@ -20,7 +20,6 @@
   .btn.blue{background:var(--blue);color:#fff;box-shadow:0 6px 20px rgba(45,127,255,.35)}
   .btn.dark{background:#24232e;color:#ddd;box-shadow:none;border:1px solid rgba(255,255,255,.1)}
 
-  /* Toggles */
   .toggle{position:relative;display:inline-flex;align-items:center;gap:8px;background:#24232e;color:#fff;border:1px solid rgba(255,255,255,.15);border-radius:999px;padding:8px 12px;font-weight:800;cursor:pointer;transition:all .15s ease}
   .toggle .dot{width:16px;height:16px;border-radius:50%;background:#7a7a85;box-shadow:inset 0 0 0 2px rgba(255,255,255,.15)}
   .toggle.active{background:#1e2a4a;border-color:#2b4ea8;box-shadow:0 6px 20px rgba(45,127,255,.25) inset, 0 0 0 1px rgba(45,127,255,.35)}
@@ -96,10 +95,11 @@
           <div>
             <label>Mode de joc</label><br/>
             <select id="modeSel">
-              <option value="infantil">Infantil (3–4 pistes, bàsic)</option>
-              <option value="normal" selected>Normal (4–5 pistes, barrejat)</option>
-              <option value="expert">Expert (4–5, detalls exigents)</option>
-              <option value="ultra">Ultra Expert (hiperconcret)</option>
+              <option value="infantil">Infantil (pistes molt clares)</option>
+              <option value="normal" selected>Normal (barrejat)</option>
+              <option value="expert">Expert (detalls exigents)</option>
+              <option value="ultra">Ultra Expert (hiperconcret, “Qui diu…” en castellà)</option>
+              <option value="mix">Mix (barreja equilibrada)</option>
             </select>
           </div>
           <div>
@@ -194,158 +194,59 @@
 
 <script>
 (function(){
-  // State
-  var BANK=[],round=0,revealed=0,current=null,remaining=[],tickInt=null,timeLeft=20,mode='normal',totalRounds=15,totalTime=0,questionT=0,versus=false,p1={name:'',points:0},p2={name:'',points:0},turn=1;
-  var gameActive=false, timeLimit=true, capsOn=false;
-
   function $(id){ return document.getElementById(id); }
   var els={};
-
   var CHARACTERS=[
-    {id:"sandy",name:"Sandy",img:"img/sandy.jpg",alt:"Sandy"},
-    {id:"danny",name:"Danny",img:"img/danny.jpg",alt:"Danny"},
-    {id:"rizzo",name:"Rizzo",img:"img/rizzo.jpg",alt:"Rizzo"},
-    {id:"kenickie",name:"Kenickie",img:"img/kenickie.jpg",alt:"Kenickie"},
-    {id:"frenchy",name:"Frenchy",img:"img/frenchy.jpg",alt:"Frenchy"},
-    {id:"doody",name:"Doody",img:"img/doody.jpg",alt:"Doody"},
-    {id:"marty",name:"Marty",img:"img/marty.jpg",alt:"Marty"},
-    {id:"sonny",name:"Sonny",img:"img/sonny.jpg",alt:"Sonny"},
-    {id:"putzie",name:"Putzie",img:"img/putzie.jpg",alt:"Putzie"},
-    {id:"patty",name:"Patty",img:"img/patty.jpg",alt:"Patty Simcox"},
-    {id:"jan",name:"Jan",img:"img/jan.jpg",alt:"Jan"},
-    {id:"balmudo",name:"Balmudo",img:"img/balmudo.jpg",alt:"Leo Balmudo"},
-    {id:"murdock",name:"Sra. Murdock",img:"img/murdock.jpg",alt:"Sra. Murdock"},
-    {id:"tom",name:"Tom",img:"img/tom.jpg",alt:"Tom Chisum"},
-    {id:"calhoun",name:"Entrenador Calhoun",img:"img/calhoun.jpg",alt:"Coach Calhoun"}
+    {id:"sandy",name:"Sandy",img:"img/sandy.jpg"},
+    {id:"danny",name:"Danny",img:"img/danny.jpg"},
+    {id:"rizzo",name:"Rizzo",img:"img/rizzo.jpg"},
+    {id:"kenickie",name:"Kenickie",img:"img/kenickie.jpg"},
+    {id:"frenchy",name:"Frenchy",img:"img/frenchy.jpg"},
+    {id:"doody",name:"Doody",img:"img/doody.jpg"},
+    {id:"marty",name:"Marty",img:"img/marty.jpg"},
+    {id:"sonny",name:"Sonny",img:"img/sonny.jpg"},
+    {id:"putzie",name:"Putzie",img:"img/putzie.jpg"},
+    {id:"patty",name:"Patty",img:"img/patty.jpg"},
+    {id:"jan",name:"Jan",img:"img/jan.jpg"},
+    {id:"balmudo",name:"Balmudo",img:"img/balmudo.jpg"},
+    {id:"murdock",name:"Sra. Murdock",img:"img/murdock.jpg"},
+    {id:"tom",name:"Tom",img:"img/tom.jpg"},
+    {id:"calhoun",name:"Entrenador Calhoun",img:"img/calhoun.jpg"}
   ];
 
-  var FACTS={
-    sandy:{group:"amic de les Pink Ladies",locs:["Rydell High","el gimnàs de Rydell","el Frosty Palace"],hair:"ros",pals:["la Frenchy"],duo:"Danny",notes:["Vaig arribar nova a l’escola.","Tinc un caràcter amable.","Al final em faig un canvi de look."]},
-    danny:{group:"T-Birds",locs:["Rydell High","el taller de l’escola","Thunder Road","el gimnàs"],hair:"fosc",pals:["en Kenickie","en Sonny","en Putzie"],duo:"Sandy",notes:["M’agraden molt les curses de cotxes.","Sovint porto una jaqueta de cuir.","El meu pentinat és brillant."]},
-    rizzo:{group:"líder de les Pink Ladies",locs:["Rydell High","el gimnàs"],hair:"fosc",pals:["la Marty","la Frenchy","la Jan"],duo:"Kenickie",notes:["Tinc una actitud valenta.","Faig comentaris enginyosos."]},
-    kenickie:{group:"T-Birds",locs:["el taller","Thunder Road"],hair:"castany",pals:["en Danny","en Putzie"],duo:"Rizzo",notes:["Sóc el manetes del grup.","Tinc un cotxe preparat per competir."]},
-    frenchy:{group:"Pink Ladies",locs:["Rydell High","el Frosty Palace"],hair:"rosa a moments",pals:["la Sandy","la Marty","la Jan"],notes:["M’encanta el maquillatge.","Provo pentinats molt creatius."]},
-    doody:{group:"T-Birds",locs:["Rydell High"],hair:"fosc",pals:["en Danny","en Kenickie","en Sonny","en Putzie"],notes:["A vegades toco la guitarra.","M’agrada fer bromes."]},
-    marty:{group:"Pink Ladies",locs:["Rydell High","el Frosty Palace"],hair:"castany",pals:["la Rizzo","la Frenchy","la Jan"],notes:["Tinc debilitat per la moda i els accessoris.","M’agrada escriure cartes."]},
-    sonny:{group:"T-Birds",locs:["Rydell High","el Frosty Palace"],hair:"castany",pals:["en Danny","en Kenickie","en Putzie"],notes:["Sempre estic de broma.","Parlo sovint de menjar."]},
-    putzie:{group:"T-Birds",locs:["Rydell High"],hair:"clar",pals:["en Doody","en Danny"],notes:["Sóc el bromista del grup.","Soc un amic lleial."]},
-    patty:{group:"animadora",locs:["Rydell High","el gimnàs"],hair:"ros",pals:["en Tom"],notes:["Organitzo activitats escolars.","Tinc molta energia i entusiasme."]},
-    jan:{group:"Pink Ladies",locs:["Rydell High","el Frosty Palace"],hair:"castany clar",pals:["la Frenchy","la Marty","la Rizzo"],notes:["Sóc riallera i divertida.","Sempre duc algun snack a mà."]},
-    balmudo:{group:"Scorpions",locs:["Thunder Road","un aparcament"],hair:"fosc",pals:["els Scorpions"],notes:["Condueixo de manera agressiva.","Sóc rival dels T-Birds."]},
-    murdock:{group:"professora de mecànica",locs:["el taller de l’escola"],hair:"castany",pals:[],notes:["Explico motors i eines.","Poso exàmens pràctics."]},
-    tom:{group:"jugador de futbol americà",locs:["el camp de Rydell","el gimnàs"],hair:"clar",pals:["la Patty"],notes:["Sóc molt popular.","Em passo hores entrenant."]},
-    calhoun:{group:"entrenador de gimnàs",locs:["el gimnàs","el camp"],hair:"—",pals:["en Tom"],notes:["Dono instruccions amb energia.","Organitzo exercicis i partits."]},
-  };
-
-  var ULTRA=[
-    {answer:"danny",clues:["Porto una camisa clara amb ratlles blaves a l’escena de la platja.","Apareixo a Thunder Road durant una cursa.","Al ball de l’escola em moc com un líder.","A la colla, sovint decideixo el rumb."]},
-    {answer:"balmudo",clues:["El meu cotxe mostra el número 3 a Thunder Road.","Sóc el rival directe dels T-Birds.","Condueixo de manera molt agressiva.","Formo part dels Scorpions."]},
-    {answer:"murdock",clues:["Dirigeixo les pràctiques de mecànica.","Se’m veu sovint al taller amb motors.","Explico les eines i els components amb detall.","Avalua els treballs tècnics dels alumnes."]},
-    {answer:"marty",clues:["A l’inici porto un mocador de color vermell.","Sempre camino amb complements i joies.","Tinc escenes al Frosty Palace.","M’agrada escriure cartes elegants."]},
-    {answer:"sandy",clues:["Començo tímida i em transformo al final.","Comparteixo un moment clau al ball de l’escola.","Tinc un duet destacat amb en Danny.","Acabo amb un canvi de look sorprenent."]},
-    {answer:"kenickie",clues:["Sóc el propietari original del cotxe de la cursa.","Treballo sota el capó amb orgull.","Tinc rivalitats a la carretera.","Ballo sovint amb la Rizzo."]},
-    {answer:"frenchy",clues:["Tinc una escena molt rosa a la perruqueria.","Dubto sobre el meu futur professional.","Faig de cor amable a l’equip.","Proposo pentinats molt cridaners."]},
-    {answer:"tom",clues:["Sóc jugador de futbol americà.","Tinc escenes d’entrenament al camp.","Tinc relació amb la Patty.","Tinc un aspecte clarament atlètic."]},
-    {answer:"patty",clues:["Sóc animadora i organitzo esdeveniments.","Apareixo al gimnàs animant tothom.","Mantinc un somriure i molta energia.","Participo a cerimònies escolars."]},
-    {answer:"jan",clues:["En una escena porto un look rosa.","Tinc un to rialler i alegre.","A vegades m’aparèixen snacks a la mà.","Formo part de les Pink Ladies."]},
-    {answer:"calhoun",clues:["Com a entrenador, faig que la gent pugi els genolls.","Dono ordres amb molta energia al gimnàs.","Promoc la disciplina esportiva.","Tinc moments previs a un partit important."]},
-    {answer:"putzie",clues:["Comparteixo bromes amb en Doody.","Se’m veu al pati fent riure els altres.","Sóc un amic molt lleial.","Comparteixo escenes amb en Danny."]},
-    {answer:"rizzo",clues:["Tinc un arc emocional intens.","Camino amb pas ferm i ulleres.","Lidero la colla sense por.","Comparteixo escenes potents amb en Kenickie."]},
-    {answer:"sonny",clues:["Als descansos sempre penso en menjar.","Protagonitzo situacions còmiques.","Aparec al menjador i al pati.","Encara que faci bromes, sóc lleial."]},
-    {answer:"doody",clues:["Acompanyo amb una guitarra en moments informals.","Aporto energia juvenil a la colla.","Quan cal, agafo el micro.","Sóc amic proper d’en Putzie."]},
-  ];
+  var audioOn=true, actx=null;
+  var gameActive=false, timeLimit=true, capsOn=false;
+  var mode='normal', totalRounds=15;
+  var BANK=[], round=0, remaining=[], current=null, revealed=0;
+  var tickInt=null, timeLeft=20, questionT=0, totalTime=0;
+  var versus=false, p1={name:'',points:0}, p2={name:'',points:0}, turn=1;
+  var KEY='grease_final_hist';
 
   function pick(a){ return a[Math.floor(Math.random()*a.length)]; }
   function shuffle(a){ for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;} return a; }
-
-  var hairCounts=(function(){ var c={}; for(var k in FACTS){ var f=FACTS[k]; if(f && f.hair && f.hair!=='—'){ c[f.hair]=(c[f.hair]||0)+1; } } return c; })();
-  function hairLine(id){ var f=FACTS[id]; if(!f || !f.hair || f.hair==='—') return null; var n=hairCounts[f.hair]||0; return (n<=1)?('Tinc els cabells de color '+f.hair+'.'):('Sóc un dels personatges amb els cabells de color '+f.hair+'.'); }
-
-  var SPECIAL=[
-    {answer:"sandy", clues:["Qui se sembla més la Nerine?" ]},
-    {answer:"danny", clues:["La Bruna balla igual que en..?" ]},
-  ];
-
-  var HAND=[
-    SPECIAL[0],SPECIAL[1],
-    {answer:"danny",clues:["Formo part dels T-Birds.","M’agrada competir en curses de cotxes.","Porto brillantina al cabell.","Al ball vaig fer parella amb la Sandy."]},
-    {answer:"sandy",clues:["Vaig arribar nova a Rydell.","M’agrada vestir amb colors clars.","Sóc amable i canto de tant en tant.","Vaig ballar amb un noi de jaqueta de cuir."]},
-    {answer:"rizzo",clues:["Sóc la líder de les Pink Ladies.","Tinc un caràcter decidit i valent.","Parlo de manera directa.","Sovint ballo amb en Kenickie."]},
-    {answer:"kenickie",clues:["Porto la jaqueta dels T-Birds.","Sóc molt amic d’en Danny.","Tinc un cotxe preparat per competir.","Ballo amb la Rizzo."]},
-    {answer:"frenchy",clues:["M’agrada el maquillatge i la perruqueria.","A vegades porto el cabell de color rosa.","Sóc amiga de la Sandy.","Provo pentinats molt creatius."]},
-    {answer:"marty",clues:["M’encanten els accessoris i la moda.","M’agrada escriure cartes maques.","Formo part de les Pink Ladies.","Porto mocadors i joies vistoses."]},
-    {answer:"doody",clues:["De vegades toco la guitarra.","Sóc dels T-Birds més joves.","M’agrada fer bromes.","També porto jaqueta negra com la colla."]},
-    {answer:"sonny",clues:["Parlo molt de menjar i faig bromes.","Sóc molt social amb la colla.","Formo part dels T-Birds.","El meu nom comença amb S."]},
-    {answer:"putzie",clues:["Sóc un T-Bird amb molta broma.","Comparteixo escenes amb en Doody.","Faig riure sovint els amics.","Vaig amb la colla a tot arreu."]},
-    {answer:"patty",clues:["Sóc animadora i parlo amb entusiasme.","Ajudo a organitzar esdeveniments a l’escola.","Mantinc una actitud molt positiva.","Sovint faig equip amb en Tom."]},
-    {answer:"jan",clues:["Sóc una Pink Lady divertida.","Tinc una rialla molt fàcil.","Sempre tinc algun snack a mà.","Sóc amiga de la Frenchy i la Marty."]},
-    {answer:"balmudo",clues:["Formo part dels Scorpions.","Sóc rival declarat dels T-Birds.","Condueixo amb molta agressivitat.","Aparec a Thunder Road."]},
-    {answer:"murdock",clues:["Sóc professora de mecànica.","Treballo amb el grup al taller.","Explico els motors i les eines amb paciència.","Faig pràctiques tècniques."]},
-    {answer:"tom",clues:["Sóc jugador de futbol americà.","Em veus entrenant al camp de Rydell.","Sóc força popular.","Tinc relació amb la Patty."]},
-    {answer:"calhoun",clues:["Sóc l’entrenador de gimnàs.","Dono ordres amb energia.","Animo l’equip perquè rendeixi.","Se’m veu sovint al gimnàs."]},
-  ];
-
-  function fromFacts(mode){
-    var out=[];
-    for(var ci=0; ci<CHARACTERS.length; ci++){
-      var ch=CHARACTERS[ci];
-      var f=FACTS[ch.id]; if(!f) continue;
-      var base=[ 'Formo part de '+f.group+'.' ];
-      if(f.locs && f.locs.length) base.push('Em veus sovint a '+pick(f.locs)+'.');
-      var h=hairLine(ch.id); if(h) base.push(h);
-      if(f.pals && f.pals.length) base.push('Tinc amistat amb '+pick(f.pals)+'.');
-      if(f.duo) base.push('Sovint faig parella amb '+f.duo+'.');
-      if(f.notes && f.notes.length){ for(var ni=0;ni<f.notes.length;ni++){ base.push(f.notes[ni]); } }
-      var used={}, tries=0, target=(mode==='infantil')?6:10;
-      function joinClues(arr){ return arr.join('|'); }
-      while(countFor(ch.id,out)<target && tries<200){
-        tries++;
-        var n=(mode==='infantil')?Math.max(3,Math.min(4,base.length)):Math.max(4,Math.min(5,base.length));
-        var s=shuffle(base.slice()).slice(0,n);
-        var key=joinClues(s);
-        if(!used[key]){ used[key]=1; out.push({answer:ch.id, clues:s}); }
-      }
-    }
-    return out;
-  }
-  function countFor(id,arr){ var c=0; for(var i=0;i<arr.length;i++){ if(arr[i].answer===id) c++; } return c; }
-
   function choices(ans){
-    var ids=[]; for(var i=0;i<CHARACTERS.length;i++){ ids.push(CHARACTERS[i].id); }
-    var others=[]; for(i=0;i<ids.length;i++){ if(ids[i]!==ans) others.push(ids[i]); }
-    others=shuffle(others).slice(0,3);
-    var full=[ans]; for(i=0;i<others.length;i++) full.push(others[i]);
-    return shuffle(full);
+    var ids=CHARACTERS.map(c=>c.id);
+    var others=ids.filter(x=>x!==ans); others=shuffle(others).slice(0,3);
+    return shuffle([ans].concat(others));
   }
 
-  function buildBank(mode,rounds){
-    var bank=HAND.slice().concat(fromFacts(mode));
-    if(mode==='expert') bank=bank.concat(fromFacts('expert').slice(0,20));
-    if(mode==='ultra') bank=bank.concat(ULTRA);
-    for(var i=0;i<bank.length;i++){ bank[i]={answer:bank[i].answer,clues:bank[i].clues.slice(),choices:choices(bank[i].answer)}; }
-    bank=shuffle(bank);
-    var seen={}, unique=[];
-    for(i=0;i<bank.length;i++){
-      var q=bank[i]; var key=q.answer+'||'+q.clues.join('||');
-      if(!seen[key]){ seen[key]=1; unique.push(q); }
-      if(unique.length>=rounds*2) break;
-    }
-    unique=unique.slice(0, Math.min(rounds, unique.length));
-    return unique;
+  function setToggle(btn, active){
+    if(!btn) return;
+    btn.classList[active?'add':'remove']('active');
+    btn.setAttribute('aria-pressed', String(active));
   }
 
-  // Audio
-  var audioOn=true,actx=null;
+  // Audio blips
   function beep(f,d,t,v){ if(!audioOn) return; try{ if(!actx){ actx=new (window.AudioContext||window.webkitAudioContext)(); } var o=actx.createOscillator(),g=actx.createGain(); o.type=t||'sine'; o.frequency.value=f||880; g.gain.value=v||0.08; o.connect(g).connect(actx.destination); o.start(); o.stop(actx.currentTime+(d||0.10)); }catch(e){} }
   function tickDown(){beep(520,0.065,'square',0.05)}
   function tickFinal(){beep(220,0.18,'square',0.08)}
   function sCorrect(){beep(1040,0.12,'triangle',0.09); setTimeout(function(){beep(1240,0.12,'triangle',0.09)},120);}
   function sWrong(){beep(300,0.12,'sawtooth',0.08); setTimeout(function(){beep(220,0.18,'sawtooth',0.08)},140);}
 
-  var KEY='grease_v46b_index';
   function loadH(){ try{ return JSON.parse(localStorage.getItem(KEY)||'[]'); } catch(e){ return []; } }
   function saveH(a){ try{ localStorage.setItem(KEY, JSON.stringify(a)); }catch(e){} }
   function pushH(e){ var h=loadH(); h.unshift(e); saveH(h.slice(0,300)); }
+
   function showH(){
     var h=loadH(); els.histContent.innerHTML=h.length?'' : '<p>No hi ha partides guardades encara.</p>';
     for(var i=0;i<h.length;i++){
@@ -357,14 +258,52 @@
     }
     $('historyModal').classList.add('open');
   }
-  function exportCSV(){
-    var h=loadH();
-    var head=['data','mode','versus','jugador1','jugador2','rondes','punts_totals','p1_points','p2_points','guanyador','temps_mig_s'].join(',');
-    var rows=[]; for(var i=0;i<h.length;i++){ var x=h[i]; rows.push([JSON.stringify(x.whenLabel),x.mode,x.versus,JSON.stringify(x.p1||''),JSON.stringify(x.p2||''),x.rounds,x.points,x.p1_points||'',x.p2_points||'',JSON.stringify(x.winner||''),(x.avgTime?x.avgTime.toFixed(2):'')].join(',')); }
-    var csv=[head].concat(rows).join('\n');
-    var blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
-    var url=URL.createObjectURL(blob);
-    var a=document.createElement('a'); a.href=url; a.download='grease_historial.csv'; a.click(); URL.revokeObjectURL(url);
+
+  // Load JSON
+  var DATA=null;
+  async function loadQuestions(){
+    const res = await fetch('preguntes.json',{cache:'no-store'});
+    if(!res.ok){ throw new Error('No s’ha pogut carregar preguntes.json'); }
+    DATA = await res.json();
+  }
+
+  function uniqueByKey(arr){
+    var seen={}, out=[];
+    for(var i=0;i<arr.length;i++){
+      var q=arr[i]; var key=q.resposta+'||'+q.pregunta;
+      if(!seen[key]){ seen[key]=1; out.push(q); }
+    }
+    return out;
+  }
+
+  function buildBank(mode, rounds){
+    var pool=[];
+    var esp = (DATA.especials||[]).map(x => ({answer:x.resposta, clues:[x.pregunta]}));
+    function take(list, n){
+      var a=list.slice(); shuffle(a); return a.slice(0,n).map(x => ({answer:x.resposta, clues:[x.pregunta]}));
+    }
+    if(mode==='mix'){
+      var per=Math.floor(rounds/4), rest=rounds - per*4;
+      pool = pool.concat(take(DATA.infantil||[], per));
+      pool = pool.concat(take(DATA.normal||[], per));
+      pool = pool.concat(take(DATA.expert||[], per));
+      pool = pool.concat(take(DATA.ultra||[], per));
+      // remainder: pull randomly from all
+      var all=(DATA.infantil||[]).concat(DATA.normal||[]).concat(DATA.expert||[]).concat(DATA.ultra||[]);
+      pool = pool.concat(take(all, rest));
+    } else {
+      var src = DATA[mode]||[];
+      pool = take(src, rounds);
+    }
+    // inject specials
+    pool = (esp||[]).concat(pool);
+    // decorate with choices
+    var decorated = pool.map(function(q){
+      return {answer:q.answer, clues:q.clues.slice(), choices:choices(q.answer)};
+    });
+    // dedupe and crop
+    decorated = uniqueByKey(decorated).slice(0, rounds);
+    return decorated;
   }
 
   function resetUI(){
@@ -380,23 +319,31 @@
     els.clues.innerHTML='';
     els.options.innerHTML='';
   }
+  function showMenu(){ gameActive=false; stopTimer(); resetUI(); }
   function showResults(entry){
     els.resultSummary.innerHTML = entry.versus
       ? '<p><strong>Guanyador:</strong> '+(entry.winner || '—')+'</p><p><strong>'+entry.p1+':</strong> '+entry.p1_points+' punts</p><p><strong>'+entry.p2+':</strong> '+entry.p2_points+' punts</p><p><strong>Temps mig:</strong> '+(entry.avgTime?entry.avgTime.toFixed(1):'—')+'s</p>'
       : '<p><strong>Puntuació:</strong> '+entry.points+' punts</p><p><strong>Temps mig:</strong> '+(entry.avgTime?entry.avgTime.toFixed(1):'—')+'s</p>';
     els.gameArea.classList.add('hidden'); els.tutorial.classList.add('hidden'); els.startConfig.classList.add('hidden'); els.resultPanel.classList.remove('hidden');
   }
-  function showMenu(){ gameActive=false; stopTimer(); resetUI(); }
 
-  function startGame(){
-    BANK=buildBank(mode,totalRounds);
-    round=0; p1.points=0; p2.points=0; totalTime=0;
-    remaining=[]; for(var i=0;i<BANK.length;i++){ remaining.push(i); }
-    els.points.textContent='0'; els.roundN.textContent='0'; els.progress.textContent='0 / '+remaining.length;
-    els.gameArea.classList.remove('hidden'); els.tutorial.classList.add('hidden'); els.startConfig.classList.add('hidden'); els.resultPanel.classList.add('hidden');
-    turn=1; updateTurnInfo(); nextQuestion(); gameActive=true;
-  }
   function updateTurnInfo(){ els.turnInfo.textContent=versus?('Torn de: '+(turn===1?p1.name:p2.name)):('Jugador: '+p1.name); }
+
+  function startTimer(){
+    if(!timeLimit){ els.timer.style.display='none'; return; }
+    els.timer.style.display='inline-block'; timeLeft=20; renderTimer();
+    tickInt=setInterval(function(){
+      timeLeft--; if(timeLeft<=3) tickDown(); renderTimer();
+      if(timeLeft<=0){ tickFinal(); stopTimer(); lock(); questionEnd(); score(false); if(versus){ turn=(turn===1?2:1); updateTurnInfo(); } setTimeout(nextQuestion,900); }
+    },1000);
+  }
+  function stopTimer(){ if(tickInt){ clearInterval(tickInt); tickInt=null; } }
+  function renderTimer(){ els.timer.textContent='⏱️ '+timeLeft; els.timer.classList[(timeLeft<=3)?'add':'remove']('low'); els.timer.classList[(timeLeft<=3)?'add':'remove']('blink'); }
+  function questionStart(){ questionT=performance.now(); }
+  function questionEnd(){
+    if(questionT){ var dt=(performance.now()-questionT)/1000; var add = timeLimit ? Math.min(20, Math.max(0,dt)) : Math.max(0,dt); totalTime+=add; }
+  }
+
   function nextQuestion(){
     if(tickInt){clearInterval(tickInt); tickInt=null;}
     if(round>=remaining.length){ finishGame(); return; }
@@ -404,19 +351,19 @@
     current=BANK[remaining[round-1]]; renderClues(true); renderOptions(); els.progress.textContent=(round-1)+' / '+remaining.length;
     startTimer(); questionStart();
   }
-  function renderClues(first){ els.clues.innerHTML=''; if(first) addClue(); }
   function addClue(){
     if(revealed>=current.clues.length){ els.revealBtn.disabled=true; return; }
     var d=document.createElement('div'); d.className='clue'; d.setAttribute('data-n', (revealed+1)); d.textContent=current.clues[revealed]; els.clues.appendChild(d); revealed++;
     if(revealed>=current.clues.length) els.revealBtn.disabled=true;
   }
+  function renderClues(first){ els.clues.innerHTML=''; if(first) addClue(); }
   function renderOptions(){
     els.options.innerHTML='';
     var arr=shuffle(current.choices.slice());
     for(var i=0;i<arr.length;i++){
-      var id=arr[i]; var ch=null; for(var j=0;j<CHARACTERS.length;j++){ if(CHARACTERS[j].id===id){ ch=CHARACTERS[j]; break; } }
+      var id=arr[i]; var ch=CHARACTERS.find(c=>c.id===id);
       var b=document.createElement('button'); b.className='option'; b.dataset.id=id;
-      var im=document.createElement('img'); im.className='avatar'; im.src=ch.img; im.alt=ch.alt||ch.name; im.onerror=function(){ this.style.opacity=.25; this.alt='Imatge no trobada'; };
+      var im=document.createElement('img'); im.className='avatar'; im.src=ch.img; im.alt=ch.name; im.onerror=function(){ this.style.opacity=.25; this.alt='Imatge no trobada'; };
       var t=document.createElement('div'); t.className='optText'; t.textContent=ch.name;
       b.appendChild(im); b.appendChild(t); b.addEventListener('click', onAnswer); els.options.appendChild(b);
     }
@@ -437,29 +384,13 @@
       tgt.points+=pts; sCorrect();
       els.feedback.innerHTML='<span class="good">Correcte!</span> +'+pts+' punts (bonus temps: '+bonus+')';
     } else {
-      var rightName=null; for(var i=0;i<CHARACTERS.length;i++){ if(CHARACTERS[i].id===current.answer){ rightName=CHARACTERS[i].name; break; } }
+      var rightName=(CHARACTERS.find(c=>c.id===current.answer)||{}).name || '—';
       sWrong(); els.feedback.innerHTML='<span class="bad">Temps esgotat o incorrecta.</span> La resposta correcta era <strong>'+rightName+'</strong>.';
     }
     els.points.textContent=p1.points;
     if(versus){ els.p2score.textContent=(p2.name+': '+p2.points+' punts'); els.p2score.classList.remove('hidden'); }
     els.progress.textContent=(round)+' / '+remaining.length;
   }
-
-  function startTimer(){
-    if(!timeLimit){ els.timer.style.display='none'; return; }
-    els.timer.style.display='inline-block'; timeLeft=20; renderTimer();
-    tickInt=setInterval(function(){
-      timeLeft--; if(timeLeft<=3) tickDown(); renderTimer();
-      if(timeLeft<=0){ tickFinal(); stopTimer(); lock(); questionEnd(); score(false); if(versus){ turn=(turn===1?2:1); updateTurnInfo(); } setTimeout(nextQuestion,900); }
-    },1000);
-  }
-  function stopTimer(){ if(tickInt){ clearInterval(tickInt); tickInt=null; } }
-  function renderTimer(){ els.timer.textContent='⏱️ '+timeLeft; els.timer.classList[(timeLeft<=3)?'add':'remove']('low'); els.timer.classList[(timeLeft<=3)?'add':'remove']('blink'); }
-  function questionStart(){ questionT=performance.now(); }
-  function questionEnd(){
-    if(questionT){ var dt=(performance.now()-questionT)/1000; var add = timeLimit ? Math.min(20, Math.max(0,dt)) : Math.max(0,dt); totalTime+=add; }
-  }
-
   function finishGame(){
     gameActive=false; stopTimer(); questionEnd();
     var winner=null,total=p1.points;
@@ -476,60 +407,65 @@
     gameActive=false; stopTimer(); resetUI();
   }
 
-  function setToggle(btn, active){
-    if(!btn) return;
-    btn.classList[active?'add':'remove']('active');
-    btn.setAttribute('aria-pressed', String(active));
+  function buildChoicesBank(list){
+    return list.map(function(q){
+      return { answer:q.resposta, clues:[q.pregunta], choices:choices(q.resposta) };
+    });
+  }
+
+  async function startGame(){
+    if(!DATA) await loadQuestions();
+    BANK = buildBank(mode, totalRounds);
+    round=0; p1.points=0; p2.points=0; totalTime=0; remaining=[];
+    for(var i=0;i<BANK.length;i++) remaining.push(i);
+    els.points.textContent='0'; els.roundN.textContent='0'; els.progress.textContent='0 / '+remaining.length;
+    els.gameArea.classList.remove('hidden'); els.tutorial.classList.add('hidden'); els.startConfig.classList.add('hidden'); els.resultPanel.classList.add('hidden');
+    turn=1; updateTurnInfo(); nextQuestion(); gameActive=true;
   }
 
   function bindAll(){
-    // Cache
     els.startBtn=$('startBtn'); els.historyBtn=$('historyBtn'); els.soundBtn=$('soundBtn'); els.logoImg=$('logoImg'); els.capsBtn=$('capsBtn'); els.timeBtn=$('timeBtn');
     els.startConfig=$('startConfig'); els.beginBtn=$('beginBtn'); els.versusSel=$('versusSel'); els.p2wrap=$('p2wrap'); els.player1=$('player1'); els.player2=$('player2'); els.tutorial=$('tutorial'); els.goPlay=$('goPlay');
     els.gameArea=$('gameArea'); els.turnInfo=$('turnInfo'); els.timer=$('timer'); els.progress=$('progress'); els.revealBtn=$('revealBtn'); els.endGameBtn=$('endGameBtn'); els.clues=$('clues'); els.options=$('options'); els.feedback=$('feedback'); els.points=$('points'); els.roundN=$('roundN'); els.p2score=$('p2score');
     els.modal=$('historyModal'); els.histContent=$('histContent'); els.closeHist=$('closeHist'); els.clearHist=$('clearHist'); els.exportCSV=$('exportCSV'); els.modeSel=$('modeSel'); els.roundsSel=$('roundsSel');
     els.resultPanel=$('resultPanel'); els.resultSummary=$('resultSummary'); els.playAgainBtn=$('playAgainBtn'); els.backToMenuBtn=$('backToMenuBtn'); els.openHistoryBtn=$('openHistoryBtn');
 
-    // Initial toggle visuals
-    setToggle(els.soundBtn, true);
-    setToggle(els.capsBtn, false);
-    setToggle(els.timeBtn, true);
-
-    // Logo fallback
+    setToggle(els.soundBtn, true); setToggle(els.capsBtn, false); setToggle(els.timeBtn, true);
     els.logoImg.onerror=function(){ els.logoImg.style.display='none'; };
 
-    // Menu
     els.startBtn.addEventListener('click',function(){ resetUI(); els.startConfig.classList.remove('hidden'); });
     els.historyBtn.addEventListener('click', showH);
 
-    els.soundBtn.addEventListener('click',function(e){
-      audioOn=!audioOn; setToggle(e.currentTarget, audioOn);
-    });
-    els.capsBtn.addEventListener('click',function(e){
-      capsOn=!capsOn; document.body.classList.toggle('upper',capsOn); setToggle(e.currentTarget, capsOn);
-    });
-    els.timeBtn.addEventListener('click',function(e){
-      timeLimit=!timeLimit; setToggle(e.currentTarget, timeLimit);
-      if(!timeLimit){ stopTimer(); els.timer.style.display='none'; }
-      else { if(!els.gameArea.classList.contains('hidden')){ stopTimer(); startTimer(); } }
+    els.soundBtn.addEventListener('click',function(e){ audioOn=!audioOn; setToggle(e.currentTarget, audioOn); });
+    els.capsBtn.addEventListener('click',function(e){ capsOn=!capsOn; document.body.classList.toggle('upper',capsOn); setToggle(e.currentTarget, capsOn); });
+    els.timeBtn.addEventListener('click',function(e){ timeLimit=!timeLimit; setToggle(e.currentTarget, timeLimit);
+      if(!timeLimit){ stopTimer(); els.timer.style.display='none'; } else { if(!els.gameArea.classList.contains('hidden')){ stopTimer(); startTimer(); } }
     });
 
-    // Config
     els.versusSel.addEventListener('change',function(){ if(els.versusSel.value!=='on') els.p2wrap.classList.add('hidden'); else els.p2wrap.classList.remove('hidden'); });
-    els.beginBtn.addEventListener('click',function(){ mode=els.modeSel.value; totalRounds=parseInt(els.roundsSel.value,10)||15; var n1=els.player1.value.trim(); if(!n1){alert('Introdueix el nom del Jugador 1.'); return;} p1={name:n1,points:0}; versus=(els.versusSel.value==='on'); if(versus){ var n2=els.player2.value.trim(); if(!n2){alert('Introdueix el nom del Jugador 2.'); return;} p2={name:n2,points:0}; els.p2score.classList.remove('hidden'); els.p2score.textContent=p2.name+': 0 punts'; } else { els.p2score.classList.add('hidden'); } els.startConfig.classList.add('hidden'); els.tutorial.classList.remove('hidden'); });
+    els.beginBtn.addEventListener('click',function(){ mode=els.modeSel.value; totalRounds=parseInt(els.roundsSel.value,10)||15;
+      var n1=els.player1.value.trim(); if(!n1){alert('Introdueix el nom del Jugador 1.'); return;} p1={name:n1,points:0};
+      versus=(els.versusSel.value==='on'); if(versus){ var n2=els.player2.value.trim(); if(!n2){alert('Introdueix el nom del Jugador 2.'); return;} p2={name:n2,points:0}; els.p2score.classList.remove('hidden'); els.p2score.textContent=p2.name+': 0 punts'; } else { els.p2score.classList.add('hidden'); }
+      els.startConfig.classList.add('hidden'); els.tutorial.classList.remove('hidden');
+    });
     els.goPlay.addEventListener('click',function(){ startGame(); });
 
-    // Game
     els.revealBtn.addEventListener('click',function(){ if(!els.gameArea.classList.contains('hidden')) addClue(); });
     els.endGameBtn.addEventListener('click', cancelGame);
     window.addEventListener('keydown',function(e){ var k=(e.key||'').toLowerCase(); if(k==='h' && !els.gameArea.classList.contains('hidden') && !els.revealBtn.disabled) addClue(); if(k==='m') els.soundBtn.click(); });
 
-    // History
     els.closeHist.addEventListener('click',function(){ $('historyModal').classList.remove('open'); });
     els.clearHist.addEventListener('click',function(){ try{ localStorage.removeItem(KEY); }catch(e){} showH(); });
-    els.exportCSV.addEventListener('click', exportCSV);
+    els.exportCSV.addEventListener('click', function(){
+      var h=loadH();
+      var head=['data','mode','versus','jugador1','jugador2','rondes','punts_totals','p1_points','p2_points','guanyador','temps_mig_s'].join(',');
+      var rows=[]; for(var i=0;i<h.length;i++){ var x=h[i]; rows.push([JSON.stringify(x.whenLabel),x.mode,x.versus,JSON.stringify(x.p1||''),JSON.stringify(x.p2||''),x.rounds,x.points,x.p1_points||'',x.p2_points||'',JSON.stringify(x.winner||''),(x.avgTime?x.avgTime.toFixed(2):'')].join(',')); }
+      var csv=[head].concat(rows).join('\n');
+      var blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
+      var url=URL.createObjectURL(blob);
+      var a=document.createElement('a'); a.href=url; a.download='grease_historial.csv'; a.click(); URL.revokeObjectURL(url);
+    });
 
-    // Results
     els.playAgainBtn.addEventListener('click', function(){ resetUI(); els.tutorial.classList.remove('hidden'); });
     els.backToMenuBtn.addEventListener('click', showMenu);
     els.openHistoryBtn.addEventListener('click', showH);
@@ -537,7 +473,6 @@
 
   function init(){ bindAll(); }
   if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', init); } else { init(); }
-
 })();</script>
 </body>
 </html>
