@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Qui sóc? v4.4-final</title>
+<style>
+  :root{--bg:#0e0d13;--panel:#17161f;--text:#f6f6fb;--accent:#ff2d55;--accent2:#ffd400;--muted:#cfcfe6;--ok:#32d74b;--bad:#ff453a;--line:#262433;
+        --lightbtn:#e9e9ef;--lighttxt:#14131b;--blue:#2d7fff;}
+  html,body{height:100%;margin:0;background:radial-gradient(circle at 30% 15%,rgba(255,45,85,.13),transparent 40%),radial-gradient(circle at 75% 85%,rgba(255,212,0,.10),transparent 45%),linear-gradient(180deg,#0b0a10 0%,#13121a 60%,#0b0a10 100%);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Helvetica Neue,Helvetica,Arial,Noto Sans,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}
+  .wrap{max-width:1100px;margin:0 auto;padding:clamp(12px,3vw,28px)}
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:8px 0 10px}
+  .brand h1{font-size:clamp(22px,5vw,44px);margin:0;font-weight:900;letter-spacing:.5px;text-shadow:0 0 6px rgba(255,45,85,.6),0 0 18px rgba(255,45,85,.45),0 0 30px rgba(255,212,0,.35)}
+  .brand .subtitle{color:var(--muted);margin-top:2px;font-size:clamp(12px,2.2vw,16px)}
+  .logo{width:160px;height:80px;object-fit:contain;border-radius:8px;background:#111;border:1px solid var(--line)}
+  .menuPanel{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:10px 14px;box-shadow:0 10px 30px rgba(0,0,0,.35);backdrop-filter:blur(4px)}
+  .menu{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .btn{border:0;padding:10px 14px;border-radius:12px;font-size:15px;font-weight:800;cursor:pointer}
+  .btn.ok{background:linear-gradient(180deg,#32d74b,#1a8f2b);color:#fff;box-shadow:0 6px 20px rgba(50,215,75,.35)}
+  .btn.gray{background:var(--lightbtn);color:var(--lighttxt);box-shadow:none;border:1px solid rgba(0,0,0,.08)}
+  .btn.blue{background:var(--blue);color:#fff;box-shadow:0 6px 20px rgba(45,127,255,.35)}
+  .btn.dark{background:#24232e;color:#ddd;box-shadow:none;border:1px solid rgba(255,255,255,.1)}
+  .toggle{background:#24232e;color:#fff;border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:8px 10px;font-weight:700;cursor:pointer}
+  .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:#24232e;color:#eee;font-size:12px;border:1px solid rgba(255,255,255,.08)}
+  .timer{font-weight:900;font-size:18px;padding:6px 10px;border-radius:10px;border:1px solid var(--line);background:#14131b}
+  .timer.low{color:var(--bad);box-shadow:0 0 18px rgba(255,69,58,.35) inset}
+  @keyframes blink { 50% { opacity: .3; } }
+  .blink{ animation: blink .6s step-end infinite; }
+  .progress{margin-left:auto;color:var(--muted);font-weight:700}
+  .panel{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:clamp(12px,2.8vw,22px);box-shadow:0 10px 30px rgba(0,0,0,.35);backdrop-filter:blur(4px);margin-top:14px}
+  .game{margin-top:6px}
+  .gameTop{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-bottom:8px}
+  .clues{display:grid;gap:10px;margin:12px 0 16px}
+  /* White clue card with black text */
+  .clue{position:relative;background:#fff;color:#000;border-radius:14px;border:2px solid #000;padding:14px 14px;font-size:1.08rem;line-height:1.35;box-shadow:0 10px 24px rgba(0,0,0,.25)}
+  .clue::before{content:attr(data-n);position:absolute;left:-10px;top:-12px;background:#ffd400;color:#000;font-weight:900;border-radius:999px;padding:6px 10px;border:2px solid #000;box-shadow:0 6px 16px rgba(255,212,0,.35)}
+  .options{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+  .option{display:flex;align-items:center;gap:12px;background:#15141c;border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:10px;cursor:pointer;transition:transform .06s ease;text-align:left}
+  .option:hover{transform:translateY(-2px)}
+  .option[disabled]{opacity:.55;pointer-events:none}
+  .avatar{width:70px;height:70px;border-radius:10px;flex:0 0 70px;object-fit:cover;background:#26252f;border:1px solid rgba(255,255,255,.12)}
+  .optText{font-weight:900;color:#fff}
+  .feedback{margin-top:10px;font-weight:900;min-height:1.4em}
+  .good{color:var(--ok)} .bad{color:var(--bad)}
+  .score{display:flex;gap:12px;align-items:center;margin-top:6px;color:var(--muted);font-weight:800}
+  .score strong{color:var(--text)}
+  .hidden{display:none !important}
+  .hr{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);margin:14px 0}
+  select,input[type=text]{background:#24232e;color:#fff;border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:10px 12px;font-weight:700}
+  .modal{position:fixed;inset:0;display:none;place-items:center;background:rgba(0,0,0,.55)}
+  .modal.open{display:grid}
+  .sheet{width:min(860px,92vw);background:#0f0e15;border:1px solid var(--line);border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+  .sheet header{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:1px solid var(--line)}
+  .sheet h3{margin:0}.sheet .content{padding:12px 14px;max-height:70vh;overflow:auto}
+  .historyItem{display:grid;grid-template-columns:1fr auto auto;gap:10px;padding:10px;border:1px solid var(--line);border-radius:10px;margin-bottom:8px;background:#15141d}
+  .historyItem small{color:var(--muted)}
+  .caption{color:var(--muted);font-size:12px}
+  .result{display:grid;gap:10px}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <h1>Qui sóc?</h1>
+        <div class="subtitle">Pistes clares, versus i historial.</div>
+      </div>
+      <img id="logoImg" class="logo" src="img/logo.jpg" alt="Logo del joc" />
+    </div>
+
+    <div class="menuPanel">
+      <div class="menu">
+        <button id="startBtn" class="btn gray">Nova partida</button>
+        <button id="historyBtn" class="btn gray">Veure historial</button>
+        <button id="soundBtn" class="toggle" aria-pressed="true">🔊 Sons ON</button>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div id="startConfig">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+          <div>
+            <label>Mode de joc</label><br/>
+            <select id="modeSel">
+              <option value="infantil">Infantil (3–4 pistes, bàsic)</option>
+              <option value="normal" selected>Normal (4–5 pistes, barrejat)</option>
+              <option value="expert">Expert (4–5, detalls exigents)</option>
+              <option value="ultra">Ultra Expert (hiperconcret)</option>
+            </select>
+          </div>
+          <div>
+            <label>Nombre de rondes</label><br/>
+            <select id="roundsSel">
+              <option value="15" selected>15</option>
+              <option value="30">30</option>
+              <option value="60">60</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+          <div>
+            <label>Jugador 1 (nom)</label><br/>
+            <input id="player1" type="text" placeholder="Escriu el teu nom" />
+          </div>
+          <div>
+            <label>Mode Versus</label><br/>
+            <select id="versusSel">
+              <option value="off" selected>Un jugador</option>
+              <option value="on">2 jugadors (versus)</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="p2wrap" class="hidden" style="margin-bottom:10px">
+          <label>Jugador 2 (nom)</label><br/>
+          <input id="player2" type="text" placeholder="Nom del segon jugador" />
+          <div class="caption">En mode “versus”, els jugadors alternen torns.</div>
+        </div>
+
+        <div>
+          <button id="beginBtn" class="btn ok">Començar</button>
+          <span class="caption">S’explicaran les regles a la pantalla d’instruccions.</span>
+        </div>
+
+        <div class="hr"></div>
+        <div class="caption">
+          <strong>Imatges:</strong> posa <code>logo.jpg</code> i les fotos a <code>img/</code>: sandy.jpg, danny.jpg, rizzo.jpg, kenickie.jpg,
+          frenchy.jpg, doody.jpg, marty.jpg, sonny.jpg, putzie.jpg, patty.jpg, jan.jpg, balmudo.jpg, murdock.jpg, tom.jpg, calhoun.jpg
+        </div>
+      </div>
+
+      <div id="tutorial" class="hidden">
+        <h3>Instruccions ràpides</h3>
+        <ul>
+          <li>Prem <strong>Mostrar més pistes</strong> si et quedes encallat.</li>
+          <li>Tens <strong>20 segons</strong> per pregunta. El marcador parpelleja els últims 3s.</li>
+          <li>En <strong>versus</strong> alternen torns.</li>
+        </ul>
+        <button id="goPlay" class="btn ok">Entesos! Anem a jugar</button>
+      </div>
+
+      <div id="gameArea" class="game hidden">
+        <div class="gameTop">
+          <div class="pill" id="turnInfo"></div>
+          <div style="display:flex;gap:10px;align-items:center">
+            <span class="timer" id="timer">⏱️ 20</span>
+            <span class="progress" id="progress">0 / 0</span>
+            <button id="revealBtn" class="btn blue">Mostrar més pistes</button>
+            <button id="endGameBtn" class="btn dark">Sortir partida</button>
+          </div>
+        </div>
+        <div class="clues" id="clues"></div>
+        <div class="options" id="options"></div>
+        <div class="feedback" id="feedback"></div>
+        <div class="score" id="score">
+          <div>Puntuació: <strong id="points">0</strong></div>
+          <div>Ronda: <strong id="roundN">0</strong></div>
+          <div class="pill" id="p2score" class="hidden"></div>
+        </div>
+      </div>
+
+      <div id="resultPanel" class="hidden">
+        <div class="result">
+          <h3>Resultats</h3>
+          <div id="resultSummary"></div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button id="playAgainBtn" class="btn ok">Jugar de nou</button>
+            <button id="backToMenuBtn" class="btn gray">Tornar al menú</button>
+            <button id="openHistoryBtn" class="btn gray">Veure historial</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="historyModal" role="dialog" aria-modal="true" aria-labelledby="histTitle">
+    <div class="sheet">
+      <header>
+        <h3 id="histTitle">Historial de puntuacions</h3>
+        <div style="display:flex;gap:8px">
+          <button id="exportCSV" class="btn gray">Exporta CSV</button>
+          <button id="clearHist" class="btn dark">Esborrar</button>
+          <button id="closeHist" class="btn gray">Tanca</button>
+        </div>
+      </header>
+      <div class="content" id="histContent"></div>
+    </div>
+  </div>
+
+<script>
+(function(){
+  // State
+  let BANK=[],round=0,revealed=0,current=null,remaining=[],tickInt=null,timeLeft=20,mode='normal',totalRounds=15,totalTime=0,questionT=0,versus=false,p1={name:'',points:0},p2={name:'',points:0},turn=1;
+  let gameActive=false;
+
+  // Shortcuts
+  const $=id=>document.getElementById(id);
+  const els={
+    startBtn:$('startBtn'),historyBtn:$('historyBtn'),soundBtn:$('soundBtn'),logoImg:$('logoImg'),
+    startConfig:$('startConfig'),beginBtn:$('beginBtn'),versusSel:$('versusSel'),p2wrap:$('p2wrap'),
+    player1:$('player1'),player2:$('player2'),tutorial:$('tutorial'),goPlay:$('goPlay'),
+    gameArea:$('gameArea'),turnInfo:$('turnInfo'),timer:$('timer'),progress:$('progress'),
+    revealBtn:$('revealBtn'),endGameBtn:$('endGameBtn'),clues:$('clues'),options:$('options'),
+    feedback:$('feedback'),points:$('points'),roundN:$('roundN'),p2score:$('p2score'),
+    modal:$('historyModal'),histContent:$('histContent'),closeHist:$('closeHist'),
+    clearHist:$('clearHist'),exportCSV:$('exportCSV'),modeSel:$('modeSel'),roundsSel:$('roundsSel'),
+    resultPanel:$('resultPanel'),resultSummary:$('resultSummary'),playAgainBtn:$('playAgainBtn'),
+    backToMenuBtn:$('backToMenuBtn'),openHistoryBtn:$('openHistoryBtn')
+  };
+  els.logoImg.onerror=()=>{els.logoImg.style.display='none'};
+
+  // Characters
+  const CHARACTERS=[
+    {id:"sandy",name:"Sandy",img:"img/sandy.jpg",alt:"Sandy"},
+    {id:"danny",name:"Danny",img:"img/danny.jpg",alt:"Danny"},
+    {id:"rizzo",name:"Rizzo",img:"img/rizzo.jpg",alt:"Rizzo"},
+    {id:"kenickie",name:"Kenickie",img:"img/kenickie.jpg",alt:"Kenickie"},
+    {id:"frenchy",name:"Frenchy",img:"img/frenchy.jpg",alt:"Frenchy"},
+    {id:"doody",name:"Doody",img:"img/doody.jpg",alt:"Doody"},
+    {id:"marty",name:"Marty",img:"img/marty.jpg",alt:"Marty"},
+    {id:"sonny",name:"Sonny",img:"img/sonny.jpg",alt:"Sonny"},
+    {id:"putzie",name:"Putzie",img:"img/putzie.jpg",alt:"Putzie"},
+    {id:"patty",name:"Patty",img:"img/patty.jpg",alt:"Patty Simcox"},
+    {id:"jan",name:"Jan",img:"img/jan.jpg",alt:"Jan"},
+    {id:"balmudo",name:"Balmudo",img:"img/balmudo.jpg",alt:"Leo Balmudo"},
+    {id:"murdock",name:"Sra. Murdock",img:"img/murdock.jpg",alt:"Sra. Murdock"},
+    {id:"tom",name:"Tom",img:"img/tom.jpg",alt:"Tom Chisum"},
+    {id:"calhoun",name:"Entrenador Calhoun",img:"img/calhoun.jpg",alt:"Coach Calhoun"}
+  ];
+
+  // Facts
+  const FACTS={
+    sandy:{group:"amic de les Pink Ladies",locs:["Rydell High","el gimnàs de Rydell","el Frosty Palace"],hair:"ros",pals:["la Frenchy"],duo:"Danny",notes:["Vaig arribar nova a l’escola.","Tinc un caràcter amable.","Al final em faig un canvi de look."]},
+    danny:{group:"T-Birds",locs:["Rydell High","el taller de l’escola","Thunder Road","el gimnàs"],hair:"fosc",pals:["en Kenickie","en Sonny","en Putzie"],duo:"Sandy",notes:["M’agraden molt les curses de cotxes.","Sovint porto una jaqueta de cuir.","El meu pentinat és brillant."]},
+    rizzo:{group:"líder de les Pink Ladies",locs:["Rydell High","el gimnàs"],hair:"fosc",pals:["la Marty","la Frenchy","la Jan"],duo:"Kenickie",notes:["Tinc una actitud valenta.","Faig comentaris enginyosos."]},
+    kenickie:{group:"T-Birds",locs:["el taller","Thunder Road"],hair:"castany",pals:["en Danny","en Putzie"],duo:"Rizzo",notes:["Sóc el manetes del grup.","Tinc un cotxe preparat per competir."]},
+    frenchy:{group:"Pink Ladies",locs:["Rydell High","el Frosty Palace"],hair:"rosa a moments",pals:["la Sandy","la Marty","la Jan"],notes:["M’encanta el maquillatge.","Provo pentinats molt creatius."]},
+    doody:{group:"T-Birds",locs:["Rydell High"],hair:"fosc",pals:["en Danny","en Kenickie","en Sonny","en Putzie"],notes:["A vegades toco la guitarra.","M’agrada fer bromes."]},
+    marty:{group:"Pink Ladies",locs:["Rydell High","el Frosty Palace"],hair:"castany",pals:["la Rizzo","la Frenchy","la Jan"],notes:["Tinc debilitat per la moda i els accessoris.","M’agrada escriure cartes."]},
+    sonny:{group:"T-Birds",locs:["Rydell High","el Frosty Palace"],hair:"castany",pals:["en Danny","en Kenickie","en Putzie"],notes:["Sempre estic de broma.","Parlo sovint de menjar."]},
+    putzie:{group:"T-Birds",locs:["Rydell High"],hair:"clar",pals:["en Doody","en Danny"],notes:["Sóc el bromista del grup.","Soc un amic lleial."]},
+    patty:{group:"animadora",locs:["Rydell High","el gimnàs"],hair:"ros",pals:["en Tom"],notes:["Organitzo activitats escolars.","Tinc molta energia i entusiasme."]},
+    jan:{group:"Pink Ladies",locs:["Rydell High","el Frosty Palace"],hair:"castany clar",pals:["la Frenchy","la Marty","la Rizzo"],notes:["Sóc riallera i divertida.","Sempre duc algun snack a mà."]},
+    balmudo:{group:"Scorpions",locs:["Thunder Road","un aparcament"],hair:"fosc",pals:["els Scorpions"],notes:["Condueixo de manera agressiva.","Sóc rival dels T-Birds."]},
+    murdock:{group:"professora de mecànica",locs:["el taller de l’escola"],hair:"castany",pals:[],notes:["Explico motors i eines.","Poso exàmens pràctics."]},
+    tom:{group:"jugador de futbol americà",locs:["el camp de Rydell","el gimnàs"],hair:"clar",pals:["la Patty"],notes:["Sóc molt popular.","Em passo hores entrenant."]},
+    calhoun:{group:"entrenador de gimnàs",locs:["el gimnàs","el camp"],hair:"—",pals:["en Tom"],notes:["Dono instruccions amb energia.","Organitzo exercicis i partits."]},
+  };
+
+  // Ultra
+  const ULTRA=[
+    {answer:"danny",clues:["Porto una camisa clara amb ratlles blaves a l’escena de la platja.","Apareixo a Thunder Road durant una cursa.","Al ball de l’escola em moc com un líder.","A la colla, sovint decideixo el rumb."]},
+    {answer:"balmudo",clues:["El meu cotxe mostra el número 3 a Thunder Road.","Sóc el rival directe dels T-Birds.","Condueixo de manera molt agressiva.","Formo part dels Scorpions."]},
+    {answer:"murdock",clues:["Dirigeixo les pràctiques de mecànica.","Se’m veu sovint al taller amb motors.","Explico les eines i els components amb detall.","Avalua els treballs tècnics dels alumnes."]},
+    {answer:"marty",clues:["A l’inici porto un mocador de color vermell.","Sempre camino amb complements i joies.","Tinc escenes al Frosty Palace.","M’agrada escriure cartes elegants."]},
+    {answer:"sandy",clues:["Començo tímida i em transformo al final.","Comparteixo un moment clau al ball de l’escola.","Tinc un duet destacat amb en Danny.","Acabo amb un canvi de look sorprenent."]},
+    {answer:"kenickie",clues:["Sóc el propietari original del cotxe de la cursa.","Treballo sota el capó amb orgull.","Tinc rivalitats a la carretera.","Ballo sovint amb la Rizzo."]},
+    {answer:"frenchy",clues:["Tinc una escena molt rosa a la perruqueria.","Dubto sobre el meu futur professional.","Faig de cor amable a l’equip.","Proposo pentinats molt cridaners."]},
+    {answer:"tom",clues:["Sóc jugador de futbol americà.","Tinc escenes d’entrenament al camp.","Tinc relació amb la Patty.","Tinc un aspecte clarament atlètic."]},
+    {answer:"patty",clues:["Sóc animadora i organitzo esdeveniments.","Apareixo al gimnàs animant tothom.","Mantinc un somriure i molta energia.","Participo a cerimònies escolars."]},
+    {answer:"jan",clues:["En una escena porto un look rosa.","Tinc un to rialler i alegre.","A vegades m’aparèixen snacks a la mà.","Formo part de les Pink Ladies."]},
+    {answer:"calhoun",clues:["Com a entrenador, faig que la gent pugi els genolls.","Dono ordres amb molta energia al gimnàs.","Promoc la disciplina esportiva.","Tinc moments previs a un partit important."]},
+    {answer:"putzie",clues:["Comparteixo bromes amb en Doody.","Se’m veu al pati fent riure els altres.","Sóc un amic molt lleial.","Comparteixo escenes amb en Danny."]},
+    {answer:"rizzo",clues:["Tinc un arc emocional intens.","Camino amb pas ferm i ulleres.","Lidero la colla sense por.","Comparteixo escenes potents amb en Kenickie."]},
+    {answer:"sonny",clues:["Als descansos sempre penso en menjar.","Protagonitzo situacions còmiques.","Aparec al menjador i al pati.","Encara que faci bromes, sóc lleial."]},
+    {answer:"doody",clues:["Acompanyo amb una guitarra en moments informals.","Aporto energia juvenil a la colla.","Quan cal, agafo el micro.","Sóc amic proper d’en Putzie."]},
+  ];
+
+  // Utils
+  function pick(a){return a[Math.floor(Math.random()*a.length)]}
+  function rand(a,b){return Math.floor(Math.random()*(b-a+1))+a}
+  function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+
+  // Hair phrasing
+  const hairCounts=(()=>{const c={};Object.values(FACTS).forEach(f=>{if(f.hair&&f.hair!=='—'){c[f.hair]=(c[f.hair]||0)+1}});return c;})();
+  function hairLine(id){const f=FACTS[id];if(!f||!f.hair||f.hair==='—')return null;const n=hairCounts[f.hair]||0;return (n<=1)?`Tinc els cabells de color ${f.hair}.`:`Sóc un dels personatges amb els cabells de color ${f.hair}.`;}
+
+  // Special questions
+  const SPECIAL=[
+    {answer:"sandy", clues:["Qui se sembla més la Nerine?" ]},
+    {answer:"danny", clues:["La Bruna balla igual que en..?" ]},
+  ];
+
+  // Handwritten
+  const HAND=[
+    ...SPECIAL,
+    {answer:"danny",clues:["Formo part dels T-Birds.","M’agrada competir en curses de cotxes.","Porto brillantina al cabell.","Al ball vaig fer parella amb la Sandy."]},
+    {answer:"sandy",clues:["Vaig arribar nova a Rydell.","M’agrada vestir amb colors clars.","Sóc amable i canto de tant en tant.","Vaig ballar amb un noi de jaqueta de cuir."]},
+    {answer:"rizzo",clues:["Sóc la líder de les Pink Ladies.","Tinc un caràcter decidit i valent.","Parlo de manera directa.","Sovint ballo amb en Kenickie."]},
+    {answer:"kenickie",clues:["Porto la jaqueta dels T-Birds.","Sóc molt amic d’en Danny.","Tinc un cotxe preparat per competir.","Ballo amb la Rizzo."]},
+    {answer:"frenchy",clues:["M’agrada el maquillatge i la perruqueria.","A vegades porto el cabell de color rosa.","Sóc amiga de la Sandy.","Provo pentinats molt creatius."]},
+    {answer:"marty",clues:["M’encanten els accessoris i la moda.","M’agrada escriure cartes maques.","Formo part de les Pink Ladies.","Porto mocadors i joies vistoses."]},
+    {answer:"doody",clues:["De vegades toco la guitarra.","Sóc dels T-Birds més joves.","M’agrada fer bromes.","També porto jaqueta negra com la colla."]},
+    {answer:"sonny",clues:["Parlo molt de menjar i faig bromes.","Sóc molt social amb la colla.","Formo part dels T-Birds.","El meu nom comença amb S."]},
+    {answer:"putzie",clues:["Sóc un T-Bird amb molta broma.","Comparteixo escenes amb en Doody.","Faig riure sovint els amics.","Vaig amb la colla a tot arreu."]},
+    {answer:"patty",clues:["Sóc animadora i parlo amb entusiasme.","Ajudo a organitzar esdeveniments a l’escola.","Mantinc una actitud molt positiva.","Sovint faig equip amb en Tom."]},
+    {answer:"jan",clues:["Sóc una Pink Lady divertida.","Tinc una rialla molt fàcil.","Sempre tinc algun snack a mà.","Sóc amiga de la Frenchy i la Marty."]},
+    {answer:"balmudo",clues:["Formo part dels Scorpions.","Sóc rival declarat dels T-Birds.","Condueixo amb molta agressivitat.","Aparec a Thunder Road."]},
+    {answer:"murdock",clues:["Sóc professora de mecànica.","Treballo amb el grup al taller.","Explico els motors i les eines amb paciència.","Faig pràctiques tècniques."]},
+    {answer:"tom",clues:["Sóc jugador de futbol americà.","Em veus entrenant al camp de Rydell.","Sóc força popular.","Tinc relació amb la Patty."]},
+    {answer:"calhoun",clues:["Sóc l’entrenador de gimnàs.","Dono ordres amb energia.","Animo l’equip perquè rendeixi.","Se’m veu sovint al gimnàs."]},
+  ];
+
+  function fromFacts(mode){
+    const out=[];
+    for(const ch of CHARACTERS){
+      const f=FACTS[ch.id]; if(!f) continue;
+      const base=[
+        `Formo part de ${f.group}.`,
+        f.locs?.length ? `Em veus sovint a ${pick(f.locs)}.` : null,
+        hairLine(ch.id),
+        f.pals?.length ? `Tinc amistat amb ${pick(f.pals)}.` : null,
+        f.duo ? `Sovint faig parella amb ${f.duo}.` : null,
+        ...(f.notes||[])
+      ].filter(Boolean);
+      const used=new Set(); let tries=0; const target=(mode==='infantil')?6:10;
+      while(out.filter(q=>q.answer===ch.id).length<target && tries<200){
+        tries++; const n=(mode==='infantil')?Math.max(3,Math.min(4,base.length)):Math.max(4,Math.min(5,base.length));
+        const clues=shuffle(base).slice(0,n);
+        const tooShort=clues.some(c=>c.trim().split(/\s+/).length<3); if(tooShort) continue;
+        const key=clues.join('|'); if(used.has(key)) continue; used.add(key);
+        out.push({answer:ch.id, clues});
+      }
+    }
+    return out;
+  }
+
+  function choices(ans){const ids=CHARACTERS.map(c=>c.id);return shuffle([ans,...shuffle(ids.filter(i=>i!==ans)).slice(0,3)])}
+  function buildBank(mode,rounds){
+    let bank=[...HAND, ...fromFacts(mode)];
+    if(mode==='expert') bank=[...bank, ...fromFacts('expert').slice(0,20)];
+    if(mode==='ultra') bank=[...bank, ...ULTRA];
+    bank=bank.map(q=>({...q,choices:choices(q.answer)}));
+    bank=shuffle(bank);
+    const seen=new Set(), unique=[];
+    for(const q of bank){
+      const key=q.answer+'||'+q.clues.join('||');
+      if(!seen.has(key)){ seen.add(key); unique.push(q); }
+      if(unique.length>=rounds*2) break;
+    }
+    return unique.slice(0, Math.min(rounds, unique.length));
+  }
+
+  // Audio
+  let audioOn=true,actx=null;
+  function beep(f=880,d=0.10,t='sine',v=0.08){if(!audioOn)return; if(!actx){try{actx=new(window.AudioContext||window.webkitAudioContext)()}catch{return}} const o=actx.createOscillator(),g=actx.createGain();o.type=t;o.frequency.value=f;g.gain.value=v;o.connect(g).connect(actx.destination);o.start();o.stop(actx.currentTime+d)}
+  function tickDown(){beep(520,0.065,'square',0.05)}
+  function tickFinal(){beep(220,0.18,'square',0.08)}
+  function sCorrect(){beep(1040,0.12,'triangle',0.09);setTimeout(()=>beep(1240,0.12,'triangle',0.09),120)}
+  function sWrong(){beep(300,0.12,'sawtooth',0.08);setTimeout(()=>beep(220,0.18,'sawtooth',0.08),140)}
+
+  // History
+  const KEY='grease_v44_final';
+  function loadH(){ try{ return JSON.parse(localStorage.getItem(KEY)||'[]'); } catch{ return []; } }
+  function saveH(a){ localStorage.setItem(KEY, JSON.stringify(a)); }
+  function pushH(e){ const h=loadH(); h.unshift(e); saveH(h.slice(0,300)); }
+  function showH(){
+    const h=loadH(); els.histContent.innerHTML=h.length?'' : '<p>No hi ha partides guardades encara.</p>';
+    h.forEach(x=>{ const r=document.createElement('div'); r.className='historyItem';
+      r.innerHTML=`<div><strong>${x.whenLabel}</strong><br><small>${x.rounds} preguntes · mode ${x.mode} ${x.versus?'· versus':''} ${x.p1?('· '+x.p1):''} ${x.p2?('vs '+x.p2):''}</small></div>
+                   <div style='text-align:right'>Punts<br><strong>${x.points}</strong></div>
+                   <div style='text-align:right'>${x.versus?'Guanyador':'Temps mig'}<br><small>${x.versus?(x.winner||'—'):(x.avgTime.toFixed(1)+'s')}</small></div>`;
+      els.histContent.appendChild(r);
+    });
+    $('historyModal').classList.add('open');
+  }
+  function exportCSV(){
+    const h=loadH();
+    const head=['data','mode','versus','jugador1','jugador2','rondes','punts_totals','p1_points','p2_points','guanyador','temps_mig_s'].join(',');
+    const rows=h.map(x=>[JSON.stringify(x.whenLabel),x.mode,x.versus,JSON.stringify(x.p1||''),JSON.stringify(x.p2||''),x.rounds,x.points,x.p1_points||'',x.p2_points||'',JSON.stringify(x.winner||''),(x.avgTime?x.avgTime.toFixed(2):'')].join(','));
+    const csv=[head,...rows].join('\n');
+    const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a'); a.href=url; a.download='grease_historial.csv'; a.click(); URL.revokeObjectURL(url);
+  }
+
+  // Flow helpers
+  function resetUI(){
+    els.tutorial.classList.add('hidden');
+    els.gameArea.classList.add('hidden');
+    els.resultPanel.classList.add('hidden');
+    els.startConfig.classList.remove('hidden');
+    els.progress.textContent='0 / 0';
+    els.feedback.textContent='';
+    els.points.textContent='0';
+    els.roundN.textContent='0';
+    els.p2score.classList.add('hidden');
+    els.clues.innerHTML='';
+    els.options.innerHTML='';
+  }
+  function showResults(entry){
+    els.resultSummary.innerHTML = entry.versus
+      ? `<p><strong>Guanyador:</strong> ${entry.winner || '—'}</p>
+         <p><strong>${entry.p1}:</strong> ${entry.p1_points} punts</p>
+         <p><strong>${entry.p2}:</strong> ${entry.p2_points} punts</p>
+         <p><strong>Temps mig:</strong> ${entry.avgTime.toFixed(1)}s</p>`
+      : `<p><strong>Puntuació:</strong> ${entry.points} punts</p>
+         <p><strong>Temps mig:</strong> ${entry.avgTime.toFixed(1)}s</p>`;
+    els.gameArea.classList.add('hidden');
+    els.tutorial.classList.add('hidden');
+    els.startConfig.classList.add('hidden');
+    els.resultPanel.classList.remove('hidden');
+  }
+  function showMenu(){
+    gameActive=false;
+    stopTimer();
+    resetUI();
+  }
+
+  // Game core
+  function startGame(){
+    BANK=buildBank(mode,totalRounds);
+    round=0; p1.points=0; p2.points=0; totalTime=0;
+    remaining=[...Array(BANK.length).keys()];
+    els.points.textContent='0'; els.roundN.textContent='0';
+    els.progress.textContent=`0 / ${remaining.length}`;
+    els.gameArea.classList.remove('hidden'); els.tutorial.classList.add('hidden'); els.startConfig.classList.add('hidden'); els.resultPanel.classList.add('hidden');
+    turn=1; updateTurnInfo(); nextQuestion();
+    gameActive=true;
+  }
+  function updateTurnInfo(){ els.turnInfo.textContent=versus?`Torn de: ${turn===1?p1.name:p2.name}`:`Jugador: ${p1.name}`; }
+  function nextQuestion(){
+    if(tickInt){clearInterval(tickInt); tickInt=null;}
+    if(round>=remaining.length){ finishGame(); return; }
+    round++; els.roundN.textContent=round; els.feedback.textContent=''; revealed=0; els.revealBtn.disabled=false;
+    current=BANK[remaining[round-1]]; renderClues(true); renderOptions(); els.progress.textContent=`${round-1} / ${remaining.length}`;
+    startTimer(); questionStart();
+  }
+  function renderClues(first=false){ els.clues.innerHTML=''; if(first) addClue(); }
+  function addClue(){
+    if(revealed>=current.clues.length){ els.revealBtn.disabled=true; return; }
+    const d=document.createElement('div'); d.className='clue'; d.setAttribute('data-n', revealed+1);
+    d.textContent=current.clues[revealed]; els.clues.appendChild(d); revealed++;
+    if(revealed>=current.clues.length) els.revealBtn.disabled=true;
+  }
+  function renderOptions(){
+    els.options.innerHTML='';
+    shuffle([...current.choices]).forEach(id=>{
+      const ch=CHARACTERS.find(c=>c.id===id);
+      const b=document.createElement('button'); b.className='option'; b.dataset.id=id;
+      const i=document.createElement('img'); i.className='avatar'; i.src=ch.img; i.alt=ch.alt||ch.name; i.onerror=()=>{i.style.opacity=.25; i.alt='Imatge no trobada'};
+      const t=document.createElement('div'); t.className='optText'; t.textContent=ch.name;
+      b.appendChild(i); b.appendChild(t); b.addEventListener('click', onAnswer); els.options.appendChild(b);
+    });
+  }
+  function onAnswer(e){
+    const chosen=e.currentTarget.dataset.id;
+    lock(); stopTimer(); questionEnd();
+    const ok=chosen===current.answer; score(ok);
+    if(versus){ turn=(turn===1?2:1); updateTurnInfo(); }
+    setTimeout(nextQuestion, 900);
+  }
+  function lock(){ Array.from(document.querySelectorAll('.option')).forEach(b=>b.disabled=true); }
+  function score(ok){
+    const tgt=(versus && turn===2)?p2:p1;
+    if(ok){
+      const base=100, pen=Math.floor(base/Math.max(current.clues.length,1)), bonus=Math.max(0,timeLeft*2);
+      const pts=Math.max(10, base - pen*(revealed-1)) + bonus;
+      tgt.points+=pts; sCorrect();
+      els.feedback.innerHTML=`<span class='good'>Correcte!</span> +${pts} punts (bonus temps: ${bonus})`;
+    } else {
+      const right=CHARACTERS.find(c=>c.id===current.answer).name; sWrong();
+      els.feedback.innerHTML=`<span class='bad'>Temps esgotat o incorrecta.</span> La resposta correcta era <strong>${right}</strong>.`;
+    }
+    els.points.textContent=p1.points;
+    if(versus){ els.p2score.textContent=`${p2.name}: ${p2.points} punts`; els.p2score.classList.remove('hidden'); }
+    els.progress.textContent=`${round} / ${remaining.length}`;
+  }
+
+  // Timer (20s + blink on last 3s)
+  function startTimer(){ timeLeft=20; renderTimer();
+    tickInt=setInterval(()=>{ timeLeft--; if(timeLeft<=3) tickDown(); renderTimer();
+      if(timeLeft<=0){ tickFinal(); stopTimer(); lock(); questionEnd(); score(false);
+        if(versus){ turn=(turn===1?2:1); updateTurnInfo(); } setTimeout(nextQuestion,900); }
+    },1000);
+  }
+  function stopTimer(){ if(tickInt){ clearInterval(tickInt); tickInt=null; } }
+  function renderTimer(){ els.timer.textContent=`⏱️ ${timeLeft}`; els.timer.classList.toggle('low', timeLeft<=3); els.timer.classList.toggle('blink', timeLeft<=3); }
+  function questionStart(){ questionT=performance.now(); }
+  function questionEnd(){ if(questionT){ const dt=(performance.now()-questionT)/1000; totalTime+=Math.min(20,Math.max(0,dt)); }}
+
+  // Finish / cancel
+  function finishGame(){
+    gameActive=false;
+    stopTimer(); questionEnd();
+    let winner=null,total=p1.points;
+    if(versus){ total+=p2.points; winner=(p1.points===p2.points)?'Empat':(p1.points>p2.points?p1.name:p2.name); }
+    const now=new Date();
+    const entry={
+      mode,versus,p1:p1.name,p2:versus?p2.name:null,p1_points:p1.points,p2_points:versus?p2.points:null,
+      points:versus?(p1.points+p2.points):p1.points,rounds:remaining.length,avgTime:(totalTime/Math.max(remaining.length,1))||0,
+      winner,when:now.toISOString(),whenLabel:now.toLocaleString()
+    };
+    pushH(entry);
+    showResults(entry);
+  }
+  function cancelGame(){
+    if(!gameActive) return;
+    if(!confirm('Vols sortir de la partida i tornar al menú? No es guardarà a l’historial.')) return;
+    gameActive=false;
+    stopTimer();
+    resetUI();
+  }
+
+  // History modal buttons
+  function bindHistoryButtons(){
+    els.historyBtn.addEventListener('click', showH);
+    els.closeHist.addEventListener('click', ()=> $('historyModal').classList.remove('open'));
+    els.clearHist.addEventListener('click', ()=>{ localStorage.removeItem(KEY); showH(); });
+    els.exportCSV.addEventListener('click', exportCSV);
+  }
+
+  // Menu buttons and flow
+  function bindMenuButtons(){
+    els.startBtn.addEventListener('click',()=>{
+      resetUI();
+      els.startConfig.classList.remove('hidden');
+    });
+    els.soundBtn.addEventListener('click',e=>{
+      audioOn=!audioOn; e.currentTarget.setAttribute('aria-pressed',String(audioOn)); e.currentTarget.textContent=audioOn?'🔊 Sons ON':'🔇 Sons OFF';
+    });
+  }
+
+  // Config buttons
+  function bindConfigButtons(){
+    els.versusSel.addEventListener('change',()=>{els.p2wrap.classList.toggle('hidden',els.versusSel.value!=='on')});
+    els.beginBtn.addEventListener('click',()=>{
+      mode=els.modeSel.value; totalRounds=parseInt(els.roundsSel.value,10)||15;
+      const n1=els.player1.value.trim(); if(!n1){alert('Introdueix el nom del Jugador 1.'); return;}
+      p1={name:n1,points:0}; versus=els.versusSel.value==='on';
+      if(versus){const n2=els.player2.value.trim(); if(!n2){alert('Introdueix el nom del Jugador 2.'); return;} p2={name:n2,points:0}; els.p2score.classList.remove('hidden'); els.p2score.textContent=`${p2.name}: 0 punts`;} else { els.p2score.classList.add('hidden'); }
+      els.startConfig.classList.add('hidden'); els.tutorial.classList.remove('hidden');
+    });
+    els.goPlay.addEventListener('click',()=>startGame());
+  }
+
+  // Game buttons
+  function bindGameButtons(){
+    els.revealBtn.addEventListener('click',()=>{ if(!els.gameArea.classList.contains('hidden')) addClue(); });
+    els.endGameBtn.addEventListener('click', cancelGame);
+    window.addEventListener('keydown',e=>{ const k=e.key.toLowerCase(); if(k==='h' && !els.gameArea.classList.contains('hidden') && !els.revealBtn.disabled) addClue(); if(k==='m') els.soundBtn.click(); });
+  }
+
+  // Result buttons
+  function bindResultButtons(){
+    els.playAgainBtn.addEventListener('click', ()=>{ resetUI(); els.tutorial.classList.remove('hidden'); });
+    els.backToMenuBtn.addEventListener('click', showMenu);
+    els.openHistoryBtn.addEventListener('click', showH);
+  }
+
+  // Init after DOM loaded
+  document.addEventListener('DOMContentLoaded', ()=>{
+    bindHistoryButtons();
+    bindMenuButtons();
+    bindConfigButtons();
+    bindGameButtons();
+    bindResultButtons();
+  });
+})();</script>
+</body>
+</html>
