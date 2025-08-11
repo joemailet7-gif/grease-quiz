@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Qui sóc? — Grease (FINAL)</title>
+<title>Qui sóc? — Grease (PATCH)</title>
 <style>
   :root{--bg:#0e0d13;--panel:#17161f;--text:#f6f6fb;--accent:#ff2d55;--accent2:#ffd400;--muted:#cfcfe6;--ok:#32d74b;--bad:#ff453a;--line:#262433;
         --lightbtn:#e9e9ef;--lighttxt:#14131b;--blue:#2d7fff;}
@@ -96,7 +96,6 @@
             <label>Mode de joc</label><br/>
             <select id="modeSel">
               <option value="infantil">Infantil (pistes molt clares)</option>
-              <option value="normal" selected>Normal (barrejat)</option>
               <option value="expert">Expert (detalls exigents)</option>
               <option value="ultra">Ultra Expert (hiperconcret, “Qui diu…” en castellà)</option>
               <option value="mix">Mix (barreja equilibrada)</option>
@@ -216,11 +215,11 @@
 
   var audioOn=true, actx=null;
   var gameActive=false, timeLimit=true, capsOn=false;
-  var mode='normal', totalRounds=15;
+  var mode='expert', totalRounds=15;
   var BANK=[], round=0, remaining=[], current=null, revealed=0;
   var tickInt=null, timeLeft=20, questionT=0, totalTime=0;
   var versus=false, p1={name:'',points:0}, p2={name:'',points:0}, turn=1;
-  var KEY='grease_final_hist';
+  var KEY='grease_patch_hist';
 
   function pick(a){ return a[Math.floor(Math.random()*a.length)]; }
   function shuffle(a){ for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;} return a; }
@@ -228,12 +227,6 @@
     var ids=CHARACTERS.map(c=>c.id);
     var others=ids.filter(x=>x!==ans); others=shuffle(others).slice(0,3);
     return shuffle([ans].concat(others));
-  }
-
-  function setToggle(btn, active){
-    if(!btn) return;
-    btn.classList[active?'add':'remove']('active');
-    btn.setAttribute('aria-pressed', String(active));
   }
 
   // Audio blips
@@ -247,18 +240,6 @@
   function saveH(a){ try{ localStorage.setItem(KEY, JSON.stringify(a)); }catch(e){} }
   function pushH(e){ var h=loadH(); h.unshift(e); saveH(h.slice(0,300)); }
 
-  function showH(){
-    var h=loadH(); els.histContent.innerHTML=h.length?'' : '<p>No hi ha partides guardades encara.</p>';
-    for(var i=0;i<h.length;i++){
-      var x=h[i]; var r=document.createElement('div'); r.className='historyItem';
-      r.innerHTML='<div><strong>'+x.whenLabel+'</strong><br><small>'+x.rounds+' preguntes · mode '+x.mode+(x.versus?' · versus':'')+(x.p1?(' · '+x.p1):'')+(x.p2?(' vs '+x.p2):'')+'</small></div>'+
-                   '<div style="text-align:right">Punts<br><strong>'+x.points+'</strong></div>'+
-                   '<div style="text-align:right">'+(x.versus?'Guanyador':'Temps mig')+'<br><small>'+(x.versus?(x.winner||'—'):((x.avgTime?x.avgTime.toFixed(1):'—')+'s'))+'</small></div>';
-      els.histContent.appendChild(r);
-    }
-    $('historyModal').classList.add('open');
-  }
-
   // Load JSON
   var DATA=null;
   async function loadQuestions(){
@@ -270,40 +251,59 @@
   function uniqueByKey(arr){
     var seen={}, out=[];
     for(var i=0;i<arr.length;i++){
-      var q=arr[i]; var key=q.resposta+'||'+q.pregunta;
+      var q=arr[i]; var key=q.answer+'||'+q.clues.join('||');
       if(!seen[key]){ seen[key]=1; out.push(q); }
     }
     return out;
+  }
+
+  function fromList(list){ return list.map(x => ({answer:x.resposta, clues:[x.pregunta]})); }
+
+  function ensureAtLeast(pool, rounds){
+    // Si per algun motiu tenim menys preguntes que 'rounds', omplim barrejant de tots els bancs
+    if(pool.length >= rounds) return pool;
+    var all = []
+      .concat(DATA.infantil||[])
+      .concat(DATA.expert||[])
+      .concat(DATA.ultra||[]);
+    // treu duplicats ja existents
+    var have = new Set(pool.map(q => q.answer+'||'+q.clues[0]));
+    for(var i=0;i<all.length && pool.length<rounds;i++){
+      var key = all[i].resposta+'||'+all[i].pregunta;
+      if(!have.has(key)){ have.add(key); pool.push({answer:all[i].resposta, clues:[all[i].pregunta]}); }
+    }
+    return pool;
   }
 
   function buildBank(mode, rounds){
     var pool=[];
     var esp = (DATA.especials||[]).map(x => ({answer:x.resposta, clues:[x.pregunta]}));
     function take(list, n){
-      var a=list.slice(); shuffle(a); return a.slice(0,n).map(x => ({answer:x.resposta, clues:[x.pregunta]}));
+      var a=list.slice(); shuffle(a); a=a.slice(0,n);
+      return a.map(x => ({answer:x.resposta, clues:[x.pregunta]}));
     }
     if(mode==='mix'){
       var per=Math.floor(rounds/4), rest=rounds - per*4;
       pool = pool.concat(take(DATA.infantil||[], per));
-      pool = pool.concat(take(DATA.normal||[], per));
       pool = pool.concat(take(DATA.expert||[], per));
       pool = pool.concat(take(DATA.ultra||[], per));
-      // remainder: pull randomly from all
-      var all=(DATA.infantil||[]).concat(DATA.normal||[]).concat(DATA.expert||[]).concat(DATA.ultra||[]);
+      // remainder des de tots
+      var all=(DATA.infantil||[]).concat(DATA.expert||[]).concat(DATA.ultra||[]);
       pool = pool.concat(take(all, rest));
     } else {
       var src = DATA[mode]||[];
       pool = take(src, rounds);
     }
-    // inject specials
+    // assegura que com a mínim hi hagi 'rounds' preguntes
+    pool = ensureAtLeast(pool, rounds);
+    // injecta especials (dues)
     pool = (esp||[]).concat(pool);
-    // decorate with choices
-    var decorated = pool.map(function(q){
-      return {answer:q.answer, clues:q.clues.slice(), choices:choices(q.answer)};
-    });
-    // dedupe and crop
-    decorated = uniqueByKey(decorated).slice(0, rounds);
-    return decorated;
+    // decora i dedup
+    var decorated = pool.map(function(q){ return {answer:q.answer, clues:q.clues.slice(), choices:choices(q.answer)}; });
+    decorated = uniqueByKey(decorated);
+    // talla garantint que com a mínim cobrim el nombre de rondes
+    if(decorated.length < rounds) rounds = decorated.length;
+    return decorated.slice(0, rounds);
   }
 
   function resetUI(){
@@ -405,12 +405,6 @@
     if(!gameActive) return;
     if(!confirm('Vols sortir de la partida i tornar al menú? No es guardarà a l’historial.')) return;
     gameActive=false; stopTimer(); resetUI();
-  }
-
-  function buildChoicesBank(list){
-    return list.map(function(q){
-      return { answer:q.resposta, clues:[q.pregunta], choices:choices(q.resposta) };
-    });
   }
 
   async function startGame(){
