@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Qui sóc? — Grease (v4.6a)</title>
+<title>Qui sóc? — Grease (v4.6b)</title>
 <style>
   :root{--bg:#0e0d13;--panel:#17161f;--text:#f6f6fb;--accent:#ff2d55;--accent2:#ffd400;--muted:#cfcfe6;--ok:#32d74b;--bad:#ff453a;--line:#262433;
         --lightbtn:#e9e9ef;--lighttxt:#14131b;--blue:#2d7fff;}
@@ -19,7 +19,14 @@
   .btn.gray{background:var(--lightbtn);color:var(--lighttxt);box-shadow:none;border:1px solid rgba(0,0,0,.08)}
   .btn.blue{background:var(--blue);color:#fff;box-shadow:0 6px 20px rgba(45,127,255,.35)}
   .btn.dark{background:#24232e;color:#ddd;box-shadow:none;border:1px solid rgba(255,255,255,.1)}
-  .toggle{background:#24232e;color:#fff;border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:8px 10px;font-weight:700;cursor:pointer}
+
+  /* Toggles */
+  .toggle{position:relative;display:inline-flex;align-items:center;gap:8px;background:#24232e;color:#fff;border:1px solid rgba(255,255,255,.15);border-radius:999px;padding:8px 12px;font-weight:800;cursor:pointer;transition:all .15s ease}
+  .toggle .dot{width:16px;height:16px;border-radius:50%;background:#7a7a85;box-shadow:inset 0 0 0 2px rgba(255,255,255,.15)}
+  .toggle.active{background:#1e2a4a;border-color:#2b4ea8;box-shadow:0 6px 20px rgba(45,127,255,.25) inset, 0 0 0 1px rgba(45,127,255,.35)}
+  .toggle.active .dot{background:#2d7fff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.25)}
+  .toggle span.lbl{letter-spacing:.2px}
+
   .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:#24232e;color:#eee;font-size:12px;border:1px solid rgba(255,255,255,.08)}
   .timer{font-weight:900;font-size:18px;padding:6px 10px;border-radius:10px;border:1px solid var(--line);background:#14131b}
   .timer.low{color:var(--bad);box-shadow:0 0 18px rgba(255,69,58,.35) inset}
@@ -68,9 +75,18 @@
       <div class="menu">
         <button id="startBtn" class="btn gray">Nova partida</button>
         <button id="historyBtn" class="btn gray">Veure historial</button>
-        <button id="soundBtn" class="toggle" aria-pressed="true">🔊 Sons ON</button>
-        <button id="capsBtn" class="toggle" aria-pressed="false">Majúscules OFF</button>
-        <button id="timeBtn" class="toggle" aria-pressed="true">Temps límit ON</button>
+
+        <button id="soundBtn" class="toggle" aria-pressed="true">
+          <span class="dot" aria-hidden="true"></span><span class="lbl">Sons</span>
+        </button>
+
+        <button id="capsBtn" class="toggle" aria-pressed="false">
+          <span class="dot" aria-hidden="true"></span><span class="lbl">Majúscules</span>
+        </button>
+
+        <button id="timeBtn" class="toggle" aria-pressed="true">
+          <span class="dot" aria-hidden="true"></span><span class="lbl">Temps</span>
+        </button>
       </div>
     </div>
 
@@ -122,7 +138,7 @@
         <h3>Instruccions ràpides</h3>
         <ul>
           <li>Prem <strong>Mostrar més pistes</strong> si et quedes encallat.</li>
-          <li>Tens <strong>20 segons</strong> per pregunta (si el temps límit és ON).</li>
+          <li>Tens <strong>20 segons</strong> per pregunta (si el <em>Temps</em> està actiu).</li>
           <li>En <strong>versus</strong> alternen torns.</li>
         </ul>
         <button id="goPlay" class="btn ok">Entesos! Anem a jugar</button>
@@ -178,21 +194,12 @@
 
 <script>
 (function(){
-  // Globals/state
+  // State
   var BANK=[],round=0,revealed=0,current=null,remaining=[],tickInt=null,timeLeft=20,mode='normal',totalRounds=15,totalTime=0,questionT=0,versus=false,p1={name:'',points:0},p2={name:'',points:0},turn=1;
-  var gameActive=false;
-  var timeLimit=true;
-  var capsOn=false;
+  var gameActive=false, timeLimit=true, capsOn=false;
 
   function $(id){ return document.getElementById(id); }
-
-  var els={
-    startBtn:null,historyBtn:null,soundBtn:null,logoImg:null,capsBtn:null,timeBtn:null,
-    startConfig:null,beginBtn:null,versusSel:null,p2wrap:null,player1:null,player2:null,tutorial:null,goPlay:null,
-    gameArea:null,turnInfo:null,timer:null,progress:null,revealBtn:null,endGameBtn:null,clues:null,options:null,feedback:null,points:null,roundN:null,p2score:null,
-    modal:null,histContent:null,closeHist:null,clearHist:null,exportCSV:null,modeSel:null,roundsSel:null,
-    resultPanel:null,resultSummary:null,playAgainBtn:null,backToMenuBtn:null,openHistoryBtn:null
-  };
+  var els={};
 
   var CHARACTERS=[
     {id:"sandy",name:"Sandy",img:"img/sandy.jpg",alt:"Sandy"},
@@ -335,7 +342,7 @@
   function sCorrect(){beep(1040,0.12,'triangle',0.09); setTimeout(function(){beep(1240,0.12,'triangle',0.09)},120);}
   function sWrong(){beep(300,0.12,'sawtooth',0.08); setTimeout(function(){beep(220,0.18,'sawtooth',0.08)},140);}
 
-  var KEY='grease_v46a_index';
+  var KEY='grease_v46b_index';
   function loadH(){ try{ return JSON.parse(localStorage.getItem(KEY)||'[]'); } catch(e){ return []; } }
   function saveH(a){ try{ localStorage.setItem(KEY, JSON.stringify(a)); }catch(e){} }
   function pushH(e){ var h=loadH(); h.unshift(e); saveH(h.slice(0,300)); }
@@ -469,13 +476,24 @@
     gameActive=false; stopTimer(); resetUI();
   }
 
+  function setToggle(btn, active){
+    if(!btn) return;
+    btn.classList[active?'add':'remove']('active');
+    btn.setAttribute('aria-pressed', String(active));
+  }
+
   function bindAll(){
-    // Cache elements
+    // Cache
     els.startBtn=$('startBtn'); els.historyBtn=$('historyBtn'); els.soundBtn=$('soundBtn'); els.logoImg=$('logoImg'); els.capsBtn=$('capsBtn'); els.timeBtn=$('timeBtn');
     els.startConfig=$('startConfig'); els.beginBtn=$('beginBtn'); els.versusSel=$('versusSel'); els.p2wrap=$('p2wrap'); els.player1=$('player1'); els.player2=$('player2'); els.tutorial=$('tutorial'); els.goPlay=$('goPlay');
     els.gameArea=$('gameArea'); els.turnInfo=$('turnInfo'); els.timer=$('timer'); els.progress=$('progress'); els.revealBtn=$('revealBtn'); els.endGameBtn=$('endGameBtn'); els.clues=$('clues'); els.options=$('options'); els.feedback=$('feedback'); els.points=$('points'); els.roundN=$('roundN'); els.p2score=$('p2score');
     els.modal=$('historyModal'); els.histContent=$('histContent'); els.closeHist=$('closeHist'); els.clearHist=$('clearHist'); els.exportCSV=$('exportCSV'); els.modeSel=$('modeSel'); els.roundsSel=$('roundsSel');
     els.resultPanel=$('resultPanel'); els.resultSummary=$('resultSummary'); els.playAgainBtn=$('playAgainBtn'); els.backToMenuBtn=$('backToMenuBtn'); els.openHistoryBtn=$('openHistoryBtn');
+
+    // Initial toggle visuals
+    setToggle(els.soundBtn, true);
+    setToggle(els.capsBtn, false);
+    setToggle(els.timeBtn, true);
 
     // Logo fallback
     els.logoImg.onerror=function(){ els.logoImg.style.display='none'; };
@@ -483,9 +501,18 @@
     // Menu
     els.startBtn.addEventListener('click',function(){ resetUI(); els.startConfig.classList.remove('hidden'); });
     els.historyBtn.addEventListener('click', showH);
-    els.soundBtn.addEventListener('click',function(e){ audioOn=!audioOn; e.currentTarget.setAttribute('aria-pressed',String(audioOn)); e.currentTarget.textContent=audioOn?'🔊 Sons ON':'🔇 Sons OFF'; });
-    els.capsBtn.addEventListener('click',function(e){ capsOn=!capsOn; document.body.classList.toggle('upper',capsOn); e.currentTarget.setAttribute('aria-pressed',String(capsOn)); e.currentTarget.textContent=capsOn?'Majúscules ON':'Majúscules OFF'; });
-    els.timeBtn.addEventListener('click',function(e){ timeLimit=!timeLimit; e.currentTarget.setAttribute('aria-pressed',String(timeLimit)); e.currentTarget.textContent=timeLimit?'Temps límit ON':'Temps límit OFF'; if(!timeLimit){ stopTimer(); els.timer.style.display='none'; } else { if(!els.gameArea.classList.contains('hidden')){ stopTimer(); startTimer(); } } });
+
+    els.soundBtn.addEventListener('click',function(e){
+      audioOn=!audioOn; setToggle(e.currentTarget, audioOn);
+    });
+    els.capsBtn.addEventListener('click',function(e){
+      capsOn=!capsOn; document.body.classList.toggle('upper',capsOn); setToggle(e.currentTarget, capsOn);
+    });
+    els.timeBtn.addEventListener('click',function(e){
+      timeLimit=!timeLimit; setToggle(e.currentTarget, timeLimit);
+      if(!timeLimit){ stopTimer(); els.timer.style.display='none'; }
+      else { if(!els.gameArea.classList.contains('hidden')){ stopTimer(); startTimer(); } }
+    });
 
     // Config
     els.versusSel.addEventListener('change',function(){ if(els.versusSel.value!=='on') els.p2wrap.classList.add('hidden'); else els.p2wrap.classList.remove('hidden'); });
@@ -508,8 +535,7 @@
     els.openHistoryBtn.addEventListener('click', showH);
   }
 
-  function init(){ try{ bindAll(); } catch(e){ console.error('Init error', e); alert('Hi ha hagut un error inicialitzant el joc. Prova de refrescar (Ctrl/Cmd+F5).'); } }
-
+  function init(){ bindAll(); }
   if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', init); } else { init(); }
 
 })();</script>
