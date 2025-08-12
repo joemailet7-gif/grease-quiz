@@ -66,7 +66,7 @@
 </style>
 </head>
 <body>
-  <span class="version">v5.3</span>
+  <span class="version">v5.4</span>
   <div class="wrap">
     <div class="topbar">
       <div class="brand"><h1>Qui sóc?</h1></div>
@@ -267,6 +267,23 @@
     var a=list.slice(); shuffle(a); return a.slice(0,n).map(normalizeEntry);
   }
 
+  function guessTypeFromQuestion(text){
+    var t=(text||'').toLowerCase();
+    function has(w){return t.indexOf(w)>=0;}
+    if(has('cognom')) return 'cognom';
+    if(has('sobrenom')||has('malnom')) return 'sobrenom';
+    if(has('color')) return 'color';
+    if(has('grup')) return 'grup';
+    if(has('instrument')) return 'instrument';
+    if(has('esport')) return 'esport';
+    if(has('cotxe')||has('greased')||has('vehicle')) return 'vehicle';
+    if(has('canç')||has('canco')||has('song')) return 'canço';
+    if(has('lloc')||has('bar')||has('institut')||has('rydell')||has('cine')) return 'lloc';
+    if(has('vestit')||has('jaqueta')||has('roba')) return 'roba';
+    if(has('qui ')) var SURNAMES=['zuko','olsson','balmudo']; if(SURNAMES.indexOf(a)>=0) return 'cognom'; return 'persona';
+    return null;
+  }
+
   function guessType(answer){
     var a = (answer||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
     function hasAny(str, list){ str=' '+str+' '; for(var i=0;i<list.length;i++){ if(str.indexOf(' '+list[i]+' ')>=0) return true; } return false; }
@@ -330,7 +347,8 @@ function buildAnswerSet(pool){
     var answersMap = buildAnswerSet(pool);
     var allAnswers = Object.keys(answersMap);
     var decorated = pool.map(function(q){
-      var correctType = (answersMap[q.answer] && answersMap[q.answer].type) ? answersMap[q.answer].type : guessType(q.label||q.answer);
+      var expected = guessTypeFromQuestion((Array.isArray(q.pistes)&&q.pistes.length)?q.pistes[0]:(q.label||''));
+      var correctType = expected || ((answersMap[q.answer] && answersMap[q.answer].type) ? answersMap[q.answer].type : guessType(q.label||q.answer));
       var sameType = allAnswers.filter(a => a!==q.answer && ((answersMap[a]&&answersMap[a].type)||guessType(a))===correctType);
       var pickFrom = sameType.length>=3 ? sameType : allAnswers.filter(a => a!==q.answer);
       var others = shuffle(pickFrom).slice(0,3);
@@ -386,21 +404,17 @@ function buildAnswerSet(pool){
     startTimer(); questionStart();
   }
   function addClue(){
-    var src = Array.isArray(current.pistes) ? current.pistes : [];
-    var dynamic = [];
-    var ans = current.label || current.answer;
-    var t = (current.type) ? current.type : guessType(ans);
-    dynamic.push('Tipus: '+t);
-    if(ans && ans.length){
-      dynamic.push('Comença per: '+ (ans.charAt(0).toUpperCase()));
-      dynamic.push('Nombre de lletres: '+ ans.replace(/\s+/g,'').length);
+    var ans=(current.label||current.answer||'').trim();
+    var gen=[];
+    if(ans){
+      gen.push('Nombre de lletres: '+ans.replace(/\s+/g,'').length);
+      gen.push('Comença per: '+ans.charAt(0).toUpperCase());
     }
-    var allClues = src.concat(dynamic);
-    if(revealed>=allClues.length){ els.revealBtn.disabled=true; return; }
+    if(revealed>=gen.length){ els.revealBtn.disabled=true; return; }
     var d=document.createElement('div'); d.className='clue'; d.setAttribute('data-n', revealed+1);
-    d.textContent=allClues[revealed];
+    d.textContent=gen[revealed];
     els.clues.appendChild(d); revealed++;
-    if(revealed>=allClues.length) els.revealBtn.disabled=true;
+    if(revealed>=gen.length) els.revealBtn.disabled=true;
   }
 
   function renderClues(first){
