@@ -66,7 +66,7 @@
 </style>
 </head>
 <body>
-  <span class="version">v5.3C-DIAG</span>
+  <span class="version">v5.3C-PROBE</span>
   <div class="wrap">
     <div class="topbar">
       <div class="brand"><h1>Qui sóc?</h1></div>
@@ -196,34 +196,27 @@
   </div>
 
 <script>
+  // ===== PROBE HUD =====
+  (function(){
+    var hud = document.createElement('div');
+    hud.id='probeHUD';
+    hud.style.position='fixed'; hud.style.top='6px'; hud.style.left='6px';
+    hud.style.maxWidth='50vw';
+    hud.style.background='rgba(0,0,0,.5)'; hud.style.border='1px solid rgba(255,255,255,.2)'; 
+    hud.style.color='#fff'; hud.style.font='12px/1.4 ui-monospace,monospace'; hud.style.padding='6px 8px'; 
+    hud.style.borderRadius='8px'; hud.style.zIndex='100000';
+    hud.textContent='JS: start';
+    document.addEventListener('DOMContentLoaded', function(){ log('DOMContentLoaded'); });
+    window.addEventListener('error', function(ev){ log('ERROR: '+(ev.message||'')); });
+    function log(t){ hud.textContent += ' | '+t; }
+    document.body.appendChild(hud);
+    window.__probeLog = log;
+  })();
+
+
 (function(){
   function $(id){ return document.getElementById(id); }
   var els={};
-
-  // === DIAGNÒSTIC ===
-  function showBanner(msg, ok){
-    var d=document.getElementById('diagBanner');
-    if(!d){
-      d=document.createElement('div'); d.id='diagBanner';
-      d.style.position='fixed'; d.style.bottom='8px'; d.style.left='8px';
-      d.style.background='rgba('+(ok?'0,128,0':'180,0,0')+',.14)';
-      d.style.border='1px solid rgba(255,255,255,.2)'; d.style.color='#fff';
-      d.style.font='12px/1.4 ui-monospace,monospace'; d.style.padding='6px 8px';
-      d.style.borderRadius='8px'; d.style.zIndex=99999;
-      document.body.appendChild(d);
-    }
-    d.textContent=msg;
-    d.style.background='rgba('+(ok?'0,128,0':'180,0,0')+',.14)';
-  }
-  function checkSelectors(map){
-    var missing=[]; var found=[];
-    for(var k in map){
-      var el=document.getElementById(map[k]);
-      if(!el) missing.push(map[k]); else found.push(map[k]);
-    }
-    showBanner('bind: ok='+found.length+' miss='+missing.length+(missing.length?(' ['+missing.join(', ')+']'):'') , missing.length===0);
-  }
-
 
   // State
   var audioOn=true, actx=null;
@@ -534,7 +527,7 @@ function buildAnswerSet(pool){
     gameActive=false; stopTimer(); resetUI();
   }
 
-  function bindAll(){
+  function bindAll(){ __probeLog('bindAll');
     els.startBtn=$('startBtn'); els.historyBtn=$('historyBtn'); els.soundBtn=$('soundBtn'); els.logoImg=$('logoImg'); els.capsBtn=$('capsBtn'); els.timeBtn=$('timeBtn'); els.helpBtn=$('helpBtn');
     els.startConfig=$('startConfig'); els.beginBtn=$('beginBtn'); els.versusSel=$('versusSel'); els.p2wrap=$('p2wrap'); els.player1=$('player1'); els.player2=$('player2'); els.tutorial=$('tutorial'); els.goPlay=$('goPlay');
     els.gameArea=$('gameArea'); els.turnInfo=$('turnInfo'); els.timer=$('timer'); els.progress=$('progress'); els.revealBtn=$('revealBtn'); els.endGameBtn=$('endGameBtn'); els.clues=$('clues'); els.options=$('options'); els.feedback=$('feedback'); els.points=$('points'); els.roundN=$('roundN'); els.p2score=$('p2score');
@@ -556,18 +549,10 @@ function buildAnswerSet(pool){
     els.helpBtn.addEventListener('click',function(e){ helpOn=!helpOn; setToggle(e.currentTarget, helpOn); renderOptions(); });
 
     els.versusSel.addEventListener('change',function(){ if(els.versusSel.value!=='on') els.p2wrap.classList.add('hidden'); else els.p2wrap.classList.remove('hidden'); });
-    els.beginBtn.addEventListener('click', async function(){
-      try{
-        await loadQuestions();
-        showMenu();
-        var vs = (els.versusSel.value==='yes');
-        startGame({ versus: vs, p1: els.player1.value.trim()||'Jugador 1', p2: els.player2.value.trim()||'Jugador 2' });
-        showBanner('preguntes carregades i partida iniciada', true);
-      }catch(e){
-        console.error(e);
-        alert('No s\'han pogut carregar les preguntes (obre amb Live Server o servidor local).');
-        showBanner('ERROR carregant preguntes.json', false);
-      }
+    __probeLog('bind beginBtn'); els.beginBtn.addEventListener('click',function(){ mode=els.modeSel.value; totalRounds=parseInt(els.roundsSel.value,10)||15;
+      var n1=els.player1.value.trim(); if(!n1){alert('Introdueix el nom del Jugador 1.'); return;} p1={name:n1,points:0};
+      versus=(els.versusSel.value==='on'); if(versus){ var n2=els.player2.value.trim(); if(!n2){alert('Introdueix el nom del Jugador 2.'); return;} p2={name:n2,points:0}; els.p2score.classList.remove('hidden'); els.p2score.textContent=p2.name+': 0 punts'; } else { els.p2score.classList.add('hidden'); }
+      els.startConfig.classList.add('hidden'); els.tutorial.classList.remove('hidden');
     });
     els.goPlay.addEventListener('click',async function(){
       try{
@@ -610,19 +595,16 @@ function buildAnswerSet(pool){
     els.playAgainBtn.addEventListener('click', function(){ resetUI(); els.tutorial.classList.remove('hidden'); });
     els.backToMenuBtn.addEventListener('click', showMenu);
     els.openHistoryBtn.addEventListener('click', showH);
-  
-    // Informe de selectores
-    checkSelectors({
-      startBtn:'startBtn', historyBtn:'historyBtn', soundBtn:'soundBtn', capsBtn:'capsBtn', timeBtn:'timeBtn',
-      startConfig:'startConfig', beginBtn:'beginBtn', player1:'player1', player2:'player2', tutorial:'tutorial', goPlay:'goPlay',
-      gameArea:'gameArea', turnInfo:'turnInfo', timer:'timer', progress:'progress', revealBtn:'revealBtn', endGameBtn:'endGameBtn',
-      clues:'clues', options:'options', points:'points', roundN:'roundN', p2score:'p2score', historyModal:'historyModal',
-      histContent:'histContent', closeHist:'closeHist', clearHist:'clearHist', exportCSV:'exportCSV', modeSel:'modeSel', roundsSel:'roundsSel',
-      resultPanel:'resultPanel', resultSummary:'resultSummary', playAgainBtn:'playAgainBtn', backToMenuBtn:'backToMenuBtn', openHistoryBtn:'openHistoryBtn'
-    });
-}
+  }
 
-  function init(){ bindAll(); }
+  function init(){ 
+      __probeLog('init'); 
+      bindAll(); 
+      (async function(){ 
+        try{ await loadQuestions(); __probeLog('JSON OK'); } 
+        catch(e){ __probeLog('JSON FAIL'); alert('ERROR: No s\'ha pogut carregar preguntes.json. Obre amb un servidor (Live Server o npx serve).'); } 
+      })();
+    }
   if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', init); } else { init(); }
 })();</script>
 </body>
