@@ -6,7 +6,13 @@
       ],
       "resposta": "sandy",
       "imatge": "img/sandy.jpg",
-      "label": "sandy"
+      "label": "sandy",
+      "opcions": [
+        "sandy",
+        "danny",
+        "rizzo",
+        "kenickie"
+      ]
     },
     {
       "pistes": [
@@ -14,7 +20,13 @@
       ],
       "resposta": "danny",
       "imatge": "img/danny.jpg",
-      "label": "danny"
+      "label": "danny",
+      "opcions": [
+        "danny",
+        "opció extra 2",
+        "opció extra 3",
+        "opció extra 4"
+      ]
     },
     {
       "pistes": [
@@ -22,7 +34,13 @@
       ],
       "resposta": "rizzo",
       "imatge": "img/rizzo.jpg",
-      "label": "rizzo"
+      "label": "rizzo",
+      "opcions": [
+        "rizzo",
+        "opció extra 2",
+        "opció extra 3",
+        "opció extra 4"
+      ]
     },
     {
       "pistes": [
@@ -30,7 +48,13 @@
       ],
       "resposta": "kenickie",
       "imatge": "img/kenickie.jpg",
-      "label": "kenickie"
+      "label": "kenickie",
+      "opcions": [
+        "kenickie",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -38,7 +62,13 @@
       ],
       "resposta": "frenchy",
       "imatge": "img/frenchy.jpg",
-      "label": "frenchy"
+      "label": "frenchy",
+      "opcions": [
+        "frenchy",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -46,7 +76,13 @@
       ],
       "resposta": "kenickie",
       "imatge": "img/kenickie.jpg",
-      "label": "kenickie"
+      "label": "kenickie",
+      "opcions": [
+        "kenickie",
+        "lightning star",
+        "thunder roadster",
+        "crimson comet"
+      ]
     },
     {
       "pistes": [
@@ -54,7 +90,13 @@
       ],
       "resposta": "pinkladies",
       "imatge": "img/pinkladies.jpg",
-      "label": "pinkladies"
+      "label": "pinkladies",
+      "opcions": [
+        "pinkladies",
+        "tbirds",
+        "scorpions",
+        "the racers"
+      ]
     },
     {
       "pistes": [
@@ -62,7 +104,13 @@
       ],
       "resposta": "danny",
       "imatge": "img/danny.jpg",
-      "label": "danny"
+      "label": "danny",
+      "opcions": [
+        "danny",
+        "sandy",
+        "rizzo",
+        "kenickie"
+      ]
     },
     {
       "pistes": [
@@ -70,7 +118,13 @@
       ],
       "resposta": "jan",
       "imatge": "img/jan.jpg",
-      "label": "jan"
+      "label": "jan",
+      "opcions": [
+        "jan",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -78,7 +132,13 @@
       ],
       "resposta": "sonny",
       "imatge": "img/sonny.jpg",
-      "label": "sonny"
+      "label": "sonny",
+      "opcions": [
+        "sonny",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -86,7 +146,13 @@
       ],
       "resposta": "tbirds",
       "imatge": "img/tbirds.jpg",
-      "label": "tbirds"
+      "label": "tbirds",
+      "opcions": [
+        "tbirds",
+        "pinkladies",
+        "scorpions",
+        "the racers"
+      ]
     },
     {
       "pistes": [
@@ -94,7 +160,13 @@
       ],
       "resposta": "concursdeball",
       "imatge": "img/concursdeball.jpg",
-      "label": "concursdeball"
+      "label": "concursdeball",
+      "opcions": [
+        "concursdeball",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -102,7 +174,13 @@
       ],
       "resposta": "frenchy",
       "imatge": "img/frenchy.jpg",
-      "label": "frenchy"
+      "label": "frenchy",
+      "opcions": [
+        "frenchy",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -110,7 +188,13 @@
       ],
       "resposta": "frenchy",
       "imatge": "img/frenchy.jpg",
-      "label": "frenchy"
+      "label": "frenchy",
+      "opcions": [
+        "frenchy",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -118,7 +202,13 @@
       ],
       "resposta": "blanc",
       "imatge": "img/blanc.jpg",
-      "label": "blanc"
+      "label": "blanc",
+      "opcions": [
+        "blanc",
+        "negre",
+        "vermell",
+        "rosa"
+      ]
     },
     {
       "pistes": [
@@ -126,7 +216,13 @@
       ],
       "resposta": "marty",
       "imatge": "img/marty.jpg",
-      "label": "marty"
+      "label": "marty",
+      "opcions": [
+        "marty",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -134,7 +230,13 @@
       ],
       "resposta": "danny",
       "imatge": "img/danny.jpg",
-      "label": "danny"
+      "label": "danny",
+      "opcions": [
+        "danny",
+        "sandy",
+        "rizzo",
+        "kenickie"
+      ]
     },
     {
       "pistes": [
@@ -142,7 +244,13 @@
       ],
       "resposta": "platja",
       "imatge": "img/platja.jpg",
-      "label": "platja"
+      "label": "platja",
+      "opcions": [
+        "platja",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -150,7 +258,13 @@
       ],
       "resposta": "futbolamericà",
       "imatge": "img/futbolamerican.jpg",
-      "label": "futbolamericà"
+      "label": "futbolamericà",
+      "opcions": [
+        "futbolamericà",
+        "bàsquet",
+        "beisbol",
+        "voleibol"
+      ]
     },
     {
       "pistes": [
@@ -158,7 +272,13 @@
       ],
       "resposta": "murdock",
       "imatge": "img/murdock.jpg",
-      "label": "murdock"
+      "label": "murdock",
+      "opcions": [
+        "murdock",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -166,7 +286,13 @@
       ],
       "resposta": "negre",
       "imatge": "img/negre.jpg",
-      "label": "negre"
+      "label": "negre",
+      "opcions": [
+        "negre",
+        "blanc",
+        "vermell",
+        "rosa"
+      ]
     },
     {
       "pistes": [
@@ -174,7 +300,13 @@
       ],
       "resposta": "balmudo",
       "imatge": "img/balmudo.jpg",
-      "label": "balmudo"
+      "label": "balmudo",
+      "opcions": [
+        "balmudo",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -182,7 +314,13 @@
       ],
       "resposta": "rydell",
       "imatge": "img/rydell.jpg",
-      "label": "rydell"
+      "label": "rydell",
+      "opcions": [
+        "rydell",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -190,7 +328,13 @@
       ],
       "resposta": "danny",
       "imatge": "img/danny.jpg",
-      "label": "danny"
+      "label": "danny",
+      "opcions": [
+        "danny",
+        "sandy",
+        "rizzo",
+        "kenickie"
+      ]
     },
     {
       "pistes": [
@@ -198,7 +342,13 @@
       ],
       "resposta": "calhoun",
       "imatge": "img/calhoun.jpg",
-      "label": "calhoun"
+      "label": "calhoun",
+      "opcions": [
+        "calhoun",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -206,7 +356,13 @@
       ],
       "resposta": "patty",
       "imatge": "img/patty.jpg",
-      "label": "patty"
+      "label": "patty",
+      "opcions": [
+        "patty",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -214,7 +370,13 @@
       ],
       "resposta": "putzie",
       "imatge": "img/putzie.jpg",
-      "label": "putzie"
+      "label": "putzie",
+      "opcions": [
+        "putzie",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -222,7 +384,13 @@
       ],
       "resposta": "kenickie",
       "imatge": "img/kenickie.jpg",
-      "label": "kenickie"
+      "label": "kenickie",
+      "opcions": [
+        "kenickie",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -230,7 +398,13 @@
       ],
       "resposta": "sandy",
       "imatge": "img/sandy.jpg",
-      "label": "sandy"
+      "label": "sandy",
+      "opcions": [
+        "sandy",
+        "danny",
+        "rizzo",
+        "kenickie"
+      ]
     },
     {
       "pistes": [
@@ -238,7 +412,13 @@
       ],
       "resposta": "concursdeball",
       "imatge": "img/concursdeball.jpg",
-      "label": "concursdeball"
+      "label": "concursdeball",
+      "opcions": [
+        "concursdeball",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -246,7 +426,13 @@
       ],
       "resposta": "tbirds",
       "imatge": "img/tbirds.jpg",
-      "label": "tbirds"
+      "label": "tbirds",
+      "opcions": [
+        "tbirds",
+        "opció extra 2",
+        "opció extra 3",
+        "opció extra 4"
+      ]
     },
     {
       "pistes": [
@@ -254,7 +440,13 @@
       ],
       "resposta": "ros",
       "imatge": "img/ros.jpg",
-      "label": "ros"
+      "label": "ros",
+      "opcions": [
+        "ros",
+        "blanc",
+        "negre",
+        "vermell"
+      ]
     },
     {
       "pistes": [
@@ -262,7 +454,13 @@
       ],
       "resposta": "kenickie",
       "imatge": "img/kenickie.jpg",
-      "label": "kenickie"
+      "label": "kenickie",
+      "opcions": [
+        "kenickie",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -270,7 +468,13 @@
       ],
       "resposta": "doody",
       "imatge": "img/doody.jpg",
-      "label": "doody"
+      "label": "doody",
+      "opcions": [
+        "doody",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -278,7 +482,13 @@
       ],
       "resposta": "sonny",
       "imatge": "img/sonny.jpg",
-      "label": "sonny"
+      "label": "sonny",
+      "opcions": [
+        "sonny",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -286,7 +496,13 @@
       ],
       "resposta": "balmudo",
       "imatge": "img/balmudo.jpg",
-      "label": "balmudo"
+      "label": "balmudo",
+      "opcions": [
+        "balmudo",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -294,7 +510,13 @@
       ],
       "resposta": "danny",
       "imatge": "img/danny.jpg",
-      "label": "danny"
+      "label": "danny",
+      "opcions": [
+        "danny",
+        "sandy",
+        "rizzo",
+        "kenickie"
+      ]
     },
     {
       "pistes": [
@@ -302,7 +524,13 @@
       ],
       "resposta": "sandy",
       "imatge": "img/sandy.jpg",
-      "label": "sandy"
+      "label": "sandy",
+      "opcions": [
+        "sandy",
+        "danny",
+        "rizzo",
+        "kenickie"
+      ]
     },
     {
       "pistes": [
@@ -310,7 +538,13 @@
       ],
       "resposta": "marty",
       "imatge": "img/marty.jpg",
-      "label": "marty"
+      "label": "marty",
+      "opcions": [
+        "marty",
+        "opció extra 2",
+        "opció extra 3",
+        "opció extra 4"
+      ]
     },
     {
       "pistes": [
@@ -318,7 +552,13 @@
       ],
       "resposta": "patty",
       "imatge": "img/patty.jpg",
-      "label": "patty"
+      "label": "patty",
+      "opcions": [
+        "patty",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -326,7 +566,13 @@
       ],
       "resposta": "putzie",
       "imatge": "img/putzie.jpg",
-      "label": "putzie"
+      "label": "putzie",
+      "opcions": [
+        "putzie",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -334,7 +580,13 @@
       ],
       "resposta": "sandy",
       "imatge": "img/sandy.jpg",
-      "label": "sandy"
+      "label": "sandy",
+      "opcions": [
+        "sandy",
+        "danny",
+        "rizzo",
+        "kenickie"
+      ]
     },
     {
       "pistes": [
@@ -342,7 +594,13 @@
       ],
       "resposta": "cha-cha",
       "imatge": "img/cha-cha.jpg",
-      "label": "cha-cha"
+      "label": "cha-cha",
+      "opcions": [
+        "cha-cha",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -350,7 +608,13 @@
       ],
       "resposta": "rizzo",
       "imatge": "img/rizzo.jpg",
-      "label": "rizzo"
+      "label": "rizzo",
+      "opcions": [
+        "rizzo",
+        "sandy",
+        "danny",
+        "kenickie"
+      ]
     },
     {
       "pistes": [
@@ -358,7 +622,13 @@
       ],
       "resposta": "danny",
       "imatge": "img/danny.jpg",
-      "label": "danny"
+      "label": "danny",
+      "opcions": [
+        "danny",
+        "lightning star",
+        "thunder roadster",
+        "crimson comet"
+      ]
     },
     {
       "pistes": [
@@ -366,7 +636,13 @@
       ],
       "resposta": "tbirds",
       "imatge": "img/tbirds.jpg",
-      "label": "tbirds"
+      "label": "tbirds",
+      "opcions": [
+        "tbirds",
+        "pinkladies",
+        "scorpions",
+        "the racers"
+      ]
     },
     {
       "pistes": [
@@ -374,7 +650,13 @@
       ],
       "resposta": "pinkladies",
       "imatge": "img/pinkladies.jpg",
-      "label": "pinkladies"
+      "label": "pinkladies",
+      "opcions": [
+        "pinkladies",
+        "tbirds",
+        "scorpions",
+        "the racers"
+      ]
     },
     {
       "pistes": [
@@ -382,7 +664,13 @@
       ],
       "resposta": "sonny",
       "imatge": "img/sonny.jpg",
-      "label": "sonny"
+      "label": "sonny",
+      "opcions": [
+        "sonny",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -390,7 +678,13 @@
       ],
       "resposta": "doody",
       "imatge": "img/doody.jpg",
-      "label": "doody"
+      "label": "doody",
+      "opcions": [
+        "doody",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     }
   ],
   "expert": [
@@ -400,7 +694,13 @@
       ],
       "resposta": "danny zuko",
       "imatge": "img/dannyzuko.jpg",
-      "label": "danny zuko"
+      "label": "danny zuko",
+      "opcions": [
+        "danny zuko",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -408,7 +708,13 @@
       ],
       "resposta": "guitarra",
       "imatge": "img/guitarra.jpg",
-      "label": "guitarra"
+      "label": "guitarra",
+      "opcions": [
+        "guitarra",
+        "opció extra 2",
+        "opció extra 3",
+        "opció extra 4"
+      ]
     },
     {
       "pistes": [
@@ -416,7 +722,13 @@
       ],
       "resposta": "rizzo",
       "imatge": "img/rizzo.jpg",
-      "label": "rizzo"
+      "label": "rizzo",
+      "opcions": [
+        "rizzo",
+        "sandy",
+        "danny",
+        "kenickie"
+      ]
     },
     {
       "pistes": [
@@ -424,7 +736,13 @@
       ],
       "resposta": "balmudo",
       "imatge": "img/balmudo.jpg",
-      "label": "balmudo"
+      "label": "balmudo",
+      "opcions": [
+        "balmudo",
+        "opció extra 2",
+        "opció extra 3",
+        "opció extra 4"
+      ]
     },
     {
       "pistes": [
@@ -432,7 +750,13 @@
       ],
       "resposta": "sonny",
       "imatge": "img/sonny.jpg",
-      "label": "sonny"
+      "label": "sonny",
+      "opcions": [
+        "sonny",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -440,7 +764,13 @@
       ],
       "resposta": "marty",
       "imatge": "img/marty.jpg",
-      "label": "marty"
+      "label": "marty",
+      "opcions": [
+        "marty",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -448,7 +778,13 @@
       ],
       "resposta": "negre",
       "imatge": "img/negre.jpg",
-      "label": "negre"
+      "label": "negre",
+      "opcions": [
+        "negre",
+        "blanc",
+        "vermell",
+        "rosa"
+      ]
     },
     {
       "pistes": [
@@ -456,7 +792,13 @@
       ],
       "resposta": "ràdio",
       "imatge": "img/radio.jpg",
-      "label": "ràdio"
+      "label": "ràdio",
+      "opcions": [
+        "ràdio",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -464,7 +806,13 @@
       ],
       "resposta": "scorpions",
       "imatge": "img/scorpions.jpg",
-      "label": "scorpions"
+      "label": "scorpions",
+      "opcions": [
+        "scorpions",
+        "pinkladies",
+        "tbirds",
+        "the racers"
+      ]
     },
     {
       "pistes": [
@@ -472,7 +820,13 @@
       ],
       "resposta": "concursdeball",
       "imatge": "img/concursdeball.jpg",
-      "label": "concursdeball"
+      "label": "concursdeball",
+      "opcions": [
+        "concursdeball",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -480,7 +834,13 @@
       ],
       "resposta": "kenickie",
       "imatge": "img/kenickie.jpg",
-      "label": "kenickie"
+      "label": "kenickie",
+      "opcions": [
+        "kenickie",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -488,7 +848,13 @@
       ],
       "resposta": "balmudo",
       "imatge": "img/balmudo.jpg",
-      "label": "balmudo"
+      "label": "balmudo",
+      "opcions": [
+        "balmudo",
+        "lightning star",
+        "thunder roadster",
+        "crimson comet"
+      ]
     },
     {
       "pistes": [
@@ -496,7 +862,13 @@
       ],
       "resposta": "vince fontaine",
       "imatge": "img/vincefontaine.jpg",
-      "label": "vince fontaine"
+      "label": "vince fontaine",
+      "opcions": [
+        "vince fontaine",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -504,7 +876,13 @@
       ],
       "resposta": "blanc",
       "imatge": "img/blanc.jpg",
-      "label": "blanc"
+      "label": "blanc",
+      "opcions": [
+        "blanc",
+        "negre",
+        "vermell",
+        "rosa"
+      ]
     },
     {
       "pistes": [
@@ -512,7 +890,13 @@
       ],
       "resposta": "sandy",
       "imatge": "img/sandy.jpg",
-      "label": "sandy"
+      "label": "sandy",
+      "opcions": [
+        "sandy",
+        "danny",
+        "rizzo",
+        "kenickie"
+      ]
     },
     {
       "pistes": [
@@ -520,7 +904,13 @@
       ],
       "resposta": "putzie",
       "imatge": "img/putzie.jpg",
-      "label": "putzie"
+      "label": "putzie",
+      "opcions": [
+        "putzie",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -528,7 +918,13 @@
       ],
       "resposta": "sandy",
       "imatge": "img/sandy.jpg",
-      "label": "sandy"
+      "label": "sandy",
+      "opcions": [
+        "sandy",
+        "danny",
+        "rizzo",
+        "kenickie"
+      ]
     },
     {
       "pistes": [
@@ -536,7 +932,13 @@
       ],
       "resposta": "pastís",
       "imatge": "img/pastis.jpg",
-      "label": "pastís"
+      "label": "pastís",
+      "opcions": [
+        "pastís",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -544,7 +946,13 @@
       ],
       "resposta": "balmudo",
       "imatge": "img/balmudo.jpg",
-      "label": "balmudo"
+      "label": "balmudo",
+      "opcions": [
+        "balmudo",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -552,7 +960,13 @@
       ],
       "resposta": "danny",
       "imatge": "img/danny.jpg",
-      "label": "danny"
+      "label": "danny",
+      "opcions": [
+        "danny",
+        "opció extra 2",
+        "opció extra 3",
+        "opció extra 4"
+      ]
     },
     {
       "pistes": [
@@ -560,7 +974,13 @@
       ],
       "resposta": "doody",
       "imatge": "img/doody.jpg",
-      "label": "doody"
+      "label": "doody",
+      "opcions": [
+        "doody",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -568,7 +988,13 @@
       ],
       "resposta": "kenickie",
       "imatge": "img/kenickie.jpg",
-      "label": "kenickie"
+      "label": "kenickie",
+      "opcions": [
+        "kenickie",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -576,7 +1002,13 @@
       ],
       "resposta": "balmudo",
       "imatge": "img/balmudo.jpg",
-      "label": "balmudo"
+      "label": "balmudo",
+      "opcions": [
+        "balmudo",
+        "opció extra 2",
+        "opció extra 3",
+        "opció extra 4"
+      ]
     },
     {
       "pistes": [
@@ -584,7 +1016,13 @@
       ],
       "resposta": "negre",
       "imatge": "img/negre.jpg",
-      "label": "negre"
+      "label": "negre",
+      "opcions": [
+        "negre",
+        "blanc",
+        "vermell",
+        "rosa"
+      ]
     },
     {
       "pistes": [
@@ -592,7 +1030,13 @@
       ],
       "resposta": "danny",
       "imatge": "img/danny.jpg",
-      "label": "danny"
+      "label": "danny",
+      "opcions": [
+        "danny",
+        "sandy",
+        "rizzo",
+        "kenickie"
+      ]
     },
     {
       "pistes": [
@@ -600,7 +1044,13 @@
       ],
       "resposta": "concursdeball",
       "imatge": "img/concursdeball.jpg",
-      "label": "concursdeball"
+      "label": "concursdeball",
+      "opcions": [
+        "concursdeball",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -608,7 +1058,13 @@
       ],
       "resposta": "kenickie",
       "imatge": "img/kenickie.jpg",
-      "label": "kenickie"
+      "label": "kenickie",
+      "opcions": [
+        "kenickie",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -616,7 +1072,13 @@
       ],
       "resposta": "putzie",
       "imatge": "img/putzie.jpg",
-      "label": "putzie"
+      "label": "putzie",
+      "opcions": [
+        "putzie",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -624,7 +1086,13 @@
       ],
       "resposta": "danny",
       "imatge": "img/danny.jpg",
-      "label": "danny"
+      "label": "danny",
+      "opcions": [
+        "danny",
+        "sandy",
+        "rizzo",
+        "kenickie"
+      ]
     },
     {
       "pistes": [
@@ -632,7 +1100,13 @@
       ],
       "resposta": "doody",
       "imatge": "img/doody.jpg",
-      "label": "doody"
+      "label": "doody",
+      "opcions": [
+        "doody",
+        "opció extra 2",
+        "opció extra 3",
+        "opció extra 4"
+      ]
     },
     {
       "pistes": [
@@ -640,7 +1114,13 @@
       ],
       "resposta": "cha-cha",
       "imatge": "img/cha-cha.jpg",
-      "label": "cha-cha"
+      "label": "cha-cha",
+      "opcions": [
+        "cha-cha",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -648,7 +1128,13 @@
       ],
       "resposta": "sonny",
       "imatge": "img/sonny.jpg",
-      "label": "sonny"
+      "label": "sonny",
+      "opcions": [
+        "sonny",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -656,7 +1142,13 @@
       ],
       "resposta": "tbirds",
       "imatge": "img/tbirds.jpg",
-      "label": "tbirds"
+      "label": "tbirds",
+      "opcions": [
+        "tbirds",
+        "lightning star",
+        "thunder roadster",
+        "crimson comet"
+      ]
     },
     {
       "pistes": [
@@ -664,7 +1156,13 @@
       ],
       "resposta": "greased lightning",
       "imatge": "img/greasedlightning.jpg",
-      "label": "greased lightning"
+      "label": "greased lightning",
+      "opcions": [
+        "greased lightning",
+        "lightning star",
+        "thunder roadster",
+        "crimson comet"
+      ]
     },
     {
       "pistes": [
@@ -672,7 +1170,13 @@
       ],
       "resposta": "jan",
       "imatge": "img/jan.jpg",
-      "label": "jan"
+      "label": "jan",
+      "opcions": [
+        "jan",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -680,7 +1184,13 @@
       ],
       "resposta": "marty",
       "imatge": "img/marty.jpg",
-      "label": "marty"
+      "label": "marty",
+      "opcions": [
+        "marty",
+        "blanc",
+        "negre",
+        "vermell"
+      ]
     },
     {
       "pistes": [
@@ -688,7 +1198,13 @@
       ],
       "resposta": "vermell",
       "imatge": "img/vermell.jpg",
-      "label": "vermell"
+      "label": "vermell",
+      "opcions": [
+        "vermell",
+        "blanc",
+        "negre",
+        "rosa"
+      ]
     },
     {
       "pistes": [
@@ -696,7 +1212,13 @@
       ],
       "resposta": "frenchy",
       "imatge": "img/frenchy.jpg",
-      "label": "frenchy"
+      "label": "frenchy",
+      "opcions": [
+        "frenchy",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -704,7 +1226,13 @@
       ],
       "resposta": "danny",
       "imatge": "img/danny.jpg",
-      "label": "danny"
+      "label": "danny",
+      "opcions": [
+        "danny",
+        "lightning star",
+        "thunder roadster",
+        "crimson comet"
+      ]
     },
     {
       "pistes": [
@@ -712,7 +1240,13 @@
       ],
       "resposta": "sandy",
       "imatge": "img/sandy.jpg",
-      "label": "sandy"
+      "label": "sandy",
+      "opcions": [
+        "sandy",
+        "danny",
+        "rizzo",
+        "kenickie"
+      ]
     },
     {
       "pistes": [
@@ -720,7 +1254,13 @@
       ],
       "resposta": "rosa",
       "imatge": "img/rosa.jpg",
-      "label": "rosa"
+      "label": "rosa",
+      "opcions": [
+        "rosa",
+        "blanc",
+        "negre",
+        "vermell"
+      ]
     },
     {
       "pistes": [
@@ -728,7 +1268,13 @@
       ],
       "resposta": "balmudo",
       "imatge": "img/balmudo.jpg",
-      "label": "balmudo"
+      "label": "balmudo",
+      "opcions": [
+        "balmudo",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -736,7 +1282,13 @@
       ],
       "resposta": "sonny",
       "imatge": "img/sonny.jpg",
-      "label": "sonny"
+      "label": "sonny",
+      "opcions": [
+        "sonny",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -744,7 +1296,13 @@
       ],
       "resposta": "rizzo",
       "imatge": "img/rizzo.jpg",
-      "label": "rizzo"
+      "label": "rizzo",
+      "opcions": [
+        "rizzo",
+        "sandy",
+        "danny",
+        "kenickie"
+      ]
     },
     {
       "pistes": [
@@ -752,7 +1310,13 @@
       ],
       "resposta": "putzie",
       "imatge": "img/putzie.jpg",
-      "label": "putzie"
+      "label": "putzie",
+      "opcions": [
+        "putzie",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -760,7 +1324,13 @@
       ],
       "resposta": "danny",
       "imatge": "img/danny.jpg",
-      "label": "danny"
+      "label": "danny",
+      "opcions": [
+        "danny",
+        "lightning star",
+        "thunder roadster",
+        "crimson comet"
+      ]
     },
     {
       "pistes": [
@@ -768,7 +1338,13 @@
       ],
       "resposta": "putzie",
       "imatge": "img/putzie.jpg",
-      "label": "putzie"
+      "label": "putzie",
+      "opcions": [
+        "putzie",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -776,7 +1352,13 @@
       ],
       "resposta": "balmudo",
       "imatge": "img/balmudo.jpg",
-      "label": "balmudo"
+      "label": "balmudo",
+      "opcions": [
+        "balmudo",
+        "sandy",
+        "danny",
+        "rizzo"
+      ]
     },
     {
       "pistes": [
@@ -784,7 +1366,13 @@
       ],
       "resposta": "doody",
       "imatge": "img/doody.jpg",
-      "label": "doody"
+      "label": "doody",
+      "opcions": [
+        "doody",
+        "opció extra 2",
+        "opció extra 3",
+        "opció extra 4"
+      ]
     },
     {
       "pistes": [
@@ -794,12 +1382,10 @@
       "imatge": "",
       "label": "olsson",
       "opcions": [
+        "olsson",
+        "balmudo",
         "johnson",
-        "smith",
-        "brown",
-        "miller",
-        "wilson",
-        "anderson"
+        "smith"
       ]
     }
   ],
