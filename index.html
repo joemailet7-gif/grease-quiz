@@ -254,12 +254,7 @@
   function normalizeEntry(e){
     // Accept both legacy {pregunta,resposta,imatge,dificultat} and new {pistes:[],resposta,imatge,label}
     var pistes = Array.isArray(e.pistes) ? e.pistes.slice() : (e.pregunta ? [e.pregunta] : []);
-    return {
-      answer: (e.resposta||'').toLowerCase().trim(),
-      pistes: pistes,
-      image: e.imatge || null,
-      label: (e.label || e.resposta || '').trim()
-    };
+    return { answer: (e.resposta||'').toLowerCase().trim(), pistes: pistes, image: e.imatge || null, label: (e.label || e.resposta || '').trim(), type: e.tipus || null, presetChoices: e.opcions || null, commonChoiceImage: e.imatge_comuna_opcions || null };
   }
 
   function take(list, n){
@@ -460,7 +455,7 @@ function buildAnswerSet(pool){
       var id=arr[i];
       var b=document.createElement('button'); b.className='option'; b.dataset.id=id;
       var im=document.createElement('img'); im.className='avatar';
-      im.src=guessImageFor(id, current.answersMap, current.image ? current.image : null);
+      im.src = current.commonChoiceImage ? current.commonChoiceImage : guessImageFor(id, current.answersMap, current.image ? current.image : null);
       im.alt='';
       im.onerror=function(){ this.style.opacity=.15; };
       var t=document.createElement('div'); t.className='optText'; t.textContent=guessLabelFor(id, current.answersMap);
@@ -576,139 +571,6 @@ function buildAnswerSet(pool){
 
   function init(){ bindAll(); }
   if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', init); } else { init(); }
-
-// === Correcció de tipus i opcions coherents ===
-// (Injecció al final per sobreescriure heurístiques amb una versió més robusta)
-function norm(s){
-  return String(s||'').toLowerCase()
-    .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
-    .replace(/\s+/g,' ').trim();
-}
-const TYPE_SETS = {
-  color: new Set(['negre','rosa','blanc','vermell','groc','blau','verd','gris','taronja','lila']),
-  grup: new Set(['tbirds','t-birds','t birds','pinkladies','pink ladies','scorpions']),
-  vehicle: new Set(['greased lightning','greasedlightning']),
-  esport: new Set(['futbolamerica','futbol american','futbolamericà','basquet','bàsquet','beisbol','voleibol']),
-  lloc: new Set(['platja','rydell','radio','ràdio']),
-  cognom: new Set(['zuko','olsson','balmudo']),
-  objecte: new Set(['guitarra','jaqueta','pentinat']),
-  event: new Set(['concursdeball','concurs de ball'])
-};
-function inType(a,type){
-  const n=norm(a);
-  if(TYPE_SETS[type].has(n)) return true;
-  if(TYPE_SETS[type].has(n.replace(/\s+/g,''))) return true;
-  return false;
-}
-function guessType(answer){
-  if(!answer) return 'persona';
-  if(inType(answer,'color')) return 'color';
-  if(inType(answer,'grup')) return 'grup';
-  if(inType(answer,'vehicle')) return 'vehicle';
-  if(inType(answer,'esport')) return 'esport';
-  if(inType(answer,'lloc')) return 'lloc';
-  if(inType(answer,'cognom')) return 'cognom';
-  if(inType(answer,'objecte')) return 'objecte';
-  if(inType(answer,'event')) return 'event';
-  return 'persona';
-}
-function guessTypeFromQuestion(text){
-  const t = ' ' + norm(text) + ' ';
-  function hasWord(w){ return new RegExp('(^|\\s)'+w+'(\\s|$)').test(t); }
-  if(t.includes(' color ')) return 'color';
-  if(t.includes(' grup ')) return 'grup';
-  if(t.includes(' cotxe ') || t.includes(' vehicle ') || t.includes(' greased ')) return 'vehicle';
-  if(hasWord('esport')) return 'esport';
-  if(hasWord('cognom')) return 'cognom';
-  if(hasWord('on')) return 'lloc';
-  if(t.includes(' ball ') || t.includes(' concurs ')) return 'event';
-  if(hasWord('vestit') || hasWord('jaqueta') || hasWord('roba')) return 'objecte';
-  if(hasWord('qui')) return 'persona';
-  return null;
-}
-// Reemplaçar buildAnswerSet per agafar totes les respostes de totes les categories
-buildAnswerSet = function(pool){
-  var map={};
-  for(var i=0;i<pool.length;i++){
-    var x=pool[i];
-    var ans=(x.answer||x.resposta||'').toLowerCase().trim();
-    var label=(x.label||x.resposta||ans).trim();
-    var img=x.image||x.imatge||null;
-    if(!map[ans]){
-      map[ans] = { label: label || ans, image: img || null, type: guessType(label||ans) };
-    } else {
-      if(!map[ans].image && img) map[ans].image = img;
-      if(!map[ans].label && label) map[ans].label = label;
-      if(!map[ans].type) map[ans].type = guessType(label||ans);
-    }
-  }
-  return map;
-};
-// Reemplaçar buildBank per garantir opcions del mateix tipus
-buildBank = function(modeName, rounds){
-  var pool=[];
-  if(modeName==='mix'){
-    var per=Math.floor(rounds/3), rest=rounds - per*3;
-    pool = pool.concat(take(DATA.infantil||[], per));
-    pool = pool.concat(take(DATA.expert||[], per));
-    pool = pool.concat(take(DATA.ultra||[], per));
-    var all=(DATA.infantil||[]).concat(DATA.expert||[]).concat(DATA.ultra||[]);
-    pool = pool.concat(take(all, rest));
-  } else if (modeName==='facil'){
-    pool = take(DATA.infantil||[], rounds);
-  } else if (modeName==='dificil'){
-    pool = take(DATA.expert||[], rounds);
-  } else {
-    pool = take(DATA.ultra||[], rounds);
-  }
-  pool = uniqueByKey(pool).slice(0, rounds);
-  if(pool.length < rounds){
-    var need = rounds - pool.length;
-    var all=(DATA.infantil||[]).concat(DATA.expert||[]).concat(DATA.ultra||[]).map(normalizeEntry);
-    pool = pool.concat(uniqueByKey(shuffle(all)).slice(0, need));
-  }
-  var allEntries = (DATA.infantil||[]).concat(DATA.expert||[]).concat(DATA.ultra||[]).map(normalizeEntry);
-  var answersMap = buildAnswerSet(allEntries);
-  var allAnswers = Object.keys(answersMap);
-  var SYNTH = {
-    vehicle: ['lightning star','thunder roadster','chrome phantom','crimson comet'],
-    esport: ['basquet','beisbol','voleibol'],
-    color: ['gris','lila','taronja'],
-    lloc: ['cafeteria','taller'],
-    grup: ['the racers','street queens','black jackets'],
-    cognom: ['johnson','smith','williams'],
-    objecte: ['motocicleta','casc','guants'],
-    event: ['concurs de talents','festa de fi de curs','graduacio']
-  };
-  var decorated = pool.map(function(q){
-    var prompt = (Array.isArray(q.pistes) && q.pistes[0]) ? q.pistes[0] : (q.pregunta||'');
-    var inferredQType = guessTypeFromQuestion(prompt);
-    var correctInfo = answersMap[q.answer] || {type: guessType(q.label||q.answer)};
-    var correctType = inferredQType || correctInfo.type || 'persona';
-    var sameType = allAnswers.filter(function(a){
-      var info = answersMap[a];
-      return a!==q.answer && (info && info.type)===correctType;
-    });
-    var pickFrom = sameType.slice();
-    if(pickFrom.length<3){
-      var extras = SYNTH[correctType] || [];
-      extras.forEach(function(ex){ if(!answersMap[ex]){ answersMap[ex]={label:ex,image:null,type:correctType}; allAnswers.push(ex);} });
-      pickFrom = pickFrom.concat(extras.filter(function(x){return x!==q.answer;}));
-    }
-    if(pickFrom.length<3){
-      var more = allAnswers.filter(function(a){
-        var info = answersMap[a];
-        return a!==q.answer && (info && info.type)===(correctType || 'persona');
-      });
-      pickFrom = pickFrom.concat(more);
-    }
-    var others = shuffle(pickFrom).slice(0,3);
-    var opts = shuffle([q.answer].concat(others));
-    return { answer:q.answer, pistes:q.pistes, image:q.image, label:q.label, choices:opts, answersMap:answersMap, type:correctType };
-  });
-  return decorated;
-};
-
 })();</script>
 </body>
 </html>
