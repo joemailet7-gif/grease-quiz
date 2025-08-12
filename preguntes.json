@@ -791,8 +791,16 @@
         "Quin és el cognom de Sandy?"
       ],
       "resposta": "olsson",
-      "imatge": "img/olsson.jpg",
-      "label": "olsson"
+      "imatge": "",
+      "label": "olsson",
+      "opcions": [
+        "johnson",
+        "smith",
+        "brown",
+        "miller",
+        "wilson",
+        "anderson"
+      ]
     }
   ],
   "ultra": []

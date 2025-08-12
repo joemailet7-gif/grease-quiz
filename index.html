@@ -9,6 +9,7 @@
         --lightbtn:#e9e9ef;--lighttxt:#14131b;--blue:#2d7fff;}
   html,body{height:100%;margin:0;background:radial-gradient(circle at 30% 15%,rgba(255,45,85,.13),transparent 40%),radial-gradient(circle at 75% 85%,rgba(255,212,0,.10),transparent 45%),linear-gradient(180deg,#0b0a10 0%,#13121a 60%,#0b0a10 100%);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Helvetica Neue,Helvetica,Arial,Noto Sans,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol}
   .wrap{max-width:1100px;margin:0 auto;padding:clamp(12px,3vw,28px)}
+  .version{position:fixed;top:6px;right:8px;font-size:10px;opacity:.55;color:#fff;background:rgba(0,0,0,.35);padding:2px 6px;border-radius:6px;border:1px solid rgba(255,255,255,.15);z-index:9999}
   .topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:8px 0 10px}
   .brand h1{font-size:clamp(22px,5vw,44px);margin:0;font-weight:900;letter-spacing:.5px;text-shadow:0 0 6px rgba(255,45,85,.6),0 0 18px rgba(255,45,85,.45),0 0 30px rgba(255,212,0,.35)}
   .logo{width:160px;height:80px;object-fit:contain;border-radius:8px;background:#111;border:1px solid var(--line)}
@@ -65,7 +66,7 @@
 </style>
 </head>
 <body>
-  <span class="version" style="position:fixed;top:6px;right:8px;font-size:10px;opacity:.55;color:#fff;background:rgba(0,0,0,.35);padding:2px 6px;border-radius:6px;border:1px solid rgba(255,255,255,.15);z-index:9999">v5.2.3</span>
+  <span class="version">v5.2.2</span>
   <div class="wrap">
     <div class="topbar">
       <div class="brand"><h1>Qui sóc?</h1></div>
@@ -208,7 +209,7 @@
   var KEY='grease_hist_engineB2';
 
   function shuffle(a){ for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;} return a; }
-  function setToggle(btn, active){ try{ if(!btn) return; btn.classList.toggle('active', !!active); btn.setAttribute('aria-pressed', String(!!active)); }catch(e){} }
+  function setToggle(btn, active){ if(!btn) return; btn.classList[active?'add':'remove']('active'); btn.setAttribute('aria-pressed', String(active)); }
 
   // Audio blips
   function beep(f,d,t,v){ if(!audioOn) return; try{ if(!actx){ actx=new (window.AudioContext||window.webkitAudioContext)(); } var o=actx.createOscillator(),g=actx.createGain(); o.type=t||'sine'; o.frequency.value=f||880; g.gain.value=v||0.08; o.connect(g).connect(actx.destination); o.start(); o.stop(actx.currentTime+(d||0.10)); }catch(e){} }
@@ -265,13 +266,58 @@
     var a=list.slice(); shuffle(a); return a.slice(0,n).map(normalizeEntry);
   }
 
-  function buildAnswerSet(pool){
+  function guessType(answer){
+    var a = (answer||'').toLowerCase();
+    var COLORS = {'negre':1,'rosa':1,'blanc':1,'vermell':1,'groc':1,'blau':1,'verd':1};
+    var GROUPS = {'tbirds':1,'t-birds':1,'pink ladies':1,'scorpions':1};
+    var OBJECTS = {'guitarra':1,'cotxe':1,'greased lightning':1,'jaqueta':1,'pentinat':1};
+    var SPORTS = {'futbolamericà':1,'futbol american':1};
+    if (COLORS[a]) return 'color';
+    if (GROUPS[a]) return 'grup';
+    if (OBJECTS[a]) return 'objecte';
+    if (SPORTS[a]) return 'esport';
+    return 'persona';
+  }
+
+  
+  // --- tipus inferit per la pregunta i per la resposta ---
+  function guessTypeFromQuestion(text){
+    var t=(text||'').toLowerCase();
+    function has(w){return t.indexOf(w)>=0;}
+    if(has('cognom')) return 'cognom';
+    if(has('sobrenom')||has('malnom')) return 'sobrenom';
+    if(has('color')) return 'color';
+    if(has('grup')) return 'grup';
+    if(has('instrument')) return 'instrument';
+    if(has('esport')) return 'esport';
+    if(has('cotxe')||has('vehicle')||has('greased')) return 'vehicle';
+    if(has('canç')||has('canco')||has('song')) return 'canço';
+    if(has('lloc')||has('bar')||has('institut')||has('rydell')||has('cine')) return 'lloc';
+    if(has('vestit')||has('jaqueta')||has('roba')) return 'roba';
+    if(has('qui ')) return 'persona';
+    return null;
+  }
+  function guessType(answer){
+    var a=(answer||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+    var COLORS=['negre','rosa','blanc','vermell','groc','blau','verd','gris'];
+    var GROUPS=['tbirds','t-birds','pink ladies','scorpions'];
+    var OBJECTS=['guitarra','jaqueta','pentinat'];
+    var SPORTS=['futbol america','beisbol'];
+    var SURN=['zuko','olsson','balmudo'];
+    if(COLORS.indexOf(a)>=0) return 'color';
+    if(GROUPS.indexOf(a)>=0) return 'grup';
+    if(OBJECTS.indexOf(a)>=0) return 'objecte';
+    if(SPORTS.indexOf(a)>=0) return 'esport';
+    if(SURN.indexOf(a)>=0) return 'cognom';
+    return 'persona';
+  }
+function buildAnswerSet(pool){
     // Map answer -> {label,image}
     var map={};
     for(var i=0;i<pool.length;i++){
       var x=pool[i];
       if(!map[x.answer]){
-        map[x.answer] = { label: x.label || x.answer, image: x.image || null };
+        map[x.answer] = { label: x.label || x.answer, image: x.image || null, type: guessType(x.label||x.answer) };
       } else {
         // fill image/label if missing
         if(!map[x.answer].image && x.image) map[x.answer].image = x.image;
@@ -307,21 +353,12 @@
     var answersMap = buildAnswerSet(pool);
     var allAnswers = Object.keys(answersMap);
     var decorated = pool.map(function(q){
-      // choices: prefer manual 'opcions' on the question, else same-type pool
-      var manual = Array.isArray(q.opcions) ? q.opcions : (Array.isArray(q.options) ? q.options : null);
-      var others;
-      if(manual){
-        others = shuffle(manual.filter(a => a!==q.answer)).slice(0,3);
-      } else {
-        var qText = (Array.isArray(q.pistes) && q.pistes.length ? q.pistes[0] : (q.label||''));
-        var expected = (typeof guessTypeFromQuestion==='function') ? guessTypeFromQuestion(qText) : null;
-        var correctType = expected || (answersMap[q.answer] && answersMap[q.answer].type) || (typeof guessType==='function' ? guessType(q.label||q.answer) : null);
-        var sameType = allAnswers.filter(a => a!==q.answer && (((answersMap[a]&&answersMap[a].type)|| (typeof guessType==='function'?guessType(a):null))===correctType));
-        var poolPick = sameType.length>=3 ? sameType : allAnswers.filter(a => a!==q.answer);
-        others = shuffle(poolPick).slice(0,3);
-      }
+      var correctType = (answersMap[q.answer] && answersMap[q.answer].type) ? answersMap[q.answer].type : guessType(q.label||q.answer);
+      var sameType = allAnswers.filter(a => a!==q.answer && ((answersMap[a]&&answersMap[a].type)||guessType(a))===correctType);
+      var pickFrom = sameType.length>=3 ? sameType : allAnswers.filter(a => a!==q.answer);
+      var others = shuffle(pickFrom).slice(0,3);
       var opts = shuffle([q.answer].concat(others));
-      return { answer:q.answer, pistes:q.pistes, image:q.image, label:q.label, choices:opts, answersMap:answersMap };
+      return { answer:q.answer, pistes:q.pistes, image:q.image, label:q.label, choices:opts, answersMap:answersMap, type:correctType };
     });
     return decorated;
   }
@@ -372,16 +409,37 @@
     startTimer(); questionStart();
   }
   function addClue(){
-    var src = Array.isArray(current.pistes) ? current.pistes : [];
-    if(revealed>=src.length){ els.revealBtn.disabled=true; return; }
-    var d=document.createElement('div'); d.className='clue'; d.setAttribute('data-n', (revealed+1)); d.textContent=src[revealed]; els.clues.appendChild(d); revealed++;
-    if(revealed>=src.length) els.revealBtn.disabled=true;
+    var ans=(current && (current.label||current.answer)||'').trim();
+    var gen=[];
+    if(ans){
+      gen.push('Nombre de lletres: '+ ans.replace(/\s+/g,'').length);
+      gen.push('Comença per: '+ ans.charAt(0).toUpperCase());
+    }
+    if(revealed>=gen.length){ els.revealBtn.disabled=true; return; }
+    var d=document.createElement('div'); d.className='clue'; d.setAttribute('data-n', (revealed+1));
+    d.textContent=gen[revealed];
+    els.clues.appendChild(d); revealed++;
+    if(revealed>=gen.length) els.revealBtn.disabled=true;
   }
+
   function renderClues(first){
+    // Show the main question/prompt (not counted as a revealed hint)
     els.clues.innerHTML='';
-    var src = Array.isArray(current.pistes) ? current.pistes : [];
-    if(src.length===0){ els.clues.innerHTML='<div class="clue" data-n="1">Sense pistes en aquesta pregunta.</div>'; els.revealBtn.disabled=true; return; }
-    if(first) addClue();
+    var prompt = '';
+    if(typeof current.pregunta === 'string' && current.pregunta.trim()){
+      prompt = current.pregunta.trim();
+    } else if(Array.isArray(current.pistes) && current.pistes.length){
+      prompt = String(current.pistes[0]||'').trim();
+    } else {
+      prompt = 'Endevina la resposta correcta';
+    }
+    var d=document.createElement('div'); d.className='clue'; d.setAttribute('data-n','Q');
+    d.textContent = prompt;
+    els.clues.appendChild(d);
+    // reset dynamic revealed counter
+    revealed = 0;
+    // enable reveal if we can generate dynamic hints
+    els.revealBtn.disabled = false;
   }
 
   function guessImageFor(answer, answersMap, fallbackImage){
@@ -402,7 +460,7 @@
       var id=arr[i];
       var b=document.createElement('button'); b.className='option'; b.dataset.id=id;
       var im=document.createElement('img'); im.className='avatar';
-      var srcImg=guessImageFor(id, current.answersMap, null); if(srcImg){ im.src=srcImg; im.style.display='block'; } else { im.style.display='none'; }
+      im.src=guessImageFor(id, current.answersMap, current.image ? current.image : null);
       im.alt='';
       im.onerror=function(){ this.style.opacity=.15; };
       var t=document.createElement('div'); t.className='optText'; t.textContent=guessLabelFor(id, current.answersMap);
@@ -456,8 +514,8 @@
   function bindAll(){
     els.startBtn=$('startBtn'); els.historyBtn=$('historyBtn'); els.soundBtn=$('soundBtn'); els.logoImg=$('logoImg'); els.capsBtn=$('capsBtn'); els.timeBtn=$('timeBtn');
     els.startConfig=$('startConfig'); els.beginBtn=$('beginBtn'); els.versusSel=$('versusSel'); els.p2wrap=$('p2wrap'); els.player1=$('player1'); els.player2=$('player2'); els.tutorial=$('tutorial'); els.goPlay=$('goPlay');
-    els.gameArea=$('gameArea'); els.turnInfo=$('turnInfo'); els.timer=$('timer'); els.progress=$('progress'); els.revealBtn=$('revealBtn'); els.endGameBtn=$('endGameBtn'); els.clues=$('clues'); els.options=$('options'); els.feedback=$('feedback'); els.points=$('points'); els.roundN=$('roundN'); els.p2score=$('p2score'];
-    els.modal=$('historyModal'); els.histContent=$('histContent'); els.closeHist=$('closeHist'); els.clearHist=$('clearHist'); els.exportCSV=$('exportCSV'); els.modeSel=$('modeSel'); els.roundsSel=$('roundsSel'];
+    els.gameArea=$('gameArea'); els.turnInfo=$('turnInfo'); els.timer=$('timer'); els.progress=$('progress'); els.revealBtn=$('revealBtn'); els.endGameBtn=$('endGameBtn'); els.clues=$('clues'); els.options=$('options'); els.feedback=$('feedback'); els.points=$('points'); els.roundN=$('roundN'); els.p2score=$('p2score');
+    els.modal=$('historyModal'); els.histContent=$('histContent'); els.closeHist=$('closeHist'); els.clearHist=$('clearHist'); els.exportCSV=$('exportCSV'); els.modeSel=$('modeSel'); els.roundsSel=$('roundsSel');
     els.resultPanel=$('resultPanel'); els.resultSummary=$('resultSummary'); els.playAgainBtn=$('playAgainBtn'); els.backToMenuBtn=$('backToMenuBtn'); els.openHistoryBtn=$('openHistoryBtn');
 
     setToggle(els.soundBtn, true); setToggle(els.capsBtn, false); setToggle(els.timeBtn, true);
