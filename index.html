@@ -66,7 +66,7 @@
 </style>
 </head>
 <body>
-  <span class="version">v5.7</span>
+  <span class="version">v5.3C</span>
   <div class="wrap">
     <div class="topbar">
       <div class="brand"><h1>Qui sóc?</h1></div>
@@ -79,17 +79,17 @@
         <button id="historyBtn" class="btn gray">Veure historial</button>
 
         <button id="soundBtn" class="toggle" aria-pressed="true">
-          <span class="dot" aria-hidden="true"></span><span class="label">Sons</span>
+          <span class="dot" aria-hidden="true"></span><span class="lbl">Sons</span>
         </button>
 
         <button id="capsBtn" class="toggle" aria-pressed="false">
-          <span class="dot" aria-hidden="true"></span><span class="label">Majúscules</span>
+          <span class="dot" aria-hidden="true"></span><span class="lbl">Majúscules</span>
         </button>
 
         <button id="timeBtn" class="toggle" aria-pressed="true">
-          <span class="dot" aria-hidden="true"></span><span class="label">Temps</span>
+          <span class="dot" aria-hidden="true"></span><span class="lbl">Temps</span>
         </button>
-        <button id="helpBtn" class="toggle" aria-pressed="false"><span class="dot" aria-hidden="true"></span><span class="label">Ajuda extra</span></button>
+        <button id="helpBtn" class="toggle" aria-pressed="false"><span class="dot" aria-hidden="true"></span><span class="lbl">Ajuda extra</span></button>
       </div>
     </div>
 
@@ -210,14 +210,7 @@
   var KEY='grease_hist_engineB2';
 
   function shuffle(a){ for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;} return a; }
-  function setToggle(btn, active){
-    if(!btn) return;
-    try{
-      btn.classList.toggle('active', !!active);
-      btn.setAttribute('aria-pressed', String(!!active));
-      var lab = btn.querySelector('.label'); if(lab) { /* no-op */ }
-    }catch(e){ /* ignore */ }
-  }
+  function setToggle(btn, active){ if(!btn) return; btn.classList[active?'add':'remove']('active'); btn.setAttribute('aria-pressed', String(active)); }
 
   // Audio blips
   function beep(f,d,t,v){ if(!audioOn) return; try{ if(!actx){ actx=new (window.AudioContext||window.webkitAudioContext)(); } var o=actx.createOscillator(),g=actx.createGain(); o.type=t||'sine'; o.frequency.value=f||880; g.gain.value=v||0.08; o.connect(g).connect(actx.destination); o.start(); o.stop(actx.currentTime+(d||0.10)); }catch(e){} }
@@ -274,23 +267,6 @@
     var a=list.slice(); shuffle(a); return a.slice(0,n).map(normalizeEntry);
   }
 
-  function guessTypeFromQuestion(text){
-    var t=(text||'').toLowerCase();
-    function has(w){return t.indexOf(w)>=0;}
-    if(has('cognom')) return 'cognom';
-    if(has('sobrenom')||has('malnom')) return 'sobrenom';
-    if(has('color')) return 'color';
-    if(has('grup')) return 'grup';
-    if(has('instrument')) return 'instrument';
-    if(has('esport')) return 'esport';
-    if(has('cotxe')||has('greased')||has('vehicle')) return 'vehicle';
-    if(has('canç')||has('canco')||has('song')) return 'canço';
-    if(has('lloc')||has('bar')||has('institut')||has('rydell')||has('cine')) return 'lloc';
-    if(has('vestit')||has('jaqueta')||has('roba')) return 'roba';
-    if(has('qui ')) return 'persona';
-    return null;
-  }
-
   function guessType(answer){
     var a = (answer||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
     function hasAny(str, list){ str=' '+str+' '; for(var i=0;i<list.length;i++){ if(str.indexOf(' '+list[i]+' ')>=0) return true; } return false; }
@@ -310,7 +286,38 @@
     if (hasAny(a, SONGS)) return 'canço';
     if (hasAny(a, PLACES)) return 'lloc';
     if (hasAny(a, SPORTS)) return 'esport';
-    var SURNAMES=['zuko','olsson','balmudo']; if(SURNAMES.indexOf(a)>=0) return 'cognom'; return 'persona';
+    return 'persona';
+  }
+
+  function guessTypeFromQuestion(text){
+    var t=(text||'').toLowerCase();
+    function has(w){return t.indexOf(w)>=0;}
+    if(has('cognom')) return 'cognom';
+    if(has('sobrenom')||has('malnom')) return 'sobrenom';
+    if(has('color')) return 'color';
+    if(has('grup')) return 'grup';
+    if(has('instrument')) return 'instrument';
+    if(has('esport')) return 'esport';
+    if(has('cotxe')||has('vehicle')||has('greased')) return 'vehicle';
+    if(has('canç')||has('canco')||has('song')) return 'canço';
+    if(has('lloc')||has('bar')||has('institut')||has('rydell')||has('cine')) return 'lloc';
+    if(has('vestit')||has('jaqueta')||has('roba')) return 'roba';
+    if(has('qui ')) return 'persona';
+    return null;
+  }
+  function guessType(answer){
+    var a=(answer||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+    var COLORS=['negre','rosa','blanc','vermell','groc','blau','verd','gris'];
+    var GROUPS=['tbirds','t-birds','pink ladies','scorpions'];
+    var OBJECTS=['guitarra','jaqueta','pentinat'];
+    var SPORTS=['futbol america','beisbol'];
+    var SURN=['zuko','olsson','balmudo'];
+    if(COLORS.indexOf(a)>=0) return 'color';
+    if(GROUPS.indexOf(a)>=0) return 'grup';
+    if(OBJECTS.indexOf(a)>=0) return 'objecte';
+    if(SPORTS.indexOf(a)>=0) return 'esport';
+    if(SURN.indexOf(a)>=0) return 'cognom';
+    return 'persona';
   }
 function buildAnswerSet(pool){
     // Map answer -> {label,image}
@@ -354,8 +361,7 @@ function buildAnswerSet(pool){
     var answersMap = buildAnswerSet(pool);
     var allAnswers = Object.keys(answersMap);
     var decorated = pool.map(function(q){
-      var expected = guessTypeFromQuestion((Array.isArray(q.pistes)&&q.pistes.length)?q.pistes[0]:(q.label||''));
-      var correctType = expected || ((answersMap[q.answer] && answersMap[q.answer].type) ? answersMap[q.answer].type : guessType(q.label||q.answer));
+      var correctType = (answersMap[q.answer] && answersMap[q.answer].type) ? answersMap[q.answer].type : guessType(q.label||q.answer);
       var sameType = allAnswers.filter(a => a!==q.answer && ((answersMap[a]&&answersMap[a].type)||guessType(a))===correctType);
       var pickFrom = sameType.length>=3 ? sameType : allAnswers.filter(a => a!==q.answer);
       var others = shuffle(pickFrom).slice(0,3);
@@ -574,15 +580,6 @@ function buildAnswerSet(pool){
   }
 
   function init(){ bindAll(); }
-  window.addEventListener('error', function(ev){
-    try{
-      var d=document.createElement('div'); d.style.position='fixed'; d.style.bottom='8px'; d.style.right='8px';
-      d.style.background='rgba(255,0,0,.12)'; d.style.color='#fff'; d.style.font='12px/1.4 system-ui, sans-serif';
-      d.style.padding='6px 8px'; d.style.border='1px solid rgba(255,255,255,.2)'; d.style.borderRadius='8px'; d.style.zIndex=99999;
-      d.textContent='JS error: '+(ev.message||'')+' (consulta la consola)';
-      document.body.appendChild(d); setTimeout(function(){ d.remove(); }, 6000);
-    }catch(e){}
-  });
   if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', init); } else { init(); }
 })();</script>
 </body>
