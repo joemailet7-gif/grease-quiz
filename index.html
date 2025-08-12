@@ -66,7 +66,7 @@
 </style>
 </head>
 <body>
-  <span class="version">v5.2</span>
+  <span class="version">v5.3</span>
   <div class="wrap">
     <div class="topbar">
       <div class="brand"><h1>Qui sóc?</h1></div>
@@ -89,6 +89,7 @@
         <button id="timeBtn" class="toggle" aria-pressed="true">
           <span class="dot" aria-hidden="true"></span><span class="lbl">Temps</span>
         </button>
+        <button id="helpBtn" class="toggle" aria-pressed="false"><span class="dot" aria-hidden="true"></span><span class="lbl">Ajuda extra</span></button>
       </div>
     </div>
 
@@ -267,19 +268,27 @@
   }
 
   function guessType(answer){
-    var a = (answer||'').toLowerCase();
-    var COLORS = {'negre':1,'rosa':1,'blanc':1,'vermell':1,'groc':1,'blau':1,'verd':1};
-    var GROUPS = {'tbirds':1,'t-birds':1,'pink ladies':1,'scorpions':1};
-    var OBJECTS = {'guitarra':1,'cotxe':1,'greased lightning':1,'jaqueta':1,'pentinat':1};
-    var SPORTS = {'futbolamericà':1,'futbol american':1};
-    if (COLORS[a]) return 'color';
-    if (GROUPS[a]) return 'grup';
-    if (OBJECTS[a]) return 'objecte';
-    if (SPORTS[a]) return 'esport';
+    var a = (answer||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+    function hasAny(str, list){ str=' '+str+' '; for(var i=0;i<list.length;i++){ if(str.indexOf(' '+list[i]+' ')>=0) return true; } return false; }
+    var COLORS = ['negre','rosa','blanc','vermell','groc','blau','verd','gris'];
+    var GROUPS = ['tbirds','t-birds','pink ladies','scorpions'];
+    var VEHICLES = ['greased lightning','cotxe','convertible'];
+    var OBJECTS = ['guitarra','jaqueta','pentinat','peine','laca'];
+    var SONGS = ['youre the one that i want','summer nights','greased lightning','hopelessly devoted to you'];
+    var PLACES = ['rydell','bowling','cine'];
+    var CLOTHING = ['jaqueta','vestit','faldilla','pantalons','sabates'];
+    var SPORTS = ['futbol america','beisbol'];
+    if (COLORS.indexOf(a)>=0) return 'color';
+    if (hasAny(a, GROUPS)) return 'grup';
+    if (hasAny(a, VEHICLES)) return 'vehicle';
+    if (hasAny(a, CLOTHING)) return 'roba';
+    if (hasAny(a, OBJECTS)) return 'objecte';
+    if (hasAny(a, SONGS)) return 'canço';
+    if (hasAny(a, PLACES)) return 'lloc';
+    if (hasAny(a, SPORTS)) return 'esport';
     return 'persona';
   }
-
-  function buildAnswerSet(pool){
+function buildAnswerSet(pool){
     // Map answer -> {label,image}
     var map={};
     for(var i=0;i<pool.length;i++){
@@ -421,9 +430,12 @@
       var im=document.createElement('img'); im.className='avatar';
       im.src=guessImageFor(id, current.answersMap, current.image ? current.image : null);
       im.alt='';
-      im.onerror=function(){ this.style.opacity=.15; };
-      var t=document.createElement('div'); t.className='optText'; t.textContent=guessLabelFor(id, current.answersMap);
-      b.appendChild(im); b.appendChild(t); b.addEventListener('click', onAnswer); els.options.appendChild(b);
+      b.appendChild(im);
+      if(helpOn){
+        var typeInfo = (current.answersMap[id] && current.answersMap[id].type) ? current.answersMap[id].type : guessType(id);
+        var chip=document.createElement('span'); chip.className='chip'; chip.textContent=typeInfo;
+        b.appendChild(chip);
+      } b.appendChild(t); b.addEventListener('click', onAnswer); els.options.appendChild(b);
     }
   }
 
@@ -471,13 +483,13 @@
   }
 
   function bindAll(){
-    els.startBtn=$('startBtn'); els.historyBtn=$('historyBtn'); els.soundBtn=$('soundBtn'); els.logoImg=$('logoImg'); els.capsBtn=$('capsBtn'); els.timeBtn=$('timeBtn');
+    els.startBtn=$('startBtn'); els.historyBtn=$('historyBtn'); els.soundBtn=$('soundBtn'); els.logoImg=$('logoImg'); els.capsBtn=$('capsBtn'); els.timeBtn=$('timeBtn'); els.helpBtn=$('helpBtn');
     els.startConfig=$('startConfig'); els.beginBtn=$('beginBtn'); els.versusSel=$('versusSel'); els.p2wrap=$('p2wrap'); els.player1=$('player1'); els.player2=$('player2'); els.tutorial=$('tutorial'); els.goPlay=$('goPlay');
     els.gameArea=$('gameArea'); els.turnInfo=$('turnInfo'); els.timer=$('timer'); els.progress=$('progress'); els.revealBtn=$('revealBtn'); els.endGameBtn=$('endGameBtn'); els.clues=$('clues'); els.options=$('options'); els.feedback=$('feedback'); els.points=$('points'); els.roundN=$('roundN'); els.p2score=$('p2score');
     els.modal=$('historyModal'); els.histContent=$('histContent'); els.closeHist=$('closeHist'); els.clearHist=$('clearHist'); els.exportCSV=$('exportCSV'); els.modeSel=$('modeSel'); els.roundsSel=$('roundsSel');
     els.resultPanel=$('resultPanel'); els.resultSummary=$('resultSummary'); els.playAgainBtn=$('playAgainBtn'); els.backToMenuBtn=$('backToMenuBtn'); els.openHistoryBtn=$('openHistoryBtn');
 
-    setToggle(els.soundBtn, true); setToggle(els.capsBtn, false); setToggle(els.timeBtn, true);
+    setToggle(els.soundBtn, true); setToggle(els.capsBtn, false); setToggle(els.timeBtn, true); setToggle(els.helpBtn, helpOn);
     els.logoImg.onerror=function(){ els.logoImg.style.display='none'; };
 
     els.startBtn.addEventListener('click',function(){ resetUI(); els.startConfig.classList.remove('hidden'); });
@@ -488,6 +500,8 @@
     els.timeBtn.addEventListener('click',function(e){ timeLimit=!timeLimit; setToggle(e.currentTarget, timeLimit);
       if(!timeLimit){ stopTimer(); els.timer.style.display='none'; } else { if(!els.gameArea.classList.contains('hidden')){ stopTimer(); startTimer(); } }
     });
+
+    els.helpBtn.addEventListener('click',function(e){ helpOn=!helpOn; setToggle(e.currentTarget, helpOn); renderOptions(); });
 
     els.versusSel.addEventListener('change',function(){ if(els.versusSel.value!=='on') els.p2wrap.classList.add('hidden'); else els.p2wrap.classList.remove('hidden'); });
     els.beginBtn.addEventListener('click',function(){ mode=els.modeSel.value; totalRounds=parseInt(els.roundsSel.value,10)||15;
@@ -514,7 +528,12 @@
 
     els.revealBtn.addEventListener('click',function(){ if(!els.gameArea.classList.contains('hidden')) addClue(); });
     els.endGameBtn.addEventListener('click', cancelGame);
-    window.addEventListener('keydown',function(e){ var k=(e.key||'').toLowerCase(); if(k==='h' && !els.gameArea.classList.contains('hidden') && !els.revealBtn.disabled) addClue(); if(k==='m') els.soundBtn.click(); });
+    window.addEventListener('keydown',function(e){
+      var k=(e.key||'').toLowerCase();
+      if(k==='h' && !els.revealBtn.disabled) addClue();
+      if(k==='t'){ helpOn=!helpOn; setToggle(els.helpBtn, helpOn); renderOptions(); }
+      if(k==='m') els.soundBtn.click();
+    });
 
     els.closeHist.addEventListener('click',function(){ $('historyModal').classList.remove('open'); });
     els.clearHist.addEventListener('click',function(){ try{ localStorage.removeItem(KEY); }catch(e){} showH(); });
