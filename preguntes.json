@@ -169,12 +169,12 @@
       "pistes": [
         "Quin ball celebren a l’escola?"
       ],
-      "resposta": "concursdeball",
+      "resposta": "concurs de ball",
       "imatge": "img/concursdeball.jpg",
       "label": "concursdeball",
       "tipus": "esdeveniment",
       "opcions": [
-        "concursdeball",
+        "concurs de ball",
         "festa de fi de curs",
         "trobada al gimnàs",
         "graduacio"
@@ -220,7 +220,7 @@
       "tipus": "color",
       "opcions": [
         "blanc",
-        "ros",
+        "rosa",
         "negre",
         "rosa"
       ]
@@ -440,12 +440,12 @@
       "pistes": [
         "Quin ball guanyen Danny i Cha-Cha?"
       ],
-      "resposta": "concursdeball",
+      "resposta": "concurs de ball",
       "imatge": "img/concursdeball.jpg",
       "label": "concursdeball",
       "tipus": "esdeveniment",
       "opcions": [
-        "concursdeball",
+        "Concurs de ball",
         "trobada al gimnàs",
         "graduacio",
         "festa de fi de curs"
@@ -882,7 +882,7 @@
       "label": "concursdeball",
       "tipus": "esdeveniment",
       "opcions": [
-        "concursdeball",
+        "concurs de ball",
         "festa de fi de curs",
         "graduacio",
         "trobada al gimnàs"
@@ -991,21 +991,6 @@
         "cha-cha",
         "rizzo",
         "danny"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin és el plat preferit de Jan?"
-      ],
-      "resposta": "pastís",
-      "imatge": "img/pastis.jpg",
-      "label": "pastís",
-      "tipus": "objecte",
-      "opcions": [
-        "pastís",
-        "guants",
-        "casc",
-        "guitarra"
       ]
     },
     {
@@ -1122,7 +1107,7 @@
       "label": "concursdeball",
       "tipus": "esdeveniment",
       "opcions": [
-        "concursdeball",
+        "concurs de ball",
         "trobada al gimnàs",
         "festa de fi de curs",
         "graduacio"
