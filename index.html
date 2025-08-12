@@ -69,7 +69,7 @@
   \1v2.1.0\2
   <div class="wrap">
     <div class="topbar">
-      <div class="brand"><h1>Qui sóc?</h1></div>
+      <div class="brand"><h1>Quiz challenge</h1></div>
       <img id="logoImg" class="logo" src="img/logo.jpg" alt="Logo del joc" />
     </div>
 
@@ -496,7 +496,7 @@ return decorated;
       var id=arr[i];
       var b=document.createElement('button'); b.className='option'; b.dataset.id=id;
       var im=document.createElement('img'); im.className='avatar';
-      im.src = current.commonChoiceImage ? current.commonChoiceImage : guessImageFor(id, current.answersMap, current.image ? current.image : null);
+      im.src = current.commonChoiceImage ? current.commonChoiceImage : guessImageFor(id, current.answersMap, null);
       im.alt='';
       im.onerror=function(){ this.style.opacity=.15; };
       var t=document.createElement('div'); t.className='optText'; t.textContent=guessLabelFor(id, current.answersMap);

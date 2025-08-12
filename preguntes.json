@@ -207,7 +207,7 @@
         "frenchy",
         "danny",
         "murdock",
-        "danny zuko"
+        "danny"
       ]
     },
     {
@@ -296,7 +296,7 @@
       "opcions": [
         "murdock",
         "putzie",
-        "danny zuko",
+        "danny",
         "danny"
       ]
     },
@@ -371,7 +371,7 @@
       "tipus": "personatge",
       "opcions": [
         "calhoun",
-        "danny zuko",
+        "danny",
         "marty",
         "jan"
       ]
@@ -401,7 +401,7 @@
       "tipus": "personatge",
       "opcions": [
         "putzie",
-        "danny zuko",
+        "danny",
         "sonny",
         "jan"
       ]
@@ -613,7 +613,7 @@
         "putzie",
         "frenchy",
         "rizzo",
-        "danny zuko"
+        "danny"
       ]
     },
     {
@@ -626,7 +626,7 @@
       "tipus": "personatge",
       "opcions": [
         "sandy",
-        "danny zuko",
+        "danny",
         "patty",
         "danny"
       ]
@@ -742,12 +742,12 @@
       "pistes": [
         "Quin és el nom complet de Danny?"
       ],
-      "resposta": "danny zuko",
-      "imatge": "img/dannyzuko.jpg",
-      "label": "danny zuko",
+      "resposta": "danny",
+      "imatge": "img/danny.jpg",
+      "label": "danny",
       "tipus": "personatge",
       "opcions": [
-        "danny zuko",
+        "danny",
         "cha-cha",
         "vince fontaine",
         "sonny"
@@ -958,7 +958,7 @@
       "tipus": "personatge",
       "opcions": [
         "sandy",
-        "danny zuko",
+        "danny",
         "kenickie",
         "calhoun"
       ]
@@ -1153,7 +1153,7 @@
       "tipus": "personatge",
       "opcions": [
         "putzie",
-        "danny zuko",
+        "danny",
         "patty",
         "kenickie"
       ]
@@ -1335,7 +1335,7 @@
         "sandy",
         "balmudo",
         "putzie",
-        "danny zuko"
+        "danny"
       ]
     },
     {
