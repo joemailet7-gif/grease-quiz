@@ -1,9 +1,10 @@
 <!DOCTYPE html>
+
 <html lang="ca">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Qui sóc? — Grease</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Quiz challenge</title>
 <style>
   :root{--bg:#0e0d13;--panel:#17161f;--text:#f6f6fb;--accent:#ff2d55;--accent2:#ffd400;--muted:#cfcfe6;--ok:#32d74b;--bad:#ff453a;--line:#262433;
         --lightbtn:#e9e9ef;--lighttxt:#14131b;--blue:#2d7fff;}
@@ -65,135 +66,122 @@
   .upper .wrap{ text-transform: uppercase; }
 </style>
 </head>
-<body>
+<body><span class="version">v2.1.0</span>
   \1v2.1.0\2
   <div class="wrap">
-    <div class="topbar">
-      <div class="brand"><h1>Quiz challenge</h1></div>
-      <img id="logoImg" class="logo" src="img/logo.jpg" alt="Logo del joc" />
-    </div>
-
-    <div class="menuPanel">
-      <div class="menu">
-        <button id="startBtn" class="btn gray">Nova partida</button>
-        <button id="historyBtn" class="btn gray">Veure historial</button>
-
-        <button id="soundBtn" class="toggle" aria-pressed="true">
-          <span class="dot" aria-hidden="true"></span><span class="lbl">Sons</span>
-        </button>
-
-        <button id="capsBtn" class="toggle" aria-pressed="false">
-          <span class="dot" aria-hidden="true"></span><span class="lbl">Majúscules</span>
-        </button>
-
-        <button id="timeBtn" class="toggle" aria-pressed="true">
-          <span class="dot" aria-hidden="true"></span><span class="lbl">Temps</span>
-        </button>
-      </div>
-    </div>
-
-    <div class="panel">
-      <div id="startConfig">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
-          <div>
-            <label>Mode de joc</label><br/>
-            <select id="modeSel">
-              <option value="facil">Fàcil</option>
-              <option value="dificil">Difícil</option>
-              <option value="expert" selected>Expert</option>
-              <option value="mix">Mix</option>
-            </select>
-          </div>
-          <div>
-            <label>Nombre de rondes</label><br/>
-            <select id="roundsSel">
-              <option value="15" selected>15</option>
-              <option value="30">30</option>
-              <option value="60">60</option>
-            </select>
-          </div>
-        </div>
-
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
-          <div>
-            <label>Jugador 1 (nom)</label><br/>
-            <input id="player1" type="text" placeholder="Escriu el teu nom" />
-          </div>
-          <div>
-            <label>Mode Versus</label><br/>
-            <select id="versusSel">
-              <option value="off" selected>Un jugador</option>
-              <option value="on">2 jugadors (versus)</option>
-            </select>
-          </div>
-        </div>
-
-        <div id="p2wrap" class="hidden" style="margin-bottom:10px">
-          <label>Jugador 2 (nom)</label><br/>
-          <input id="player2" type="text" placeholder="Nom del segon jugador" />
-        </div>
-
-        <div><button id="beginBtn" class="btn ok">Començar</button></div>
-      </div>
-
-      <div id="tutorial" class="hidden">
-        <h3>Instruccions</h3>
-        <ul>
-          <li>Prem <strong>Mostrar més pistes</strong> si et quedes encallat.</li>
-          <li>Tens <strong>20 segons</strong> per pregunta (si el <em>Temps</em> està actiu).</li>
-          <li>En <strong>versus</strong> alternen torns.</li>
-        </ul>
-        <button id="goPlay" class="btn ok">Entesos! Anem a jugar</button>
-      </div>
-
-      <div id="gameArea" class="game hidden">
-        <div class="gameTop">
-          <div class="pill" id="turnInfo"></div>
-          <div style="display:flex;gap:10px;align-items:center">
-            <span class="timer" id="timer">⏱️ 20</span>
-            <span class="progress" id="progress">0 / 0</span>
-            <button id="revealBtn" class="btn blue">Mostrar més pistes</button>
-            <button id="endGameBtn" class="btn dark">Sortir partida</button>
-          </div>
-        </div>
-        <div class="clues" id="clues"></div>
-        <div class="options" id="options"></div>
-        <div class="feedback" id="feedback"></div>
-        <div class="score" id="score">
-          <div>Puntuació: <strong id="points">0</strong></div>
-          <div>Ronda: <strong id="roundN">0</strong></div>
-          <div class="pill" id="p2score" class="hidden"></div>
-        </div>
-      </div>
-
-      <div id="resultPanel" class="hidden">
-        <div class="result">
-          <h3>Resultats</h3>
-          <div id="resultSummary"></div>
-          <div style="display:flex;gap:10px;flex-wrap:wrap">
-            <button id="playAgainBtn" class="btn ok">Jugar de nou</button>
-            <button id="backToMenuBtn" class="btn gray">Tornar al menú</button>
-            <button id="openHistoryBtn" class="btn gray">Veure historial</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal" id="historyModal" role="dialog" aria-modal="true" aria-labelledby="histTitle">
-    <div class="sheet">
-      <header>
-        <h3 id="histTitle">Historial de puntuacions</h3>
-        <div style="display:flex;gap:8px">
-          <button id="exportCSV" class="btn gray">Exporta CSV</button>
-          <button id="clearHist" class="btn dark">Esborrar</button>
-          <button id="closeHist" class="btn gray">Tanca</button>
-        </div>
-      </header>
-      <div class="content" id="histContent"></div>
-    </div>
-  </div>
-
+<div class="topbar">
+<div class="brand"><h1>Quiz challenge</h1></div>
+<img alt="Logo del joc" class="logo" id="logoImg" src="img/logo.jpg"/>
+</div>
+<div class="menuPanel">
+<div class="menu">
+<button class="btn gray" id="startBtn">Nova partida</button>
+<button class="btn gray" id="historyBtn">Veure historial</button>
+<button aria-pressed="true" class="toggle" id="soundBtn">
+<span aria-hidden="true" class="dot"></span><span class="lbl">Sons</span>
+</button>
+<button aria-pressed="false" class="toggle" id="capsBtn">
+<span aria-hidden="true" class="dot"></span><span class="lbl">Majúscules</span>
+</button>
+<button aria-pressed="true" class="toggle" id="timeBtn">
+<span aria-hidden="true" class="dot"></span><span class="lbl">Temps</span>
+</button>
+</div>
+</div>
+<div class="panel">
+<div id="startConfig">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+<div>
+<label>Mode de joc</label><br/>
+<select id="modeSel">
+<option value="facil">Fàcil</option>
+<option value="dificil">Difícil</option>
+<option selected="" value="expert">Expert</option>
+<option value="mix">Mix</option>
+</select>
+</div>
+<div>
+<label>Nombre de rondes</label><br/>
+<select id="roundsSel">
+<option selected="" value="15">15</option>
+<option value="30">30</option>
+<option value="60">60</option>
+</select>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+<div>
+<label>Jugador 1 (nom)</label><br/>
+<input id="player1" placeholder="Escriu el teu nom" type="text"/>
+</div>
+<div>
+<label>Mode Versus</label><br/>
+<select id="versusSel">
+<option selected="" value="off">Un jugador</option>
+<option value="on">2 jugadors (versus)</option>
+</select>
+</div>
+</div>
+<div class="hidden" id="p2wrap" style="margin-bottom:10px">
+<label>Jugador 2 (nom)</label><br/>
+<input id="player2" placeholder="Nom del segon jugador" type="text"/>
+</div>
+<div><button class="btn ok" id="beginBtn">Començar</button></div>
+</div>
+<div class="hidden" id="tutorial">
+<h3>Instruccions</h3>
+<ul>
+<li>Prem <strong>Mostrar més pistes</strong> si et quedes encallat.</li>
+<li>Tens <strong>20 segons</strong> per pregunta (si el <em>Temps</em> està actiu).</li>
+<li>En <strong>versus</strong> alternen torns.</li>
+</ul>
+<button class="btn ok" id="goPlay">Entesos! Anem a jugar</button>
+</div>
+<div class="game hidden" id="gameArea">
+<div class="gameTop">
+<div class="pill" id="turnInfo"></div>
+<div style="display:flex;gap:10px;align-items:center">
+<span class="timer" id="timer">⏱️ 20</span>
+<span class="progress" id="progress">0 / 0</span>
+<button class="btn blue" id="revealBtn">Mostrar més pistes</button>
+<button class="btn dark" id="endGameBtn">Sortir partida</button>
+</div>
+</div>
+<div class="clues" id="clues"></div>
+<div class="options" id="options"></div>
+<div class="feedback" id="feedback"></div>
+<div class="score" id="score">
+<div>Puntuació: <strong id="points">0</strong></div>
+<div>Ronda: <strong id="roundN">0</strong></div>
+<div class="hidden" id="p2score"></div>
+</div>
+</div>
+<div class="hidden" id="resultPanel">
+<div class="result">
+<h3>Resultats</h3>
+<div id="resultSummary"></div>
+<div style="display:flex;gap:10px;flex-wrap:wrap">
+<button class="btn ok" id="playAgainBtn">Jugar de nou</button>
+<button class="btn gray" id="backToMenuBtn">Tornar al menú</button>
+<button class="btn gray" id="openHistoryBtn">Veure historial</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div aria-labelledby="histTitle" aria-modal="true" class="modal" id="historyModal" role="dialog">
+<div class="sheet">
+<header>
+<h3 id="histTitle">Historial de puntuacions</h3>
+<div style="display:flex;gap:8px">
+<button class="btn gray" id="exportCSV">Exporta CSV</button>
+<button class="btn dark" id="clearHist">Esborrar</button>
+<button class="btn gray" id="closeHist">Tanca</button>
+</div>
+</header>
+<div class="content" id="histContent"></div>
+</div>
+</div>
 <script>
 (function(){
   function $(id){ return document.getElementById(id); }
