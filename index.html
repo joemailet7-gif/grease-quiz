@@ -44,7 +44,8 @@
   .option[disabled]{opacity:.55;pointer-events:none}
   .avatar{width:70px;height:70px;border-radius:10px;flex:0 0 70px;object-fit:cover;background:#26252f;border:1px solid rgba(255,255,255,.12)}
   .optText{font-weight:900;color:#fff}
-  .feedback{margin-top:10px;font-weight:900;min-height:1.4em}
+  .feedback{margin-top:10px;font-weight:900;min-height:90px;display:flex;align-items:center;gap:10px}
+  .feedback img.correctPhoto{width:min(320px,40vw);height:auto;border-radius:12px;border:2px solid #000;box-shadow:0 10px 24px rgba(0,0,0,.35);background:#fff}
   .good{color:var(--ok)} .bad{color:var(--bad)}
   .score{display:flex;gap:12px;align-items:center;margin-top:6px;color:var(--muted);font-weight:800}
   .score strong{color:var(--text)}
@@ -195,23 +196,6 @@
 (function(){
   function $(id){ return document.getElementById(id); }
   var els={};
-  var CHARACTERS=[
-    {id:"sandy",name:"Sandy",img:"img/sandy.jpg"},
-    {id:"danny",name:"Danny",img:"img/danny.jpg"},
-    {id:"rizzo",name:"Rizzo",img:"img/rizzo.jpg"},
-    {id:"kenickie",name:"Kenickie",img:"img/kenickie.jpg"},
-    {id:"frenchy",name:"Frenchy",img:"img/frenchy.jpg"},
-    {id:"doody",name:"Doody",img:"img/doody.jpg"},
-    {id:"marty",name:"Marty",img:"img/marty.jpg"},
-    {id:"sonny",name:"Sonny",img:"img/sonny.jpg"},
-    {id:"putzie",name:"Putzie",img:"img/putzie.jpg"},
-    {id:"patty",name:"Patty",img:"img/patty.jpg"},
-    {id:"jan",name:"Jan",img:"img/jan.jpg"},
-    {id:"balmudo",name:"Balmudo",img:"img/balmudo.jpg"},
-    {id:"murdock",name:"Sra. Murdock",img:"img/murdock.jpg"},
-    {id:"tom",name:"Tom",img:"img/tom.jpg"},
-    {id:"calhoun",name:"Entrenador Calhoun",img:"img/calhoun.jpg"}
-  ];
 
   // State
   var audioOn=true, actx=null;
@@ -220,19 +204,10 @@
   var BANK=[], round=0, remaining=[], current=null, revealed=0;
   var tickInt=null, timeLeft=20, questionT=0, totalTime=0;
   var versus=false, p1={name:'',points:0}, p2={name:'',points:0}, turn=1;
-  var KEY='grease_hist_ca_full';
+  var KEY='grease_hist_engineB2';
 
   function shuffle(a){ for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;} return a; }
-  function choices(ans){
-    var ids=CHARACTERS.map(c=>c.id);
-    var others=ids.filter(x=>x!==ans); others=shuffle(others).slice(0,3);
-    return shuffle([ans].concat(others));
-  }
-  function setToggle(btn, active){
-    if(!btn) return;
-    btn.classList[active?'add':'remove']('active');
-    btn.setAttribute('aria-pressed', String(active));
-  }
+  function setToggle(btn, active){ if(!btn) return; btn.classList[active?'add':'remove']('active'); btn.setAttribute('aria-pressed', String(active)); }
 
   // Audio blips
   function beep(f,d,t,v){ if(!audioOn) return; try{ if(!actx){ actx=new (window.AudioContext||window.webkitAudioContext)(); } var o=actx.createOscillator(),g=actx.createGain(); o.type=t||'sine'; o.frequency.value=f||880; g.gain.value=v||0.08; o.connect(g).connect(actx.destination); o.start(); o.stop(actx.currentTime+(d||0.10)); }catch(e){} }
@@ -268,14 +243,41 @@
   function uniqueByKey(arr){
     var seen={}, out=[];
     for(var i=0;i<arr.length;i++){
-      var q=arr[i]; var key=q.answer+'||'+q.clues.join('||');
+      var q=arr[i]; var key=q.answer+'||'+(q.pistes||q.clues||[]).join('||');
       if(!seen[key]){ seen[key]=1; out.push(q); }
     }
     return out;
   }
 
+  function normalizeEntry(e){
+    // Accept both legacy {pregunta,resposta,imatge,dificultat} and new {pistes:[],resposta,imatge,label}
+    var pistes = Array.isArray(e.pistes) ? e.pistes.slice() : (e.pregunta ? [e.pregunta] : []);
+    return {
+      answer: (e.resposta||'').toLowerCase().trim(),
+      pistes: pistes,
+      image: e.imatge || null,
+      label: (e.label || e.resposta || '').trim()
+    };
+  }
+
   function take(list, n){
-    var a=list.slice(); shuffle(a); return a.slice(0,n).map(x => ({answer:x.resposta, clues:[x.pregunta]}));
+    var a=list.slice(); shuffle(a); return a.slice(0,n).map(normalizeEntry);
+  }
+
+  function buildAnswerSet(pool){
+    // Map answer -> {label,image}
+    var map={};
+    for(var i=0;i<pool.length;i++){
+      var x=pool[i];
+      if(!map[x.answer]){
+        map[x.answer] = { label: x.label || x.answer, image: x.image || null };
+      } else {
+        // fill image/label if missing
+        if(!map[x.answer].image && x.image) map[x.answer].image = x.image;
+        if(!map[x.answer].label && x.label) map[x.answer].label = x.label;
+      }
+    }
+    return map;
   }
 
   function buildBank(modeName, rounds){
@@ -294,16 +296,21 @@
     } else { // expert
       pool = take(DATA.ultra||[], rounds);
     }
-    var decorated = pool.map(function(q){
-      return {answer:q.answer, clues:q.clues.slice(), choices:choices(q.answer)};
-    });
-    decorated = uniqueByKey(decorated).slice(0, rounds);
-    if(decorated.length < rounds){
-      var need = rounds - decorated.length;
-      var all=(DATA.infantil||[]).concat(DATA.expert||[]).concat(DATA.ultra||[]);
-      decorated = decorated.concat(take(all, need).map(x => ({answer:x.answer, clues:x.clues.slice(), choices:choices(x.answer)})));
-      decorated = uniqueByKey(decorated).slice(0, rounds);
+    pool = uniqueByKey(pool).slice(0, rounds);
+    if(pool.length < rounds){
+      var need = rounds - pool.length;
+      var all=(DATA.infantil||[]).concat(DATA.expert||[]).concat(DATA.ultra||[]).map(normalizeEntry);
+      pool = pool.concat(uniqueByKey(shuffle(all)).slice(0, need));
     }
+    // Decorate with choices using global answer set
+    var answersMap = buildAnswerSet(pool);
+    var allAnswers = Object.keys(answersMap);
+    var decorated = pool.map(function(q){
+      // choices: correct + 3 random others
+      var others = shuffle(allAnswers.filter(a => a!==q.answer)).slice(0,3);
+      var opts = shuffle([q.answer].concat(others));
+      return { answer:q.answer, pistes:q.pistes, image:q.image, label:q.label, choices:opts, answersMap:answersMap };
+    });
     return decorated;
   }
 
@@ -313,7 +320,7 @@
     els.resultPanel.classList.add('hidden');
     els.startConfig.classList.remove('hidden');
     els.progress.textContent='0 / 0';
-    els.feedback.textContent='';
+    els.feedback.innerHTML='';
     els.points.textContent='0';
     els.roundN.textContent='0';
     els.p2score.classList.add('hidden');
@@ -348,50 +355,76 @@
   function nextQuestion(){
     if(tickInt){clearInterval(tickInt); tickInt=null;}
     if(round>=remaining.length){ finishGame(); return; }
-    round++; els.roundN.textContent=round; els.feedback.textContent=''; revealed=0; els.revealBtn.disabled=false;
+    round++; els.roundN.textContent=round; els.feedback.innerHTML=''; revealed=0; els.revealBtn.disabled=false;
     current=BANK[remaining[round-1]]; renderClues(true); renderOptions(); els.progress.textContent=(round-1)+' / '+remaining.length;
     startTimer(); questionStart();
   }
   function addClue(){
-    if(revealed>=current.clues.length){ els.revealBtn.disabled=true; return; }
-    var d=document.createElement('div'); d.className='clue'; d.setAttribute('data-n', (revealed+1)); d.textContent=current.clues[revealed]; els.clues.appendChild(d); revealed++;
-    if(revealed>=current.clues.length) els.revealBtn.disabled=true;
+    var src = Array.isArray(current.pistes) ? current.pistes : [];
+    if(revealed>=src.length){ els.revealBtn.disabled=true; return; }
+    var d=document.createElement('div'); d.className='clue'; d.setAttribute('data-n', (revealed+1)); d.textContent=src[revealed]; els.clues.appendChild(d); revealed++;
+    if(revealed>=src.length) els.revealBtn.disabled=true;
   }
-  function renderClues(first){ els.clues.innerHTML=''; if(first) addClue(); }
+  function renderClues(first){
+    els.clues.innerHTML='';
+    var src = Array.isArray(current.pistes) ? current.pistes : [];
+    if(src.length===0){ els.clues.innerHTML='<div class="clue" data-n="1">Sense pistes en aquesta pregunta.</div>'; els.revealBtn.disabled=true; return; }
+    if(first) addClue();
+  }
+
+  function guessImageFor(answer, answersMap, fallbackImage){
+    var info = answersMap && answersMap[answer] ? answersMap[answer] : null;
+    var img = (info && info.image) ? info.image : (fallbackImage || ('img/'+answer+'.jpg'));
+    return img;
+  }
+  function guessLabelFor(answer, answersMap){
+    var info = answersMap && answersMap[answer] ? answersMap[answer] : null;
+    var label = (info && info.label) ? info.label : answer;
+    return label;
+  }
+
   function renderOptions(){
     els.options.innerHTML='';
-    var arr=shuffle(current.choices.slice());
+    var arr=current.choices.slice();
     for(var i=0;i<arr.length;i++){
-      var id=arr[i]; var ch=CHARACTERS.find(c=>c.id===id);
+      var id=arr[i];
       var b=document.createElement('button'); b.className='option'; b.dataset.id=id;
-      var im=document.createElement('img'); im.className='avatar'; im.src=ch.img; im.alt=ch.name; im.onerror=function(){ this.style.opacity=.25; this.alt='Imatge no trobada'; };
-      var t=document.createElement('div'); t.className='optText'; t.textContent=ch.name;
+      var im=document.createElement('img'); im.className='avatar';
+      im.src=guessImageFor(id, current.answersMap, current.image ? current.image : null);
+      im.alt='';
+      im.onerror=function(){ this.style.opacity=.15; };
+      var t=document.createElement('div'); t.className='optText'; t.textContent=guessLabelFor(id, current.answersMap);
       b.appendChild(im); b.appendChild(t); b.addEventListener('click', onAnswer); els.options.appendChild(b);
     }
   }
+
   function onAnswer(e){
     var chosen=e.currentTarget.dataset.id;
     lock(); stopTimer(); questionEnd();
-    var ok=(chosen===current.answer); score(ok);
+    var ok=(chosen===current.answer); score(ok, chosen);
     if(versus){ turn=(turn===1?2:1); updateTurnInfo(); }
-    setTimeout(nextQuestion, 900);
+    setTimeout(nextQuestion, 1000);
   }
   function lock(){ var buttons=document.querySelectorAll('.option'); for(var i=0;i<buttons.length;i++){ buttons[i].disabled=true; } }
-  function score(ok){
+
+  function score(ok, chosen){
     var tgt=(versus && turn===2)?p2:p1;
     if(ok){
-      var base=100, pen=Math.floor(base/Math.max(current.clues.length,1)), bonus=Math.max(0,timeLeft*2);
+      var base=100, pen=Math.floor(base/Math.max((current.pistes||[]).length,1)), bonus=Math.max(0,timeLeft*2);
       var pts=Math.max(10, base - pen*(revealed-1)) + bonus;
       tgt.points+=pts; sCorrect();
-      els.feedback.innerHTML='<span class="good">Correcte!</span> +'+pts+' punts (bonus temps: '+bonus+')';
+      // Show ONLY image of the correct answer (no text)
+      var imgURL = guessImageFor(current.answer, current.answersMap, current.image);
+      els.feedback.innerHTML = '<img class="correctPhoto" src="'+imgURL+'" alt=""/>';
     } else {
-      var rightName=(CHARACTERS.find(c=>c.id===current.answer)||{}).name || '—';
-      sWrong(); els.feedback.innerHTML='<span class="bad">Temps esgotat o incorrecta.</span> La resposta correcta era <strong>'+rightName+'</strong>.';
+      sWrong();
+      els.feedback.innerHTML='<span class="bad">Incorrecta.</span>';
     }
     els.points.textContent=p1.points;
     if(versus){ els.p2score.textContent=(p2.name+': '+p2.points+' punts'); els.p2score.classList.remove('hidden'); }
     els.progress.textContent=(round)+' / '+remaining.length;
   }
+
   function finishGame(){
     gameActive=false; stopTimer(); questionEnd();
     var winner=null,total=p1.points;
@@ -411,8 +444,8 @@
   function bindAll(){
     els.startBtn=$('startBtn'); els.historyBtn=$('historyBtn'); els.soundBtn=$('soundBtn'); els.logoImg=$('logoImg'); els.capsBtn=$('capsBtn'); els.timeBtn=$('timeBtn');
     els.startConfig=$('startConfig'); els.beginBtn=$('beginBtn'); els.versusSel=$('versusSel'); els.p2wrap=$('p2wrap'); els.player1=$('player1'); els.player2=$('player2'); els.tutorial=$('tutorial'); els.goPlay=$('goPlay');
-    els.gameArea=$('gameArea'); els.turnInfo=$('turnInfo'); els.timer=$('timer'); els.progress=$('progress'); els.revealBtn=$('revealBtn'); els.endGameBtn=$('endGameBtn'); els.clues=$('clues'); els.options=$('options'); els.feedback=$('feedback'); els.points=$('points'); els.roundN=$('roundN'); els.p2score=$('p2score');
-    els.modal=$('historyModal'); els.histContent=$('histContent'); els.closeHist=$('closeHist'); els.clearHist=$('clearHist'); els.exportCSV=$('exportCSV'); els.modeSel=$('modeSel'); els.roundsSel=$('roundsSel');
+    els.gameArea=$('gameArea'); els.turnInfo=$('turnInfo'); els.timer=$('timer'); els.progress=$('progress'); els.revealBtn=$('revealBtn'); els.endGameBtn=$('endGameBtn'); els.clues=$('clues'); els.options=$('options'); els.feedback=$('feedback'); els.points=$('points'); els.roundN=$('roundN'); els.p2score=$('p2score'];
+    els.modal=$('historyModal'); els.histContent=$('histContent'); els.closeHist=$('closeHist'); els.clearHist=$('clearHist'); els.exportCSV=$('exportCSV'); els.modeSel=$('modeSel'); els.roundsSel=$('roundsSel'];
     els.resultPanel=$('resultPanel'); els.resultSummary=$('resultSummary'); els.playAgainBtn=$('playAgainBtn'); els.backToMenuBtn=$('backToMenuBtn'); els.openHistoryBtn=$('openHistoryBtn');
 
     setToggle(els.soundBtn, true); setToggle(els.capsBtn, false); setToggle(els.timeBtn, true);
@@ -436,11 +469,12 @@
     els.goPlay.addEventListener('click',async function(){
       try{
         if(!DATA) await loadQuestions();
-        BANK = buildBank(mode, totalRounds);
-        // Prepare list of question indices
-        round=0; p1.points=0; p2.points=0; totalTime=0; revealed=0; remaining=[];
-        for(var i=0;i<BANK.length;i++) remaining.push(i);
-        // UI
+        BANK = (function(){
+          var list = buildBank(mode, totalRounds);
+          var idx=[]; for(var i=0;i<list.length;i++) idx.push(i);
+          remaining=idx; return list;
+        })();
+        round=0; p1.points=0; p2.points=0; totalTime=0; revealed=0;
         els.points.textContent='0'; els.roundN.textContent='0'; els.progress.textContent='0 / '+remaining.length;
         els.gameArea.classList.remove('hidden'); els.tutorial.classList.add('hidden'); els.resultPanel.classList.add('hidden');
         turn=1; updateTurnInfo(); nextQuestion(); gameActive=true;
