@@ -66,7 +66,7 @@
 </style>
 </head>
 <body>
-  <span class="version">v5.2.1</span>
+  <span class="version">v5.2.2</span>
   <div class="wrap">
     <div class="topbar">
       <div class="brand"><h1>Qui sóc?</h1></div>
@@ -409,24 +409,37 @@ function buildAnswerSet(pool){
     startTimer(); questionStart();
   }
   function addClue(){
-    var ans=(current.label||current.answer||'').trim();
+    var ans=(current && (current.label||current.answer)||'').trim();
     var gen=[];
     if(ans){
-      gen.push('Nombre de lletres: '+ans.replace(/\s+/g,'').length);
-      gen.push('Comença per: '+ans.charAt(0).toUpperCase());
+      gen.push('Nombre de lletres: '+ ans.replace(/\s+/g,'').length);
+      gen.push('Comença per: '+ ans.charAt(0).toUpperCase());
     }
     if(revealed>=gen.length){ els.revealBtn.disabled=true; return; }
-    var d=document.createElement('div'); d.className='clue'; d.setAttribute('data-n', revealed+1);
+    var d=document.createElement('div'); d.className='clue'; d.setAttribute('data-n', (revealed+1));
     d.textContent=gen[revealed];
     els.clues.appendChild(d); revealed++;
     if(revealed>=gen.length) els.revealBtn.disabled=true;
   }
 
   function renderClues(first){
+    // Show the main question/prompt (not counted as a revealed hint)
     els.clues.innerHTML='';
-    var src = Array.isArray(current.pistes) ? current.pistes : [];
-    if(src.length===0){ els.clues.innerHTML='<div class="clue" data-n="1">Sense pistes en aquesta pregunta.</div>'; els.revealBtn.disabled=true; return; }
-    if(first) addClue();
+    var prompt = '';
+    if(typeof current.pregunta === 'string' && current.pregunta.trim()){
+      prompt = current.pregunta.trim();
+    } else if(Array.isArray(current.pistes) && current.pistes.length){
+      prompt = String(current.pistes[0]||'').trim();
+    } else {
+      prompt = 'Endevina la resposta correcta';
+    }
+    var d=document.createElement('div'); d.className='clue'; d.setAttribute('data-n','Q');
+    d.textContent = prompt;
+    els.clues.appendChild(d);
+    // reset dynamic revealed counter
+    revealed = 0;
+    // enable reveal if we can generate dynamic hints
+    els.revealBtn.disabled = false;
   }
 
   function guessImageFor(answer, answersMap, fallbackImage){
