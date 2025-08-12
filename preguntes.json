@@ -1,1272 +1,799 @@
 {
   "infantil": [
     {
-      "pregunta": "La noia nova amb cabell ros llarg i somriure dolç.",
+      "pistes": [
+        "Qui és la protagonista rossa de la pel·lícula?"
+      ],
       "resposta": "sandy",
-      "imatge": "sandy.jpg",
-      "dificultat": "infantil"
+      "imatge": "img/sandy.jpg",
+      "label": "sandy"
     },
     {
-      "pregunta": "El noi amb jaqueta de cuir negra i posat de líder.",
+      "pistes": [
+        "Qui és el noi amb jaqueta de cuir negra i líder dels T-Birds?"
+      ],
       "resposta": "danny",
-      "imatge": "danny.jpg",
-      "dificultat": "infantil"
+      "imatge": "img/danny.jpg",
+      "label": "danny"
     },
     {
-      "pregunta": "La líder valenta de les Pink Ladies.",
+      "pistes": [
+        "Quin personatge porta sempre la jaqueta rosa?"
+      ],
       "resposta": "rizzo",
-      "imatge": "rizzo.jpg",
-      "dificultat": "infantil"
+      "imatge": "img/rizzo.jpg",
+      "label": "rizzo"
     },
     {
-      "pregunta": "El millor amic d’en Danny, fan dels cotxes.",
+      "pistes": [
+        "Quin amic de Danny té el cabell fosc i és alt?"
+      ],
       "resposta": "kenickie",
-      "imatge": "kenickie.jpg",
-      "dificultat": "infantil"
+      "imatge": "img/kenickie.jpg",
+      "label": "kenickie"
     },
     {
-      "pregunta": "La Pink Lady de la perruqueria i maquillatge.",
+      "pistes": [
+        "Quin personatge té els cabells rosats?"
+      ],
       "resposta": "frenchy",
-      "imatge": "frenchy.jpg",
-      "dificultat": "infantil"
+      "imatge": "img/frenchy.jpg",
+      "label": "frenchy"
     },
     {
-      "pregunta": "Un T-Bird que a vegades toca la guitarra.",
+      "pistes": [
+        "Qui condueix el cotxe “Greased Lightning”?"
+      ],
+      "resposta": "kenickie",
+      "imatge": "img/kenickie.jpg",
+      "label": "kenickie"
+    },
+    {
+      "pistes": [
+        "Quin grup de noies és amic de Sandy?"
+      ],
+      "resposta": "pinkladies",
+      "imatge": "img/pinkladies.jpg",
+      "label": "pinkladies"
+    },
+    {
+      "pistes": [
+        "Qui canta amb Sandy a la platja al principi?"
+      ],
+      "resposta": "danny",
+      "imatge": "img/danny.jpg",
+      "label": "danny"
+    },
+    {
+      "pistes": [
+        "Qui té por de disseccionar una granota a classe?"
+      ],
+      "resposta": "jan",
+      "imatge": "img/jan.jpg",
+      "label": "jan"
+    },
+    {
+      "pistes": [
+        "Qui sempre menja caramels o dolços?"
+      ],
+      "resposta": "sonny",
+      "imatge": "img/sonny.jpg",
+      "label": "sonny"
+    },
+    {
+      "pistes": [
+        "Quin és el nom del grup de nois amics de Danny?"
+      ],
+      "resposta": "tbirds",
+      "imatge": "img/tbirds.jpg",
+      "label": "tbirds"
+    },
+    {
+      "pistes": [
+        "Quin ball celebren a l’escola?"
+      ],
+      "resposta": "concursdeball",
+      "imatge": "img/concursdeball.jpg",
+      "label": "concursdeball"
+    },
+    {
+      "pistes": [
+        "Qui té una escola de bellesa?"
+      ],
+      "resposta": "frenchy",
+      "imatge": "img/frenchy.jpg",
+      "label": "frenchy"
+    },
+    {
+      "pistes": [
+        "Qui ajuda Sandy a canviar de look al final?"
+      ],
+      "resposta": "frenchy",
+      "imatge": "img/frenchy.jpg",
+      "label": "frenchy"
+    },
+    {
+      "pistes": [
+        "Quin és el color principal del cotxe “Greased Lightning”?"
+      ],
+      "resposta": "blanc",
+      "imatge": "img/blanc.jpg",
+      "label": "blanc"
+    },
+    {
+      "pistes": [
+        "Qui té ulleres i és molt simpàtica?"
+      ],
+      "resposta": "marty",
+      "imatge": "img/marty.jpg",
+      "label": "marty"
+    },
+    {
+      "pistes": [
+        "Qui és el millor amic de Kenickie?"
+      ],
+      "resposta": "danny",
+      "imatge": "img/danny.jpg",
+      "label": "danny"
+    },
+    {
+      "pistes": [
+        "On es coneixen Danny i Sandy?"
+      ],
+      "resposta": "platja",
+      "imatge": "img/platja.jpg",
+      "label": "platja"
+    },
+    {
+      "pistes": [
+        "Quin esport practica Tom?"
+      ],
+      "resposta": "futbolamericà",
+      "imatge": "img/futbolamerican.jpg",
+      "label": "futbolamericà"
+    },
+    {
+      "pistes": [
+        "Qui és la professora de mecànica?"
+      ],
+      "resposta": "murdock",
+      "imatge": "img/murdock.jpg",
+      "label": "murdock"
+    },
+    {
+      "pistes": [
+        "Quin color és el vestit final de Sandy?"
+      ],
+      "resposta": "negre",
+      "imatge": "img/negre.jpg",
+      "label": "negre"
+    },
+    {
+      "pistes": [
+        "Qui condueix la moto que espanta Sandy?"
+      ],
+      "resposta": "balmudo",
+      "imatge": "img/balmudo.jpg",
+      "label": "balmudo"
+    },
+    {
+      "pistes": [
+        "Quin és el nom del col·legi?"
+      ],
+      "resposta": "rydell",
+      "imatge": "img/rydell.jpg",
+      "label": "rydell"
+    },
+    {
+      "pistes": [
+        "Qui balla amb Sandy al final de la pel·lícula?"
+      ],
+      "resposta": "danny",
+      "imatge": "img/danny.jpg",
+      "label": "danny"
+    },
+    {
+      "pistes": [
+        "Qui és l’entrenador d’educació física?"
+      ],
+      "resposta": "calhoun",
+      "imatge": "img/calhoun.jpg",
+      "label": "calhoun"
+    },
+    {
+      "pistes": [
+        "Qui porta la cua de cavall més alta?"
+      ],
+      "resposta": "patty",
+      "imatge": "img/patty.jpg",
+      "label": "patty"
+    },
+    {
+      "pistes": [
+        "Quin personatge és més bromista?"
+      ],
+      "resposta": "putzie",
+      "imatge": "img/putzie.jpg",
+      "label": "putzie"
+    },
+    {
+      "pistes": [
+        "Qui és la parella de ball de Rizzo al concurs?"
+      ],
+      "resposta": "kenickie",
+      "imatge": "img/kenickie.jpg",
+      "label": "kenickie"
+    },
+    {
+      "pistes": [
+        "Qui canta “Hopelessly Devoted To You”?"
+      ],
+      "resposta": "sandy",
+      "imatge": "img/sandy.jpg",
+      "label": "sandy"
+    },
+    {
+      "pistes": [
+        "Quin ball guanyen Danny i Cha-Cha?"
+      ],
+      "resposta": "concursdeball",
+      "imatge": "img/concursdeball.jpg",
+      "label": "concursdeball"
+    },
+    {
+      "pistes": [
+        "Qui porta una jaqueta amb un ànec dibuixat?"
+      ],
+      "resposta": "tbirds",
+      "imatge": "img/tbirds.jpg",
+      "label": "tbirds"
+    },
+    {
+      "pistes": [
+        "Quin és el color dels cabells de Frenchy al principi?"
+      ],
+      "resposta": "ros",
+      "imatge": "img/ros.jpg",
+      "label": "ros"
+    },
+    {
+      "pistes": [
+        "Qui és el més alt dels T-Birds?"
+      ],
+      "resposta": "kenickie",
+      "imatge": "img/kenickie.jpg",
+      "label": "kenickie"
+    },
+    {
+      "pistes": [
+        "Quin amic de Danny és més baixet i porta cabell fosc?"
+      ],
       "resposta": "doody",
-      "imatge": "doody.jpg",
-      "dificultat": "infantil"
+      "imatge": "img/doody.jpg",
+      "label": "doody"
     },
     {
-      "pregunta": "La Pink Lady que adora la moda i els accessoris.",
-      "resposta": "marty",
-      "imatge": "marty.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "El T-Bird bromista que parla sovint de menjar.",
+      "pistes": [
+        "Quin amic de Danny té més gana sempre?"
+      ],
       "resposta": "sonny",
-      "imatge": "sonny.jpg",
-      "dificultat": "infantil"
+      "imatge": "img/sonny.jpg",
+      "label": "sonny"
     },
     {
-      "pregunta": "El T-Bird més baixet i simpàtic.",
-      "resposta": "putzie",
-      "imatge": "putzie.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "L’animadora amb molta energia a Rydell.",
-      "resposta": "patty",
-      "imatge": "patty.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "La Pink Lady riallera que sempre porta algun snack.",
-      "resposta": "jan",
-      "imatge": "jan.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "El rival dels T-Birds, conductor agressiu.",
+      "pistes": [
+        "Qui fa de “dolent” a la pel·lícula?"
+      ],
       "resposta": "balmudo",
-      "imatge": "balmudo.jpg",
-      "dificultat": "infantil"
+      "imatge": "img/balmudo.jpg",
+      "label": "balmudo"
     },
     {
-      "pregunta": "La professora de mecànica al taller.",
-      "resposta": "murdock",
-      "imatge": "murdock.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "L’esportista del camp de futbol americà.",
-      "resposta": "tom",
-      "imatge": "tom.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "L’entrenador enèrgic del gimnàs.",
-      "resposta": "calhoun",
-      "imatge": "calhoun.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "Al final porta pantalons negres i sorprèn tothom.",
-      "resposta": "sandy",
-      "imatge": "sandy.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "Balla rock’n’roll com un campió al gimnàs.",
+      "pistes": [
+        "Qui ajuda Kenickie abans de la cursa final?"
+      ],
       "resposta": "danny",
-      "imatge": "danny.jpg",
-      "dificultat": "infantil"
+      "imatge": "img/danny.jpg",
+      "label": "danny"
     },
     {
-      "pregunta": "Fa comentaris aguts i camina amb seguretat.",
+      "pistes": [
+        "Quin personatge porta una diadema blanca al ball?"
+      ],
+      "resposta": "sandy",
+      "imatge": "img/sandy.jpg",
+      "label": "sandy"
+    },
+    {
+      "pistes": [
+        "Qui és la noia amb un vestit rosa al ball?"
+      ],
+      "resposta": "marty",
+      "imatge": "img/marty.jpg",
+      "label": "marty"
+    },
+    {
+      "pistes": [
+        "Qui és l’encarregada de l’anunci per megafonia?"
+      ],
+      "resposta": "patty",
+      "imatge": "img/patty.jpg",
+      "label": "patty"
+    },
+    {
+      "pistes": [
+        "Quin personatge cau de cul mentre balla?"
+      ],
+      "resposta": "putzie",
+      "imatge": "img/putzie.jpg",
+      "label": "putzie"
+    },
+    {
+      "pistes": [
+        "Qui té un accent molt marcat i dolç?"
+      ],
+      "resposta": "sandy",
+      "imatge": "img/sandy.jpg",
+      "label": "sandy"
+    },
+    {
+      "pistes": [
+        "Quin és el nom de la noia que balla amb Danny al principi del concurs?"
+      ],
+      "resposta": "cha-cha",
+      "imatge": "img/cha-cha.jpg",
+      "label": "cha-cha"
+    },
+    {
+      "pistes": [
+        "Qui porta sempre un llapis de llavis a la mà?"
+      ],
       "resposta": "rizzo",
-      "imatge": "rizzo.jpg",
-      "dificultat": "infantil"
+      "imatge": "img/rizzo.jpg",
+      "label": "rizzo"
     },
     {
-      "pregunta": "Treballa sota el capó del seu cotxe orgullós.",
-      "resposta": "kenickie",
-      "imatge": "kenickie.jpg",
-      "dificultat": "infantil"
+      "pistes": [
+        "Qui s’ofereix a conduir el cotxe a la cursa?"
+      ],
+      "resposta": "danny",
+      "imatge": "img/danny.jpg",
+      "label": "danny"
     },
     {
-      "pregunta": "Canvia sovint el pentinat; a vegades, rosa.",
-      "resposta": "frenchy",
-      "imatge": "frenchy.jpg",
-      "dificultat": "infantil"
+      "pistes": [
+        "Quin grup porta jaquetes de cuir negre?"
+      ],
+      "resposta": "tbirds",
+      "imatge": "img/tbirds.jpg",
+      "label": "tbirds"
     },
     {
-      "pregunta": "Porta jaqueta T-Bird i és juganer.",
+      "pistes": [
+        "Quin grup porta jaquetes roses?"
+      ],
+      "resposta": "pinkladies",
+      "imatge": "img/pinkladies.jpg",
+      "label": "pinkladies"
+    },
+    {
+      "pistes": [
+        "Qui és el noi amb ulleres que balla de manera divertida?"
+      ],
+      "resposta": "sonny",
+      "imatge": "img/sonny.jpg",
+      "label": "sonny"
+    },
+    {
+      "pistes": [
+        "Quin és el millor amic de Putzie?"
+      ],
       "resposta": "doody",
-      "imatge": "doody.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "Escriu cartes i li encanten les joies.",
-      "resposta": "marty",
-      "imatge": "marty.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "Sempre té un acudit a punt.",
-      "resposta": "sonny",
-      "imatge": "sonny.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "Amic lleial que acompanya el grup.",
-      "resposta": "putzie",
-      "imatge": "putzie.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "Organitza activitats escolars amb entusiasme.",
-      "resposta": "patty",
-      "imatge": "patty.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "Comparteix rialles amb les amigues Pink Ladies.",
-      "resposta": "jan",
-      "imatge": "jan.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "Apareix a Thunder Road com a rival.",
-      "resposta": "balmudo",
-      "imatge": "balmudo.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "Explica motors i eines amb paciència.",
-      "resposta": "murdock",
-      "imatge": "murdock.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "Surt entrenant al camp amb disciplina.",
-      "resposta": "tom",
-      "imatge": "tom.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "Dóna ordres a crits al gimnàs.",
-      "resposta": "calhoun",
-      "imatge": "calhoun.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "És amiga de la Frenchy i tímida al principi.",
-      "resposta": "sandy",
-      "imatge": "sandy.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "Li agraden les curses de cotxes.",
-      "resposta": "danny",
-      "imatge": "danny.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "Balla sovint amb en Kenickie.",
-      "resposta": "rizzo",
-      "imatge": "rizzo.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "És el manetes dels T-Birds.",
-      "resposta": "kenickie",
-      "imatge": "kenickie.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "És el cor amable del grup.",
-      "resposta": "frenchy",
-      "imatge": "frenchy.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "Fa bromes a classe i al pati.",
-      "resposta": "doody",
-      "imatge": "doody.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "Se la veu al Frosty Palace.",
-      "resposta": "marty",
-      "imatge": "marty.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "A la cafeteria sempre picoteja.",
-      "resposta": "sonny",
-      "imatge": "sonny.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "Va amb en Doody a tot arreu.",
-      "resposta": "putzie",
-      "imatge": "putzie.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "Somriu a tothom a l’institut.",
-      "resposta": "patty",
-      "imatge": "patty.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "Comparteix snacks amb les amigues.",
-      "resposta": "jan",
-      "imatge": "jan.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "Va amb la colla dels Scorpions.",
-      "resposta": "balmudo",
-      "imatge": "balmudo.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "Posa exàmens pràctics al taller.",
-      "resposta": "murdock",
-      "imatge": "murdock.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "És popular i atlètic.",
-      "resposta": "tom",
-      "imatge": "tom.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "Organitza exercicis i partits.",
-      "resposta": "calhoun",
-      "imatge": "calhoun.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "Fa parella amb en Danny en molts moments.",
-      "resposta": "sandy",
-      "imatge": "sandy.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "Presumeix de pentinat brillant.",
-      "resposta": "danny",
-      "imatge": "danny.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "No s’arronsa davant de res.",
-      "resposta": "rizzo",
-      "imatge": "rizzo.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "Se’l veu al taller i a Thunder Road.",
-      "resposta": "kenickie",
-      "imatge": "kenickie.jpg",
-      "dificultat": "infantil"
-    },
-    {
-      "pregunta": "Porta davantal a la perruqueria.",
-      "resposta": "frenchy",
-      "imatge": "frenchy.jpg",
-      "dificultat": "infantil"
-    }
-  ],
-  "normal": [
-    {
-      "pregunta": "És parella d’en Danny al principi de la història.",
-      "resposta": "sandy",
-      "imatge": "sandy.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "És parella d’en Kenickie.",
-      "resposta": "rizzo",
-      "imatge": "rizzo.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Convida la Sandy a unir-se a les Pink Ladies.",
-      "resposta": "frenchy",
-      "imatge": "frenchy.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Arbitra o organitza el concurs de ball.",
-      "resposta": "calhoun",
-      "imatge": "calhoun.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "S’apunta al gimnàs per impressionar la Sandy.",
-      "resposta": "danny",
-      "imatge": "danny.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Ajuda a reparar el Greased Lightning.",
-      "resposta": "doody",
-      "imatge": "doody.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Demana diners a un amic per arreglar el cotxe.",
-      "resposta": "kenickie",
-      "imatge": "kenickie.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Es desmaia just abans de la cursa a Thunder Road.",
-      "resposta": "kenickie",
-      "imatge": "kenickie.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Puja al cotxe per fer la cursa a última hora.",
-      "resposta": "danny",
-      "imatge": "danny.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "És el líder dels Scorpions.",
-      "resposta": "balmudo",
-      "imatge": "balmudo.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "S’ofereix voluntària per fer animació.",
-      "resposta": "patty",
-      "imatge": "patty.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Se la veu menjant gelat al Frosty Palace.",
-      "resposta": "marty",
-      "imatge": "marty.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Apareix entrenant amb el bat al camp.",
-      "resposta": "tom",
-      "imatge": "tom.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Fa una broma durant una classe.",
-      "resposta": "sonny",
-      "imatge": "sonny.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Riu enmig d’un embolic a la cafeteria.",
-      "resposta": "jan",
-      "imatge": "jan.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Fa riure tothom al pati.",
-      "resposta": "putzie",
-      "imatge": "putzie.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Assigna una pràctica difícil al taller.",
-      "resposta": "murdock",
-      "imatge": "murdock.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Porta un vestit blanc al ball final (moment elegant).",
-      "resposta": "sandy",
-      "imatge": "sandy.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Ballarí destacat al gimnàs durant el concurs.",
-      "resposta": "danny",
-      "imatge": "danny.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Fa comentaris sobre el pentinat d’una amiga.",
-      "resposta": "rizzo",
-      "imatge": "rizzo.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Presumeix del seu cotxe davant la colla.",
-      "resposta": "kenickie",
-      "imatge": "kenickie.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Acompanya la Sandy quan està trista.",
-      "resposta": "frenchy",
-      "imatge": "frenchy.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Mostra una bossa de mà gran i lluent.",
-      "resposta": "marty",
-      "imatge": "marty.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Acaba amb la cara plena de menjar per broma.",
-      "resposta": "sonny",
-      "imatge": "sonny.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Perd l’equilibri a la pista de ball.",
-      "resposta": "putzie",
-      "imatge": "putzie.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Ajuda a preparar la decoració del ball.",
-      "resposta": "patty",
-      "imatge": "patty.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Comparteix snacks durant una conversa.",
-      "resposta": "jan",
-      "imatge": "jan.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Apareix amb una gorra a Thunder Road.",
-      "resposta": "balmudo",
-      "imatge": "balmudo.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Repassa eines i normes de seguretat.",
-      "resposta": "murdock",
-      "imatge": "murdock.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Parla amb la Patty a la grada del gimnàs.",
-      "resposta": "tom",
-      "imatge": "tom.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Crida que s’acceleri l’entrenament.",
-      "resposta": "calhoun",
-      "imatge": "calhoun.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "És observada per en Danny des de la grada.",
-      "resposta": "sandy",
-      "imatge": "sandy.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Es mira al mirall i es posa colònia.",
-      "resposta": "danny",
-      "imatge": "danny.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Porta un vestit rosa al ball.",
-      "resposta": "rizzo",
-      "imatge": "rizzo.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Mostra una pinta metàl·lica a la butxaca.",
-      "resposta": "kenickie",
-      "imatge": "kenickie.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Fa proves de pentinat creatives.",
-      "resposta": "frenchy",
-      "imatge": "frenchy.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Llegeix una carta amb atenció.",
-      "resposta": "marty",
-      "imatge": "marty.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Fa bromes amb en Doody i en Putzie.",
-      "resposta": "sonny",
-      "imatge": "sonny.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "S’ofereix per ajudar amb el cotxe.",
-      "resposta": "putzie",
-      "imatge": "putzie.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Fa un anunci per megafonia.",
-      "resposta": "patty",
-      "imatge": "patty.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Es taca la roba amb una safata.",
-      "resposta": "jan",
-      "imatge": "jan.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Condueix agressiu a l’aparcament.",
-      "resposta": "balmudo",
-      "imatge": "balmudo.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Talla una peça metàl·lica al taller.",
-      "resposta": "murdock",
-      "imatge": "murdock.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Fa flexions al gimnàs.",
-      "resposta": "tom",
-      "imatge": "tom.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Marca exercicis amb xiulet.",
-      "resposta": "calhoun",
-      "imatge": "calhoun.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Canta en un moment íntim i emotiu.",
-      "resposta": "sandy",
-      "imatge": "sandy.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Intenta fer flexions per impressionar.",
-      "resposta": "danny",
-      "imatge": "danny.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Fa broma sobre una targeta de felicitació.",
-      "resposta": "rizzo",
-      "imatge": "rizzo.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Parla de recanvis per al motor.",
-      "resposta": "kenickie",
-      "imatge": "kenickie.jpg",
-      "dificultat": "normal"
-    },
-    {
-      "pregunta": "Dóna consells de bellesa a una amiga.",
-      "resposta": "frenchy",
-      "imatge": "frenchy.jpg",
-      "dificultat": "normal"
+      "imatge": "img/doody.jpg",
+      "label": "doody"
     }
   ],
   "expert": [
     {
-      "pregunta": "A la platja porta camisa clara amb ratlles blaves.",
-      "resposta": "danny",
-      "imatge": "danny.jpg",
-      "dificultat": "expert"
+      "pistes": [
+        "Quin és el nom complet de Danny?"
+      ],
+      "resposta": "danny zuko",
+      "imatge": "img/dannyzuko.jpg",
+      "label": "danny zuko"
     },
     {
-      "pregunta": "Al començament, porta un mocador vermell al coll.",
-      "resposta": "marty",
-      "imatge": "marty.jpg",
-      "dificultat": "expert"
+      "pistes": [
+        "Quin instrument toca Doody?"
+      ],
+      "resposta": "guitarra",
+      "imatge": "img/guitarra.jpg",
+      "label": "guitarra"
     },
     {
-      "pregunta": "A classe, porta una diadema blanca.",
-      "resposta": "patty",
-      "imatge": "patty.jpg",
-      "dificultat": "expert"
-    },
-    {
-      "pregunta": "Fuma amagada darrere de la cafeteria.",
+      "pistes": [
+        "Qui convida Sandy a la seva festa de pijames?"
+      ],
       "resposta": "rizzo",
-      "imatge": "rizzo.jpg",
-      "dificultat": "expert"
+      "imatge": "img/rizzo.jpg",
+      "label": "rizzo"
     },
     {
-      "pregunta": "A Thunder Road porta jaqueta marró.",
+      "pistes": [
+        "Quin és el sobrenom de Leo?"
+      ],
       "resposta": "balmudo",
-      "imatge": "balmudo.jpg",
-      "dificultat": "expert"
+      "imatge": "img/balmudo.jpg",
+      "label": "balmudo"
     },
     {
-      "pregunta": "A la perruqueria porta un davantal.",
-      "resposta": "frenchy",
-      "imatge": "frenchy.jpg",
-      "dificultat": "expert"
-    },
-    {
-      "pregunta": "Davant del mirall, usa una pinta metàl·lica.",
-      "resposta": "kenickie",
-      "imatge": "kenickie.jpg",
-      "dificultat": "expert"
-    },
-    {
-      "pregunta": "Fa caure unes safates a la cafeteria.",
-      "resposta": "jan",
-      "imatge": "jan.jpg",
-      "dificultat": "expert"
-    },
-    {
-      "pregunta": "Al ball, porta corbata negra i camisa blanca.",
-      "resposta": "danny",
-      "imatge": "danny.jpg",
-      "dificultat": "expert"
-    },
-    {
-      "pregunta": "Al partit de futbol, camisa blava clara.",
-      "resposta": "tom",
-      "imatge": "tom.jpg",
-      "dificultat": "expert"
-    },
-    {
-      "pregunta": "Fa equilibris sobre un banc al pati.",
-      "resposta": "putzie",
-      "imatge": "putzie.jpg",
-      "dificultat": "expert"
-    },
-    {
-      "pregunta": "Té un rellotge gros visible a una escena.",
+      "pistes": [
+        "Quin amic de Danny porta un pentinat alt amb molt brillantina?"
+      ],
       "resposta": "sonny",
-      "imatge": "sonny.jpg",
-      "dificultat": "expert"
+      "imatge": "img/sonny.jpg",
+      "label": "sonny"
     },
     {
-      "pregunta": "Porta ulleres de sol molt grans en una escena.",
+      "pistes": [
+        "Qui fa veure que està malalta per evitar educació física?"
+      ],
       "resposta": "marty",
-      "imatge": "marty.jpg",
-      "dificultat": "expert"
+      "imatge": "img/marty.jpg",
+      "label": "marty"
     },
     {
-      "pregunta": "Porta camisa blava fosca amb estampat blanc.",
+      "pistes": [
+        "Quin color és el vestit que porta Sandy a la cursa final?"
+      ],
+      "resposta": "negre",
+      "imatge": "img/negre.jpg",
+      "label": "negre"
+    },
+    {
+      "pistes": [
+        "On treballa Vince Fontaine?"
+      ],
+      "resposta": "ràdio",
+      "imatge": "img/radio.jpg",
+      "label": "ràdio"
+    },
+    {
+      "pistes": [
+        "Quin és el nom de la banda rival dels T-Birds?"
+      ],
+      "resposta": "scorpions",
+      "imatge": "img/scorpions.jpg",
+      "label": "scorpions"
+    },
+    {
+      "pistes": [
+        "Quin balla Cha-Cha amb Danny?"
+      ],
+      "resposta": "concursdeball",
+      "imatge": "img/concursdeball.jpg",
+      "label": "concursdeball"
+    },
+    {
+      "pistes": [
+        "Qui porta una camisa de quadres vermells al taller?"
+      ],
       "resposta": "kenickie",
-      "imatge": "kenickie.jpg",
-      "dificultat": "expert"
+      "imatge": "img/kenickie.jpg",
+      "label": "kenickie"
     },
     {
-      "pregunta": "Fa d’àrbitre/entrenador a la cursa.",
-      "resposta": "calhoun",
-      "imatge": "calhoun.jpg",
-      "dificultat": "expert"
-    },
-    {
-      "pregunta": "Revisa motors amb ulleres de protecció.",
-      "resposta": "murdock",
-      "imatge": "murdock.jpg",
-      "dificultat": "expert"
-    },
-    {
-      "pregunta": "Es canvia de sabates al passadís.",
-      "resposta": "sandy",
-      "imatge": "sandy.jpg",
-      "dificultat": "expert"
-    },
-    {
-      "pregunta": "Porta guants de pell negra en una escena.",
-      "resposta": "rizzo",
-      "imatge": "rizzo.jpg",
-      "dificultat": "expert"
-    },
-    {
-      "pregunta": "Salta sobre una taula durant una cançó.",
-      "resposta": "danny",
-      "imatge": "danny.jpg",
-      "dificultat": "expert"
-    },
-    {
-      "pregunta": "A l’aparcament, s’eixuga el front amb mocador.",
-      "resposta": "kenickie",
-      "imatge": "kenickie.jpg",
-      "dificultat": "expert"
-    },
-    {
-      "pregunta": "Apareix amb bossa gran de mà i lluent.",
-      "resposta": "marty",
-      "imatge": "marty.jpg",
-      "dificultat": "expert"
-    },
-    {
-      "pregunta": "Seu sobre el capó d’un cotxe blanc.",
-      "resposta": "sonny",
-      "imatge": "sonny.jpg",
-      "dificultat": "expert"
-    },
-    {
-      "pregunta": "Porta camisa rosa pàl·lid en una escena.",
-      "resposta": "patty",
-      "imatge": "patty.jpg",
-      "dificultat": "expert"
-    },
-    {
-      "pregunta": "S’amaga darrere d’una porta amb un refresc.",
-      "resposta": "jan",
-      "imatge": "jan.jpg",
-      "dificultat": "expert"
-    },
-    {
-      "pregunta": "Es pentina i es posa brillantina abans del ball.",
-      "resposta": "danny",
-      "imatge": "danny.jpg",
-      "dificultat": "expert"
-    },
-    {
-      "pregunta": "S’enganxa els cordons i gairebé cau.",
-      "resposta": "putzie",
-      "imatge": "putzie.jpg",
-      "dificultat": "expert"
-    },
-    {
-      "pregunta": "Beu d’una ampolla de vidre a la cursa.",
+      "pistes": [
+        "Qui condueix el cotxe negre al final?"
+      ],
       "resposta": "balmudo",
-      "imatge": "balmudo.jpg",
-      "dificultat": "expert"
+      "imatge": "img/balmudo.jpg",
+      "label": "balmudo"
     },
     {
-      "pregunta": "Es posa ulleres de sol rodones.",
-      "resposta": "frenchy",
-      "imatge": "frenchy.jpg",
-      "dificultat": "expert"
+      "pistes": [
+        "Qui fa de presentador al concurs de ball?"
+      ],
+      "resposta": "vince fontaine",
+      "imatge": "img/vincefontaine.jpg",
+      "label": "vince fontaine"
     },
     {
-      "pregunta": "Marca el ritme amb xiulet a la pista.",
-      "resposta": "calhoun",
-      "imatge": "calhoun.jpg",
-      "dificultat": "expert"
+      "pistes": [
+        "Quin color és el jersei de Patty durant el partit?"
+      ],
+      "resposta": "blanc",
+      "imatge": "img/blanc.jpg",
+      "label": "blanc"
     },
     {
-      "pregunta": "Dona instruccions a companys de l’equip.",
-      "resposta": "tom",
-      "imatge": "tom.jpg",
-      "dificultat": "expert"
-    },
-    {
-      "pregunta": "Assenyala una clau anglesa gran durant l’explicació.",
-      "resposta": "murdock",
-      "imatge": "murdock.jpg",
-      "dificultat": "expert"
-    },
-    {
-      "pregunta": "Porta una jaqueta de punt blanca.",
+      "pistes": [
+        "Qui ajuda Frenchy a la cafeteria?"
+      ],
       "resposta": "sandy",
-      "imatge": "sandy.jpg",
-      "dificultat": "expert"
+      "imatge": "img/sandy.jpg",
+      "label": "sandy"
     },
     {
-      "pregunta": "Porta pantalons vermells en una escena de ball.",
-      "resposta": "rizzo",
-      "imatge": "rizzo.jpg",
-      "dificultat": "expert"
-    },
-    {
-      "pregunta": "Fa passos amb mans darrere del cap al concurs.",
-      "resposta": "danny",
-      "imatge": "danny.jpg",
-      "dificultat": "expert"
-    },
-    {
-      "pregunta": "Mostra un mocador de butxaca vermell.",
-      "resposta": "kenickie",
-      "imatge": "kenickie.jpg",
-      "dificultat": "expert"
-    },
-    {
-      "pregunta": "Porta una polsera daurada visible al ball.",
-      "resposta": "marty",
-      "imatge": "marty.jpg",
-      "dificultat": "expert"
-    },
-    {
-      "pregunta": "Menja crispetes durant el concurs de ball.",
-      "resposta": "sonny",
-      "imatge": "sonny.jpg",
-      "dificultat": "expert"
-    },
-    {
-      "pregunta": "Porta carpeta plena de papers al passadís.",
-      "resposta": "patty",
-      "imatge": "patty.jpg",
-      "dificultat": "expert"
-    },
-    {
-      "pregunta": "Fa veure que ventila amb un llibre.",
-      "resposta": "jan",
-      "imatge": "jan.jpg",
-      "dificultat": "expert"
-    },
-    {
-      "pregunta": "És observada mentre practica passos de ball.",
-      "resposta": "sandy",
-      "imatge": "sandy.jpg",
-      "dificultat": "expert"
-    },
-    {
-      "pregunta": "A la cursa, sabates blanques amb cordons negres.",
-      "resposta": "danny",
-      "imatge": "danny.jpg",
-      "dificultat": "expert"
-    },
-    {
-      "pregunta": "Cotxe amb pintura platejada metàl·lica.",
-      "resposta": "balmudo",
-      "imatge": "balmudo.jpg",
-      "dificultat": "expert"
-    },
-    {
-      "pregunta": "Treu un llapis de marcar metall.",
-      "resposta": "murdock",
-      "imatge": "murdock.jpg",
-      "dificultat": "expert"
-    },
-    {
-      "pregunta": "Fa una estirada amb goma al gimnàs.",
-      "resposta": "tom",
-      "imatge": "tom.jpg",
-      "dificultat": "expert"
-    },
-    {
-      "pregunta": "Crida «genolls amunt!» durant l’entrenament.",
-      "resposta": "calhoun",
-      "imatge": "calhoun.jpg",
-      "dificultat": "expert"
-    },
-    {
-      "pregunta": "Aplaudeix exageradament després d’un gag.",
+      "pistes": [
+        "Quin amic de Danny porta una motxilla gran?"
+      ],
       "resposta": "putzie",
-      "imatge": "putzie.jpg",
-      "dificultat": "expert"
+      "imatge": "img/putzie.jpg",
+      "label": "putzie"
     },
     {
-      "pregunta": "Agarra el micro en un moment informal.",
+      "pistes": [
+        "Qui porta una faldilla amb estampat de gosset?"
+      ],
+      "resposta": "sandy",
+      "imatge": "img/sandy.jpg",
+      "label": "sandy"
+    },
+    {
+      "pistes": [
+        "Quin és el plat preferit de Jan?"
+      ],
+      "resposta": "pastís",
+      "imatge": "img/pastis.jpg",
+      "label": "pastís"
+    },
+    {
+      "pistes": [
+        "Qui fa el paper de “dolent” a la carrera final?"
+      ],
+      "resposta": "balmudo",
+      "imatge": "img/balmudo.jpg",
+      "label": "balmudo"
+    },
+    {
+      "pistes": [
+        "Qui porta una samarreta blanca sota la jaqueta negra?"
+      ],
+      "resposta": "danny",
+      "imatge": "img/danny.jpg",
+      "label": "danny"
+    },
+    {
+      "pistes": [
+        "Quin amic de Danny té el cabell més clar?"
+      ],
       "resposta": "doody",
-      "imatge": "doody.jpg",
-      "dificultat": "expert"
+      "imatge": "img/doody.jpg",
+      "label": "doody"
     },
     {
-      "pregunta": "Assaja un pentinat amb rulos grans.",
+      "pistes": [
+        "Qui està enamorat de Rizzo?"
+      ],
+      "resposta": "kenickie",
+      "imatge": "img/kenickie.jpg",
+      "label": "kenickie"
+    },
+    {
+      "pistes": [
+        "Qui porta una jaqueta amb cremalleres metàl·liques?"
+      ],
+      "resposta": "balmudo",
+      "imatge": "img/balmudo.jpg",
+      "label": "balmudo"
+    },
+    {
+      "pistes": [
+        "Quin color és el cotxe dels Scorpions?"
+      ],
+      "resposta": "negre",
+      "imatge": "img/negre.jpg",
+      "label": "negre"
+    },
+    {
+      "pistes": [
+        "Qui fa veure que Sandy no li importa?"
+      ],
+      "resposta": "danny",
+      "imatge": "img/danny.jpg",
+      "label": "danny"
+    },
+    {
+      "pistes": [
+        "Quin ball és televisat?"
+      ],
+      "resposta": "concursdeball",
+      "imatge": "img/concursdeball.jpg",
+      "label": "concursdeball"
+    },
+    {
+      "pistes": [
+        "Qui té un tatuatge al braç?"
+      ],
+      "resposta": "kenickie",
+      "imatge": "img/kenickie.jpg",
+      "label": "kenickie"
+    },
+    {
+      "pistes": [
+        "Quin amic de Danny porta una gorra plana?"
+      ],
+      "resposta": "putzie",
+      "imatge": "img/putzie.jpg",
+      "label": "putzie"
+    },
+    {
+      "pistes": [
+        "Qui duu sabates de xarol negres?"
+      ],
+      "resposta": "danny",
+      "imatge": "img/danny.jpg",
+      "label": "danny"
+    },
+    {
+      "pistes": [
+        "Qui porta una jaqueta plena de pols al taller?"
+      ],
+      "resposta": "doody",
+      "imatge": "img/doody.jpg",
+      "label": "doody"
+    },
+    {
+      "pistes": [
+        "Qui és la millor ballarina del concurs?"
+      ],
+      "resposta": "cha-cha",
+      "imatge": "img/cha-cha.jpg",
+      "label": "cha-cha"
+    },
+    {
+      "pistes": [
+        "Qui porta una camisa blava a la cafeteria?"
+      ],
+      "resposta": "sonny",
+      "imatge": "img/sonny.jpg",
+      "label": "sonny"
+    },
+    {
+      "pistes": [
+        "Qui ajuda Danny a arreglar el cotxe?"
+      ],
+      "resposta": "tbirds",
+      "imatge": "img/tbirds.jpg",
+      "label": "tbirds"
+    },
+    {
+      "pistes": [
+        "Quin és el nom del cotxe de Kenickie?"
+      ],
+      "resposta": "greased lightning",
+      "imatge": "img/greasedlightning.jpg",
+      "label": "greased lightning"
+    },
+    {
+      "pistes": [
+        "Qui té por de parlar davant la classe?"
+      ],
+      "resposta": "jan",
+      "imatge": "img/jan.jpg",
+      "label": "jan"
+    },
+    {
+      "pistes": [
+        "Qui porta un mocador al coll de color rosa?"
+      ],
+      "resposta": "marty",
+      "imatge": "img/marty.jpg",
+      "label": "marty"
+    },
+    {
+      "pistes": [
+        "Quin color és el vestit de Cha-Cha?"
+      ],
+      "resposta": "vermell",
+      "imatge": "img/vermell.jpg",
+      "label": "vermell"
+    },
+    {
+      "pistes": [
+        "Qui beu llet amb galetes a la festa de pijames?"
+      ],
       "resposta": "frenchy",
-      "imatge": "frenchy.jpg",
-      "dificultat": "expert"
+      "imatge": "img/frenchy.jpg",
+      "label": "frenchy"
+    },
+    {
+      "pistes": [
+        "Qui condueix el cotxe durant la cursa?"
+      ],
+      "resposta": "danny",
+      "imatge": "img/danny.jpg",
+      "label": "danny"
+    },
+    {
+      "pistes": [
+        "Qui està al costat de Frenchy al gimnàs?"
+      ],
+      "resposta": "sandy",
+      "imatge": "img/sandy.jpg",
+      "label": "sandy"
+    },
+    {
+      "pistes": [
+        "Quin és el color del vestit de Rizzo durant el ball?"
+      ],
+      "resposta": "rosa",
+      "imatge": "img/rosa.jpg",
+      "label": "rosa"
+    },
+    {
+      "pistes": [
+        "Qui porta una camisa blanca i tirants negres?"
+      ],
+      "resposta": "balmudo",
+      "imatge": "img/balmudo.jpg",
+      "label": "balmudo"
+    },
+    {
+      "pistes": [
+        "Qui és l’únic que menja durant el concurs de ball?"
+      ],
+      "resposta": "sonny",
+      "imatge": "img/sonny.jpg",
+      "label": "sonny"
+    },
+    {
+      "pistes": [
+        "Qui porta una diadema negra?"
+      ],
+      "resposta": "rizzo",
+      "imatge": "img/rizzo.jpg",
+      "label": "rizzo"
+    },
+    {
+      "pistes": [
+        "Qui porta una camisa de ratlles al taller?"
+      ],
+      "resposta": "putzie",
+      "imatge": "img/putzie.jpg",
+      "label": "putzie"
+    },
+    {
+      "pistes": [
+        "Qui fa la volta amb cotxe després de guanyar?"
+      ],
+      "resposta": "danny",
+      "imatge": "img/danny.jpg",
+      "label": "danny"
+    },
+    {
+      "pistes": [
+        "Quin amic de Danny es cau a la pista de ball?"
+      ],
+      "resposta": "putzie",
+      "imatge": "img/putzie.jpg",
+      "label": "putzie"
+    },
+    {
+      "pistes": [
+        "Qui ajuda Cha-Cha a preparar-se?"
+      ],
+      "resposta": "balmudo",
+      "imatge": "img/balmudo.jpg",
+      "label": "balmudo"
+    },
+    {
+      "pistes": [
+        "Qui porta una jaqueta sense mànigues?"
+      ],
+      "resposta": "doody",
+      "imatge": "img/doody.jpg",
+      "label": "doody"
+    },
+    {
+      "pistes": [
+        "Quin és el cognom de Sandy?"
+      ],
+      "resposta": "olsson",
+      "imatge": "img/olsson.jpg",
+      "label": "olsson"
     }
   ],
-  "ultra": [
-    {
-      "pregunta": "Qui diu: “¡Sandy, estás preciosa!”",
-      "resposta": "danny",
-      "imatge": "danny.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Qui diu: “¡Eres un cerdo, Danny Zuko!”",
-      "resposta": "sandy",
-      "imatge": "sandy.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Qui diu: “¡Vamos, chicas, al gimnasio!”",
-      "resposta": "rizzo",
-      "imatge": "rizzo.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Qui diu: “No pienso ir con un chulo de barrio”",
-      "resposta": "sandy",
-      "imatge": "sandy.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Qui diu: “¡Quédate con tu chaqueta de cuero!”",
-      "resposta": "sandy",
-      "imatge": "sandy.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Qui diu: “¡Eh, Zuko, compórtate!”",
-      "resposta": "kenickie",
-      "imatge": "kenickie.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Qui diu: “¡Sois unos gamberros!”",
-      "resposta": "patty",
-      "imatge": "patty.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Qui diu: “¡No me toques el pelo!”",
-      "resposta": "sonny",
-      "imatge": "sonny.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Qui diu: “¡Arranca ya, Kenickie!”",
-      "resposta": "danny",
-      "imatge": "danny.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Qui diu: “¡Venga, chicas, vamos al vestuario!”",
-      "resposta": "jan",
-      "imatge": "jan.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Qui diu: “¡No me rompas el corazón!”",
-      "resposta": "marty",
-      "imatge": "marty.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Qui diu: “¡Soy el rey del mambo!”",
-      "resposta": "balmudo",
-      "imatge": "balmudo.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Qui diu: “¡No te acerques a mí, Zuko!”",
-      "resposta": "sandy",
-      "imatge": "sandy.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Qui diu: “¡Vas a perder, Zuko!”",
-      "resposta": "balmudo",
-      "imatge": "balmudo.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Qui diu: “¡Eso no es un coche, es una tartana!”",
-      "resposta": "balmudo",
-      "imatge": "balmudo.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Qui diu: “¡Se te ha caído la goma de mascar!”",
-      "resposta": "frenchy",
-      "imatge": "frenchy.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on sandy destaca (vestuari/objecte/gest).",
-      "resposta": "sandy",
-      "imatge": "sandy.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on danny destaca (vestuari/objecte/gest).",
-      "resposta": "danny",
-      "imatge": "danny.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on rizzo destaca (vestuari/objecte/gest).",
-      "resposta": "rizzo",
-      "imatge": "rizzo.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on kenickie destaca (vestuari/objecte/gest).",
-      "resposta": "kenickie",
-      "imatge": "kenickie.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on frenchy destaca (vestuari/objecte/gest).",
-      "resposta": "frenchy",
-      "imatge": "frenchy.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on doody destaca (vestuari/objecte/gest).",
-      "resposta": "doody",
-      "imatge": "doody.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on marty destaca (vestuari/objecte/gest).",
-      "resposta": "marty",
-      "imatge": "marty.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on sonny destaca (vestuari/objecte/gest).",
-      "resposta": "sonny",
-      "imatge": "sonny.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on putzie destaca (vestuari/objecte/gest).",
-      "resposta": "putzie",
-      "imatge": "putzie.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on patty destaca (vestuari/objecte/gest).",
-      "resposta": "patty",
-      "imatge": "patty.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on jan destaca (vestuari/objecte/gest).",
-      "resposta": "jan",
-      "imatge": "jan.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on balmudo destaca (vestuari/objecte/gest).",
-      "resposta": "balmudo",
-      "imatge": "balmudo.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on murdock destaca (vestuari/objecte/gest).",
-      "resposta": "murdock",
-      "imatge": "murdock.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on tom destaca (vestuari/objecte/gest).",
-      "resposta": "tom",
-      "imatge": "tom.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on calhoun destaca (vestuari/objecte/gest).",
-      "resposta": "calhoun",
-      "imatge": "calhoun.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on sandy destaca (vestuari/objecte/gest).",
-      "resposta": "sandy",
-      "imatge": "sandy.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on danny destaca (vestuari/objecte/gest).",
-      "resposta": "danny",
-      "imatge": "danny.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on rizzo destaca (vestuari/objecte/gest).",
-      "resposta": "rizzo",
-      "imatge": "rizzo.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on kenickie destaca (vestuari/objecte/gest).",
-      "resposta": "kenickie",
-      "imatge": "kenickie.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on frenchy destaca (vestuari/objecte/gest).",
-      "resposta": "frenchy",
-      "imatge": "frenchy.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on doody destaca (vestuari/objecte/gest).",
-      "resposta": "doody",
-      "imatge": "doody.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on marty destaca (vestuari/objecte/gest).",
-      "resposta": "marty",
-      "imatge": "marty.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on sonny destaca (vestuari/objecte/gest).",
-      "resposta": "sonny",
-      "imatge": "sonny.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on putzie destaca (vestuari/objecte/gest).",
-      "resposta": "putzie",
-      "imatge": "putzie.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on patty destaca (vestuari/objecte/gest).",
-      "resposta": "patty",
-      "imatge": "patty.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on jan destaca (vestuari/objecte/gest).",
-      "resposta": "jan",
-      "imatge": "jan.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on balmudo destaca (vestuari/objecte/gest).",
-      "resposta": "balmudo",
-      "imatge": "balmudo.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on murdock destaca (vestuari/objecte/gest).",
-      "resposta": "murdock",
-      "imatge": "murdock.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on tom destaca (vestuari/objecte/gest).",
-      "resposta": "tom",
-      "imatge": "tom.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on calhoun destaca (vestuari/objecte/gest).",
-      "resposta": "calhoun",
-      "imatge": "calhoun.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on sandy destaca (vestuari/objecte/gest).",
-      "resposta": "sandy",
-      "imatge": "sandy.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on danny destaca (vestuari/objecte/gest).",
-      "resposta": "danny",
-      "imatge": "danny.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on rizzo destaca (vestuari/objecte/gest).",
-      "resposta": "rizzo",
-      "imatge": "rizzo.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on kenickie destaca (vestuari/objecte/gest).",
-      "resposta": "kenickie",
-      "imatge": "kenickie.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on frenchy destaca (vestuari/objecte/gest).",
-      "resposta": "frenchy",
-      "imatge": "frenchy.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on doody destaca (vestuari/objecte/gest).",
-      "resposta": "doody",
-      "imatge": "doody.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on marty destaca (vestuari/objecte/gest).",
-      "resposta": "marty",
-      "imatge": "marty.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on sonny destaca (vestuari/objecte/gest).",
-      "resposta": "sonny",
-      "imatge": "sonny.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on putzie destaca (vestuari/objecte/gest).",
-      "resposta": "putzie",
-      "imatge": "putzie.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on patty destaca (vestuari/objecte/gest).",
-      "resposta": "patty",
-      "imatge": "patty.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on jan destaca (vestuari/objecte/gest).",
-      "resposta": "jan",
-      "imatge": "jan.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on balmudo destaca (vestuari/objecte/gest).",
-      "resposta": "balmudo",
-      "imatge": "balmudo.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on murdock destaca (vestuari/objecte/gest).",
-      "resposta": "murdock",
-      "imatge": "murdock.jpg",
-      "dificultat": "ultra"
-    },
-    {
-      "pregunta": "Detall ultra: pista hiperconcreta d’una escena on tom destaca (vestuari/objecte/gest).",
-      "resposta": "tom",
-      "imatge": "tom.jpg",
-      "dificultat": "ultra"
-    }
-  ],
-  "especials": [
-    {
-      "pregunta": "Qui se sembla més a la Nerine?",
-      "resposta": "sandy",
-      "imatge": "sandy.jpg",
-      "dificultat": "especial"
-    },
-    {
-      "pregunta": "La Bruna balla igual que en…?",
-      "resposta": "danny",
-      "imatge": "danny.jpg",
-      "dificultat": "especial"
-    }
-  ]
+  "ultra": []
 }
