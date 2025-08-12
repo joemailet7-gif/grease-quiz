@@ -1,1493 +1,807 @@
 {
-  "infantil": [
-    {
-      "pistes": [
-        "Qui és la protagonista rossa de la pel·lícula?"
-      ],
-      "resposta": "sandy",
-      "imatge": "img/sandy.jpg",
-      "label": "sandy",
-      "tipus": "personatge",
-      "opcions": [
-        "sandy",
-        "murdock",
-        "cha-cha",
-        "frenchy"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui és el noi amb jaqueta de cuir negra i líder dels T-Birds?"
-      ],
-      "resposta": "danny",
-      "imatge": "img/danny.jpg",
-      "label": "danny",
-      "tipus": "personatge",
-      "opcions": [
-        "danny",
-        "calhoun",
-        "vince fontaine",
-        "sandy"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin personatge porta sempre la jaqueta rosa?"
-      ],
-      "resposta": "rizzo",
-      "imatge": "img/rizzo.jpg",
-      "label": "rizzo",
-      "tipus": "personatge",
-      "opcions": [
-        "rizzo",
-        "danny",
-        "doody",
-        "marty"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin amic de Danny té el cabell fosc i és alt?"
-      ],
-      "resposta": "kenickie",
-      "imatge": "img/kenickie.jpg",
-      "label": "kenickie",
-      "tipus": "personatge",
-      "opcions": [
-        "kenickie",
-        "calhoun",
-        "sonny",
-        "marty"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin personatge té els cabells rosats?"
-      ],
-      "resposta": "frenchy",
-      "imatge": "img/frenchy.jpg",
-      "label": "frenchy",
-      "tipus": "personatge",
-      "opcions": [
-        "frenchy",
-        "jan",
-        "balmudo",
-        "calhoun"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui condueix el cotxe “Greased Lightning”?"
-      ],
-      "resposta": "kenickie",
-      "imatge": "img/kenickie.jpg",
-      "label": "kenickie",
-      "tipus": "personatge",
-      "opcions": [
-        "kenickie",
-        "sandy",
-        "frenchy",
-        "calhoun"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin grup de noies és amic de Sandy?"
-      ],
-      "resposta": "pinkladies",
-      "imatge": "img/pinkladies.jpg",
-      "label": "pinkladies",
-      "tipus": "grup",
-      "opcions": [
-        "pinkladies",
-        "tbirds",
-        "scorpions",
-        "the racers"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui canta amb Sandy a la platja al principi?"
-      ],
-      "resposta": "danny",
-      "imatge": "img/danny.jpg",
-      "label": "danny",
-      "tipus": "personatge",
-      "opcions": [
-        "danny",
-        "sandy",
-        "balmudo",
-        "vince fontaine"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui té por de disseccionar una granota a classe?"
-      ],
-      "resposta": "jan",
-      "imatge": "img/jan.jpg",
-      "label": "jan",
-      "tipus": "personatge",
-      "opcions": [
-        "jan",
-        "danny",
-        "vince fontaine",
-        "patty"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui sempre menja caramels o dolços?"
-      ],
-      "resposta": "sonny",
-      "imatge": "img/sonny.jpg",
-      "label": "sonny",
-      "tipus": "personatge",
-      "opcions": [
-        "sonny",
-        "calhoun",
-        "marty",
-        "sandy"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin és el nom del grup de nois amics de Danny?"
-      ],
-      "resposta": "tbirds",
-      "imatge": "img/tbirds.jpg",
-      "label": "tbirds",
-      "tipus": "grup",
-      "opcions": [
-        "tbirds",
-        "street queens",
-        "pinkladies",
-        "black jackets"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin ball celebren a l’escola?"
-      ],
-      "resposta": "concursdeball",
-      "imatge": "img/concursdeball.jpg",
-      "label": "concursdeball",
-      "tipus": "esdeveniment",
-      "opcions": [
-        "concursdeball",
-        "festa de fi de curs",
-        "trobada al gimnàs",
-        "graduacio"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui té una escola de bellesa?"
-      ],
-      "resposta": "frenchy",
-      "imatge": "img/frenchy.jpg",
-      "label": "frenchy",
-      "tipus": "personatge",
-      "opcions": [
-        "frenchy",
-        "sandy",
-        "cha-cha",
-        "marty"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui ajuda Sandy a canviar de look al final?"
-      ],
-      "resposta": "frenchy",
-      "imatge": "img/frenchy.jpg",
-      "label": "frenchy",
-      "tipus": "personatge",
-      "opcions": [
-        "frenchy",
-        "danny",
-        "murdock",
-        "danny"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin és el color principal del cotxe “Greased Lightning”?"
-      ],
-      "resposta": "blanc",
-      "imatge": "img/blanc.jpg",
-      "label": "blanc",
-      "tipus": "color",
-      "opcions": [
-        "blanc",
-        "ros",
-        "negre",
-        "rosa"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui té ulleres i és molt simpàtica?"
-      ],
-      "resposta": "marty",
-      "imatge": "img/marty.jpg",
-      "label": "marty",
-      "tipus": "personatge",
-      "opcions": [
-        "marty",
-        "putzie",
-        "calhoun",
-        "kenickie"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui és el millor amic de Kenickie?"
-      ],
-      "resposta": "danny",
-      "imatge": "img/danny.jpg",
-      "label": "danny",
-      "tipus": "personatge",
-      "opcions": [
-        "danny",
-        "cha-cha",
-        "murdock",
-        "balmudo"
-      ]
-    },
-    {
-      "pistes": [
-        "On es coneixen Danny i Sandy?"
-      ],
-      "resposta": "platja",
-      "imatge": "img/platja.jpg",
-      "label": "platja",
-      "tipus": "ubicació",
-      "opcions": [
-        "platja",
-        "ràdio",
-        "taller",
-        "cafeteria"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin esport practica Tom?"
-      ],
-      "resposta": "futbolamericà",
-      "imatge": "img/futbolamerican.jpg",
-      "label": "futbolamericà",
-      "tipus": "esport",
-      "opcions": [
-        "futbolamericà",
-        "beisbol",
-        "voleibol",
-        "bàsquet"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui és la professora de mecànica?"
-      ],
-      "resposta": "murdock",
-      "imatge": "img/murdock.jpg",
-      "label": "murdock",
-      "tipus": "personatge",
-      "opcions": [
-        "murdock",
-        "putzie",
-        "danny",
-        "danny"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin color és el vestit final de Sandy?"
-      ],
-      "resposta": "negre",
-      "imatge": "img/negre.jpg",
-      "label": "negre",
-      "tipus": "color",
-      "opcions": [
-        "negre",
-        "ros",
-        "rosa",
-        "blanc"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui condueix la moto que espanta Sandy?"
-      ],
-      "resposta": "balmudo",
-      "imatge": "img/balmudo.jpg",
-      "label": "balmudo",
-      "tipus": "personatge",
-      "opcions": [
-        "balmudo",
-        "danny",
-        "murdock",
-        "doody"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin és el nom del col·legi?"
-      ],
-      "resposta": "rydell",
-      "imatge": "img/rydell.jpg",
-      "label": "rydell",
-      "tipus": "ubicació",
-      "opcions": [
-        "rydell",
-        "cafeteria",
-        "ràdio",
-        "taller"
-      ],
-      "imatge_comuna_opcions": "img/rydell.jpg"
-    },
-    {
-      "pistes": [
-        "Qui balla amb Sandy al final de la pel·lícula?"
-      ],
-      "resposta": "danny",
-      "imatge": "img/danny.jpg",
-      "label": "danny",
-      "tipus": "personatge",
-      "opcions": [
-        "danny",
-        "murdock",
-        "vince fontaine",
-        "calhoun"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui és l’entrenador d’educació física?"
-      ],
-      "resposta": "calhoun",
-      "imatge": "img/calhoun.jpg",
-      "label": "calhoun",
-      "tipus": "personatge",
-      "opcions": [
-        "calhoun",
-        "danny",
-        "marty",
-        "jan"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui porta la cua de cavall més alta?"
-      ],
-      "resposta": "patty",
-      "imatge": "img/patty.jpg",
-      "label": "patty",
-      "tipus": "personatge",
-      "opcions": [
-        "patty",
-        "doody",
-        "rizzo",
-        "vince fontaine"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin personatge és més bromista?"
-      ],
-      "resposta": "putzie",
-      "imatge": "img/putzie.jpg",
-      "label": "putzie",
-      "tipus": "personatge",
-      "opcions": [
-        "putzie",
-        "danny",
-        "sonny",
-        "jan"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui és la parella de ball de Rizzo al concurs?"
-      ],
-      "resposta": "kenickie",
-      "imatge": "img/kenickie.jpg",
-      "label": "kenickie",
-      "tipus": "personatge",
-      "opcions": [
-        "kenickie",
-        "danny",
-        "sonny",
-        "doody"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui canta “Hopelessly Devoted To You”?"
-      ],
-      "resposta": "sandy",
-      "imatge": "img/sandy.jpg",
-      "label": "sandy",
-      "tipus": "personatge",
-      "opcions": [
-        "sandy",
-        "cha-cha",
-        "putzie",
-        "kenickie"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin ball guanyen Danny i Cha-Cha?"
-      ],
-      "resposta": "concursdeball",
-      "imatge": "img/concursdeball.jpg",
-      "label": "concursdeball",
-      "tipus": "esdeveniment",
-      "opcions": [
-        "concursdeball",
-        "trobada al gimnàs",
-        "graduacio",
-        "festa de fi de curs"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui porta una jaqueta amb un ànec dibuixat?"
-      ],
-      "resposta": "tbirds",
-      "imatge": "img/tbirds.jpg",
-      "label": "tbirds",
-      "tipus": "grup",
-      "opcions": [
-        "tbirds",
-        "the racers",
-        "street queens",
-        "black jackets"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin és el color dels cabells de Frenchy al principi?"
-      ],
-      "resposta": "ros",
-      "imatge": "img/ros.jpg",
-      "label": "ros",
-      "tipus": "color",
-      "opcions": [
-        "ros",
-        "vermell",
-        "blanc",
-        "rosa"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui és el més alt dels T-Birds?"
-      ],
-      "resposta": "kenickie",
-      "imatge": "img/kenickie.jpg",
-      "label": "kenickie",
-      "tipus": "personatge",
-      "opcions": [
-        "kenickie",
-        "marty",
-        "jan",
-        "putzie"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin amic de Danny és més baixet i porta cabell fosc?"
-      ],
-      "resposta": "doody",
-      "imatge": "img/doody.jpg",
-      "label": "doody",
-      "tipus": "personatge",
-      "opcions": [
-        "doody",
-        "cha-cha",
-        "balmudo",
-        "putzie"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin amic de Danny té més gana sempre?"
-      ],
-      "resposta": "sonny",
-      "imatge": "img/sonny.jpg",
-      "label": "sonny",
-      "tipus": "personatge",
-      "opcions": [
-        "sonny",
-        "marty",
-        "murdock",
-        "vince fontaine"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui fa de “dolent” a la pel·lícula?"
-      ],
-      "resposta": "balmudo",
-      "imatge": "img/balmudo.jpg",
-      "label": "balmudo",
-      "tipus": "personatge",
-      "opcions": [
-        "balmudo",
-        "kenickie",
-        "putzie",
-        "sonny"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui ajuda Kenickie abans de la cursa final?"
-      ],
-      "resposta": "danny",
-      "imatge": "img/danny.jpg",
-      "label": "danny",
-      "tipus": "personatge",
-      "opcions": [
-        "danny",
-        "rizzo",
-        "sonny",
-        "patty"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin personatge porta una diadema blanca al ball?"
-      ],
-      "resposta": "sandy",
-      "imatge": "img/sandy.jpg",
-      "label": "sandy",
-      "tipus": "personatge",
-      "opcions": [
-        "sandy",
-        "patty",
-        "balmudo",
-        "jan"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui és la noia amb un vestit rosa al ball?"
-      ],
-      "resposta": "marty",
-      "imatge": "img/marty.jpg",
-      "label": "marty",
-      "tipus": "personatge",
-      "opcions": [
-        "marty",
-        "putzie",
-        "cha-cha",
-        "murdock"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui és l’encarregada de l’anunci per megafonia?"
-      ],
-      "resposta": "patty",
-      "imatge": "img/patty.jpg",
-      "label": "patty",
-      "tipus": "personatge",
-      "opcions": [
-        "patty",
-        "danny",
-        "jan",
-        "balmudo"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin personatge cau de cul mentre balla?"
-      ],
-      "resposta": "putzie",
-      "imatge": "img/putzie.jpg",
-      "label": "putzie",
-      "tipus": "personatge",
-      "opcions": [
-        "putzie",
-        "frenchy",
-        "rizzo",
-        "danny"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui té un accent molt marcat i dolç?"
-      ],
-      "resposta": "sandy",
-      "imatge": "img/sandy.jpg",
-      "label": "sandy",
-      "tipus": "personatge",
-      "opcions": [
-        "sandy",
-        "danny",
-        "patty",
-        "danny"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin és el nom de la noia que balla amb Danny al principi del concurs?"
-      ],
-      "resposta": "cha-cha",
-      "imatge": "img/cha-cha.jpg",
-      "label": "cha-cha",
-      "tipus": "personatge",
-      "opcions": [
-        "cha-cha",
-        "sandy",
-        "marty",
-        "patty"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui porta sempre un llapis de llavis a la mà?"
-      ],
-      "resposta": "rizzo",
-      "imatge": "img/rizzo.jpg",
-      "label": "rizzo",
-      "tipus": "personatge",
-      "opcions": [
-        "rizzo",
-        "vince fontaine",
-        "calhoun",
-        "cha-cha"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui s’ofereix a conduir el cotxe a la cursa?"
-      ],
-      "resposta": "danny",
-      "imatge": "img/danny.jpg",
-      "label": "danny",
-      "tipus": "personatge",
-      "opcions": [
-        "danny",
-        "sonny",
-        "jan",
-        "marty"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin grup porta jaquetes de cuir negre?"
-      ],
-      "resposta": "tbirds",
-      "imatge": "img/tbirds.jpg",
-      "label": "tbirds",
-      "tipus": "grup",
-      "opcions": [
-        "tbirds",
-        "the racers",
-        "scorpions",
-        "street queens"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin grup porta jaquetes roses?"
-      ],
-      "resposta": "pinkladies",
-      "imatge": "img/pinkladies.jpg",
-      "label": "pinkladies",
-      "tipus": "grup",
-      "opcions": [
-        "pinkladies",
-        "black jackets",
-        "the racers",
-        "street queens"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui és el noi amb ulleres que balla de manera divertida?"
-      ],
-      "resposta": "sonny",
-      "imatge": "img/sonny.jpg",
-      "label": "sonny",
-      "tipus": "personatge",
-      "opcions": [
-        "sonny",
-        "rizzo",
-        "doody",
-        "murdock"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin és el millor amic de Putzie?"
-      ],
-      "resposta": "doody",
-      "imatge": "img/doody.jpg",
-      "label": "doody",
-      "tipus": "personatge",
-      "opcions": [
-        "doody",
-        "rizzo",
-        "danny",
-        "cha-cha"
-      ]
-    }
-  ],
-  "expert": [
-    {
-      "pistes": [
-        "Quin és el nom complet de Danny?"
-      ],
-      "resposta": "danny",
-      "imatge": "img/danny.jpg",
-      "label": "danny",
-      "tipus": "personatge",
-      "opcions": [
-        "danny",
-        "cha-cha",
-        "vince fontaine",
-        "sonny"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin instrument toca Doody?"
-      ],
-      "resposta": "guitarra",
-      "imatge": "img/guitarra.jpg",
-      "label": "guitarra",
-      "tipus": "objecte",
-      "opcions": [
-        "guitarra",
-        "pastís",
-        "roda",
-        "greased lightning"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui convida Sandy a la seva festa de pijames?"
-      ],
-      "resposta": "rizzo",
-      "imatge": "img/rizzo.jpg",
-      "label": "rizzo",
-      "tipus": "personatge",
-      "opcions": [
-        "rizzo",
-        "vince fontaine",
-        "sandy",
-        "marty"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin és el sobrenom de Leo?"
-      ],
-      "resposta": "balmudo",
-      "imatge": "img/balmudo.jpg",
-      "label": "balmudo",
-      "tipus": "personatge",
-      "opcions": [
-        "balmudo",
-        "frenchy",
-        "doody",
-        "sonny"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin amic de Danny porta un pentinat alt amb molt brillantina?"
-      ],
-      "resposta": "sonny",
-      "imatge": "img/sonny.jpg",
-      "label": "sonny",
-      "tipus": "personatge",
-      "opcions": [
-        "sonny",
-        "balmudo",
-        "cha-cha",
-        "frenchy"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui fa veure que està malalta per evitar educació física?"
-      ],
-      "resposta": "marty",
-      "imatge": "img/marty.jpg",
-      "label": "marty",
-      "tipus": "personatge",
-      "opcions": [
-        "marty",
-        "putzie",
-        "murdock",
-        "sonny"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin color és el vestit que porta Sandy a la cursa final?"
-      ],
-      "resposta": "negre",
-      "imatge": "img/negre.jpg",
-      "label": "negre",
-      "tipus": "color",
-      "opcions": [
-        "negre",
-        "rosa",
-        "blanc",
-        "vermell"
-      ]
-    },
-    {
-      "pistes": [
-        "On treballa Vince Fontaine?"
-      ],
-      "resposta": "ràdio",
-      "imatge": "img/radio.jpg",
-      "label": "ràdio",
-      "tipus": "ubicació",
-      "opcions": [
-        "ràdio",
-        "taller",
-        "cafeteria",
-        "rydell"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin és el nom de la banda rival dels T-Birds?"
-      ],
-      "resposta": "scorpions",
-      "imatge": "img/scorpions.jpg",
-      "label": "scorpions",
-      "tipus": "grup",
-      "opcions": [
-        "scorpions",
-        "street queens",
-        "black jackets",
-        "tbirds"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin balla Cha-Cha amb Danny?"
-      ],
-      "resposta": "concursdeball",
-      "imatge": "img/concursdeball.jpg",
-      "label": "concursdeball",
-      "tipus": "esdeveniment",
-      "opcions": [
-        "concursdeball",
-        "festa de fi de curs",
-        "graduacio",
-        "trobada al gimnàs"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui porta una camisa de quadres vermells al taller?"
-      ],
-      "resposta": "kenickie",
-      "imatge": "img/kenickie.jpg",
-      "label": "kenickie",
-      "tipus": "personatge",
-      "opcions": [
-        "kenickie",
-        "calhoun",
-        "danny",
-        "vince fontaine"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui condueix el cotxe negre al final?"
-      ],
-      "resposta": "balmudo",
-      "imatge": "img/balmudo.jpg",
-      "label": "balmudo",
-      "tipus": "personatge",
-      "opcions": [
-        "balmudo",
-        "jan",
-        "kenickie",
-        "danny"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui fa de presentador al concurs de ball?"
-      ],
-      "resposta": "vince fontaine",
-      "imatge": "img/vincefontaine.jpg",
-      "label": "vince fontaine",
-      "tipus": "personatge",
-      "opcions": [
-        "vince fontaine",
-        "danny",
-        "doody",
-        "marty"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin color és el jersei de Patty durant el partit?"
-      ],
-      "resposta": "blanc",
-      "imatge": "img/blanc.jpg",
-      "label": "blanc",
-      "tipus": "color",
-      "opcions": [
-        "blanc",
-        "negre",
-        "vermell",
-        "rosa"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui ajuda Frenchy a la cafeteria?"
-      ],
-      "resposta": "sandy",
-      "imatge": "img/sandy.jpg",
-      "label": "sandy",
-      "tipus": "personatge",
-      "opcions": [
-        "sandy",
-        "danny",
-        "kenickie",
-        "calhoun"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin amic de Danny porta una motxilla gran?"
-      ],
-      "resposta": "putzie",
-      "imatge": "img/putzie.jpg",
-      "label": "putzie",
-      "tipus": "personatge",
-      "opcions": [
-        "putzie",
-        "patty",
-        "marty",
-        "balmudo"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui porta una faldilla amb estampat de gosset?"
-      ],
-      "resposta": "sandy",
-      "imatge": "img/sandy.jpg",
-      "label": "sandy",
-      "tipus": "personatge",
-      "opcions": [
-        "sandy",
-        "cha-cha",
-        "rizzo",
-        "danny"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin és el plat preferit de Jan?"
-      ],
-      "resposta": "pastís",
-      "imatge": "img/pastis.jpg",
-      "label": "pastís",
-      "tipus": "objecte",
-      "opcions": [
-        "pastís",
-        "guants",
-        "casc",
-        "guitarra"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui fa el paper de “dolent” a la carrera final?"
-      ],
-      "resposta": "balmudo",
-      "imatge": "img/balmudo.jpg",
-      "label": "balmudo",
-      "tipus": "personatge",
-      "opcions": [
-        "balmudo",
-        "kenickie",
-        "putzie",
-        "sonny"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui porta una samarreta blanca sota la jaqueta negra?"
-      ],
-      "resposta": "danny",
-      "imatge": "img/danny.jpg",
-      "label": "danny",
-      "tipus": "personatge",
-      "opcions": [
-        "danny",
-        "putzie",
-        "kenickie",
-        "calhoun"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin amic de Danny té el cabell més clar?"
-      ],
-      "resposta": "doody",
-      "imatge": "img/doody.jpg",
-      "label": "doody",
-      "tipus": "personatge",
-      "opcions": [
-        "doody",
-        "danny",
-        "sandy",
-        "kenickie"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui està enamorat de Rizzo?"
-      ],
-      "resposta": "kenickie",
-      "imatge": "img/kenickie.jpg",
-      "label": "kenickie",
-      "tipus": "personatge",
-      "opcions": [
-        "kenickie",
-        "sonny",
-        "jan",
-        "vince fontaine"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui porta una jaqueta amb cremalleres metàl·liques?"
-      ],
-      "resposta": "balmudo",
-      "imatge": "img/balmudo.jpg",
-      "label": "balmudo",
-      "tipus": "personatge",
-      "opcions": [
-        "balmudo",
-        "murdock",
-        "cha-cha",
-        "danny"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin color és el cotxe dels Scorpions?"
-      ],
-      "resposta": "negre",
-      "imatge": "img/negre.jpg",
-      "label": "negre",
-      "tipus": "color",
-      "opcions": [
-        "negre",
-        "blanc",
-        "rosa",
-        "ros"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui fa veure que Sandy no li importa?"
-      ],
-      "resposta": "danny",
-      "imatge": "img/danny.jpg",
-      "label": "danny",
-      "tipus": "personatge",
-      "opcions": [
-        "danny",
-        "marty",
-        "kenickie",
-        "sandy"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin ball és televisat?"
-      ],
-      "resposta": "concursdeball",
-      "imatge": "img/concursdeball.jpg",
-      "label": "concursdeball",
-      "tipus": "esdeveniment",
-      "opcions": [
-        "concursdeball",
-        "trobada al gimnàs",
-        "festa de fi de curs",
-        "graduacio"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui té un tatuatge al braç?"
-      ],
-      "resposta": "kenickie",
-      "imatge": "img/kenickie.jpg",
-      "label": "kenickie",
-      "tipus": "personatge",
-      "opcions": [
-        "kenickie",
-        "frenchy",
-        "marty",
-        "doody"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin amic de Danny porta una gorra plana?"
-      ],
-      "resposta": "putzie",
-      "imatge": "img/putzie.jpg",
-      "label": "putzie",
-      "tipus": "personatge",
-      "opcions": [
-        "putzie",
-        "danny",
-        "patty",
-        "kenickie"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui duu sabates de xarol negres?"
-      ],
-      "resposta": "danny",
-      "imatge": "img/danny.jpg",
-      "label": "danny",
-      "tipus": "personatge",
-      "opcions": [
-        "danny",
-        "balmudo",
-        "rizzo",
-        "marty"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui porta una jaqueta plena de pols al taller?"
-      ],
-      "resposta": "doody",
-      "imatge": "img/doody.jpg",
-      "label": "doody",
-      "tipus": "personatge",
-      "opcions": [
-        "doody",
-        "murdock",
-        "patty",
-        "sandy"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui és la millor ballarina del concurs?"
-      ],
-      "resposta": "cha-cha",
-      "imatge": "img/cha-cha.jpg",
-      "label": "cha-cha",
-      "tipus": "personatge",
-      "opcions": [
-        "cha-cha",
-        "danny",
-        "putzie",
-        "sandy"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui porta una camisa blava a la cafeteria?"
-      ],
-      "resposta": "sonny",
-      "imatge": "img/sonny.jpg",
-      "label": "sonny",
-      "tipus": "personatge",
-      "opcions": [
-        "sonny",
-        "kenickie",
-        "vince fontaine",
-        "doody"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui ajuda Danny a arreglar el cotxe?"
-      ],
-      "resposta": "tbirds",
-      "imatge": "img/tbirds.jpg",
-      "label": "tbirds",
-      "tipus": "grup",
-      "opcions": [
-        "tbirds",
-        "scorpions",
-        "the racers",
-        "pinkladies"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin és el nom del cotxe de Kenickie?"
-      ],
-      "resposta": "greased lightning",
-      "imatge": "img/greasedlightning.jpg",
-      "label": "greased lightning",
-      "tipus": "objecte",
-      "opcions": [
-        "greased lightning",
-        "guants",
-        "roda",
-        "motocicleta"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui té por de parlar davant la classe?"
-      ],
-      "resposta": "jan",
-      "imatge": "img/jan.jpg",
-      "label": "jan",
-      "tipus": "personatge",
-      "opcions": [
-        "jan",
-        "kenickie",
-        "murdock",
-        "rizzo"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui porta un mocador al coll de color rosa?"
-      ],
-      "resposta": "marty",
-      "imatge": "img/marty.jpg",
-      "label": "marty",
-      "tipus": "personatge",
-      "opcions": [
-        "marty",
-        "frenchy",
-        "rizzo",
-        "danny"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin color és el vestit de Cha-Cha?"
-      ],
-      "resposta": "vermell",
-      "imatge": "img/vermell.jpg",
-      "label": "vermell",
-      "tipus": "color",
-      "opcions": [
-        "vermell",
-        "rosa",
-        "ros",
-        "blanc"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui beu llet amb galetes a la festa de pijames?"
-      ],
-      "resposta": "frenchy",
-      "imatge": "img/frenchy.jpg",
-      "label": "frenchy",
-      "tipus": "personatge",
-      "opcions": [
-        "frenchy",
-        "jan",
-        "marty",
-        "kenickie"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui condueix el cotxe durant la cursa?"
-      ],
-      "resposta": "danny",
-      "imatge": "img/danny.jpg",
-      "label": "danny",
-      "tipus": "personatge",
-      "opcions": [
-        "danny",
-        "putzie",
-        "vince fontaine",
-        "balmudo"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui està al costat de Frenchy al gimnàs?"
-      ],
-      "resposta": "sandy",
-      "imatge": "img/sandy.jpg",
-      "label": "sandy",
-      "tipus": "personatge",
-      "opcions": [
-        "sandy",
-        "balmudo",
-        "putzie",
-        "danny"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin és el color del vestit de Rizzo durant el ball?"
-      ],
-      "resposta": "rosa",
-      "imatge": "img/rosa.jpg",
-      "label": "rosa",
-      "tipus": "color",
-      "opcions": [
-        "rosa",
-        "vermell",
-        "negre",
-        "blanc"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui porta una camisa blanca i tirants negres?"
-      ],
-      "resposta": "balmudo",
-      "imatge": "img/balmudo.jpg",
-      "label": "balmudo",
-      "tipus": "personatge",
-      "opcions": [
-        "balmudo",
-        "putzie",
-        "kenickie",
-        "rizzo"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui és l’únic que menja durant el concurs de ball?"
-      ],
-      "resposta": "sonny",
-      "imatge": "img/sonny.jpg",
-      "label": "sonny",
-      "tipus": "personatge",
-      "opcions": [
-        "sonny",
-        "patty",
-        "doody",
-        "calhoun"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui porta una diadema negra?"
-      ],
-      "resposta": "rizzo",
-      "imatge": "img/rizzo.jpg",
-      "label": "rizzo",
-      "tipus": "personatge",
-      "opcions": [
-        "rizzo",
-        "jan",
-        "calhoun",
-        "danny"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui porta una camisa de ratlles al taller?"
-      ],
-      "resposta": "putzie",
-      "imatge": "img/putzie.jpg",
-      "label": "putzie",
-      "tipus": "personatge",
-      "opcions": [
-        "putzie",
-        "vince fontaine",
-        "danny",
-        "doody"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui fa la volta amb cotxe després de guanyar?"
-      ],
-      "resposta": "danny",
-      "imatge": "img/danny.jpg",
-      "label": "danny",
-      "tipus": "personatge",
-      "opcions": [
-        "danny",
-        "jan",
-        "kenickie",
-        "murdock"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin amic de Danny es cau a la pista de ball?"
-      ],
-      "resposta": "putzie",
-      "imatge": "img/putzie.jpg",
-      "label": "putzie",
-      "tipus": "personatge",
-      "opcions": [
-        "putzie",
-        "balmudo",
-        "jan",
-        "murdock"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui ajuda Cha-Cha a preparar-se?"
-      ],
-      "resposta": "balmudo",
-      "imatge": "img/balmudo.jpg",
-      "label": "balmudo",
-      "tipus": "personatge",
-      "opcions": [
-        "balmudo",
-        "putzie",
-        "rizzo",
-        "patty"
-      ]
-    },
-    {
-      "pistes": [
-        "Qui porta una jaqueta sense mànigues?"
-      ],
-      "resposta": "doody",
-      "imatge": "img/doody.jpg",
-      "label": "doody",
-      "tipus": "personatge",
-      "opcions": [
-        "doody",
-        "cha-cha",
-        "sandy",
-        "patty"
-      ]
-    },
-    {
-      "pistes": [
-        "Quin és el cognom de Sandy?"
-      ],
-      "resposta": "olsson",
-      "imatge": "",
-      "label": "olsson",
-      "opcions": [
-        "olsson",
-        "johnson",
-        "smith",
-        "williams"
-      ],
-      "tipus": "cognom"
-    }
-  ],
-  "ultra": []
+    "infantil": [
+        {
+            "pistes": [
+                "Qui és la protagonista rossa de la pel·lícula?"
+            ],
+            "resposta": "sandy",
+            "imatge": "img/sandy.jpg",
+            "label": "sandy"
+        },
+        {
+            "pistes": [
+                "Qui és el noi amb jaqueta de cuir negra i líder dels T-Birds?"
+            ],
+            "resposta": "danny",
+            "imatge": "img/danny.jpg",
+            "label": "danny"
+        },
+        {
+            "pistes": [
+                "Quin personatge porta sempre la jaqueta rosa?"
+            ],
+            "resposta": "rizzo",
+            "imatge": "img/rizzo.jpg",
+            "label": "rizzo"
+        },
+        {
+            "pistes": [
+                "Quin amic de Danny té el cabell fosc i és alt?"
+            ],
+            "resposta": "kenickie",
+            "imatge": "img/kenickie.jpg",
+            "label": "kenickie"
+        },
+        {
+            "pistes": [
+                "Quin personatge té els cabells rosats?"
+            ],
+            "resposta": "frenchy",
+            "imatge": "img/frenchy.jpg",
+            "label": "frenchy"
+        },
+        {
+            "pistes": [
+                "Qui condueix el cotxe “Greased Lightning”?"
+            ],
+            "resposta": "kenickie",
+            "imatge": "img/kenickie.jpg",
+            "label": "kenickie"
+        },
+        {
+            "pistes": [
+                "Quin grup de noies és amic de Sandy?"
+            ],
+            "resposta": "pinkladies",
+            "imatge": "img/pinkladies.jpg",
+            "label": "pinkladies"
+        },
+        {
+            "pistes": [
+                "Qui canta amb Sandy a la platja al principi?"
+            ],
+            "resposta": "danny",
+            "imatge": "img/danny.jpg",
+            "label": "danny"
+        },
+        {
+            "pistes": [
+                "Qui té por de disseccionar una granota a classe?"
+            ],
+            "resposta": "jan",
+            "imatge": "img/jan.jpg",
+            "label": "jan"
+        },
+        {
+            "pistes": [
+                "Qui sempre menja caramels o dolços?"
+            ],
+            "resposta": "sonny",
+            "imatge": "img/sonny.jpg",
+            "label": "sonny"
+        },
+        {
+            "pistes": [
+                "Quin és el nom del grup de nois amics de Danny?"
+            ],
+            "resposta": "tbirds",
+            "imatge": "img/tbirds.jpg",
+            "label": "tbirds"
+        },
+        {
+            "pistes": [
+                "Quin ball celebren a l’escola?"
+            ],
+            "resposta": "concursdeball",
+            "imatge": "img/concursdeball.jpg",
+            "label": "concursdeball"
+        },
+        {
+            "pistes": [
+                "Qui té una escola de bellesa?"
+            ],
+            "resposta": "frenchy",
+            "imatge": "img/frenchy.jpg",
+            "label": "frenchy"
+        },
+        {
+            "pistes": [
+                "Qui ajuda Sandy a canviar de look al final?"
+            ],
+            "resposta": "frenchy",
+            "imatge": "img/frenchy.jpg",
+            "label": "frenchy"
+        },
+        {
+            "pistes": [
+                "Quin és el color principal del cotxe “Greased Lightning”?"
+            ],
+            "resposta": "blanc",
+            "imatge": "img/blanc.jpg",
+            "label": "blanc"
+        },
+        {
+            "pistes": [
+                "Qui té ulleres i és molt simpàtica?"
+            ],
+            "resposta": "marty",
+            "imatge": "img/marty.jpg",
+            "label": "marty"
+        },
+        {
+            "pistes": [
+                "Qui és el millor amic de Kenickie?"
+            ],
+            "resposta": "danny",
+            "imatge": "img/danny.jpg",
+            "label": "danny"
+        },
+        {
+            "pistes": [
+                "On es coneixen Danny i Sandy?"
+            ],
+            "resposta": "platja",
+            "imatge": "img/platja.jpg",
+            "label": "platja"
+        },
+        {
+            "pistes": [
+                "Quin esport practica Tom?"
+            ],
+            "resposta": "futbolamericà",
+            "imatge": "img/futbolamerican.jpg",
+            "label": "futbolamericà"
+        },
+        {
+            "pistes": [
+                "Qui és la professora de mecànica?"
+            ],
+            "resposta": "murdock",
+            "imatge": "img/murdock.jpg",
+            "label": "murdock"
+        },
+        {
+            "pistes": [
+                "Quin color és el vestit final de Sandy?"
+            ],
+            "resposta": "negre",
+            "imatge": "img/negre.jpg",
+            "label": "negre"
+        },
+        {
+            "pistes": [
+                "Qui condueix la moto que espanta Sandy?"
+            ],
+            "resposta": "balmudo",
+            "imatge": "img/balmudo.jpg",
+            "label": "balmudo"
+        },
+        {
+            "pistes": [
+                "Quin és el nom del col·legi?"
+            ],
+            "resposta": "rydell",
+            "imatge": "img/rydell.jpg",
+            "label": "rydell"
+        },
+        {
+            "pistes": [
+                "Qui balla amb Sandy al final de la pel·lícula?"
+            ],
+            "resposta": "danny",
+            "imatge": "img/danny.jpg",
+            "label": "danny"
+        },
+        {
+            "pistes": [
+                "Qui és l’entrenador d’educació física?"
+            ],
+            "resposta": "calhoun",
+            "imatge": "img/calhoun.jpg",
+            "label": "calhoun"
+        },
+        {
+            "pistes": [
+                "Qui porta la cua de cavall més alta?"
+            ],
+            "resposta": "patty",
+            "imatge": "img/patty.jpg",
+            "label": "patty"
+        },
+        {
+            "pistes": [
+                "Quin personatge és més bromista?"
+            ],
+            "resposta": "putzie",
+            "imatge": "img/putzie.jpg",
+            "label": "putzie"
+        },
+        {
+            "pistes": [
+                "Qui és la parella de ball de Rizzo al concurs?"
+            ],
+            "resposta": "kenickie",
+            "imatge": "img/kenickie.jpg",
+            "label": "kenickie"
+        },
+        {
+            "pistes": [
+                "Qui canta “Hopelessly Devoted To You”?"
+            ],
+            "resposta": "sandy",
+            "imatge": "img/sandy.jpg",
+            "label": "sandy"
+        },
+        {
+            "pistes": [
+                "Quin ball guanyen Danny i Cha-Cha?"
+            ],
+            "resposta": "concursdeball",
+            "imatge": "img/concursdeball.jpg",
+            "label": "concursdeball"
+        },
+        {
+            "pistes": [
+                "Qui porta una jaqueta amb un ànec dibuixat?"
+            ],
+            "resposta": "tbirds",
+            "imatge": "img/tbirds.jpg",
+            "label": "tbirds"
+        },
+        {
+            "pistes": [
+                "Quin és el color dels cabells de Frenchy al principi?"
+            ],
+            "resposta": "ros",
+            "imatge": "img/ros.jpg",
+            "label": "ros"
+        },
+        {
+            "pistes": [
+                "Qui és el més alt dels T-Birds?"
+            ],
+            "resposta": "kenickie",
+            "imatge": "img/kenickie.jpg",
+            "label": "kenickie"
+        },
+        {
+            "pistes": [
+                "Quin amic de Danny és més baixet i porta cabell fosc?"
+            ],
+            "resposta": "doody",
+            "imatge": "img/doody.jpg",
+            "label": "doody"
+        },
+        {
+            "pistes": [
+                "Quin amic de Danny té més gana sempre?"
+            ],
+            "resposta": "sonny",
+            "imatge": "img/sonny.jpg",
+            "label": "sonny"
+        },
+        {
+            "pistes": [
+                "Qui fa de “dolent” a la pel·lícula?"
+            ],
+            "resposta": "balmudo",
+            "imatge": "img/balmudo.jpg",
+            "label": "balmudo"
+        },
+        {
+            "pistes": [
+                "Qui ajuda Kenickie abans de la cursa final?"
+            ],
+            "resposta": "danny",
+            "imatge": "img/danny.jpg",
+            "label": "danny"
+        },
+        {
+            "pistes": [
+                "Quin personatge porta una diadema blanca al ball?"
+            ],
+            "resposta": "sandy",
+            "imatge": "img/sandy.jpg",
+            "label": "sandy"
+        },
+        {
+            "pistes": [
+                "Qui és la noia amb un vestit rosa al ball?"
+            ],
+            "resposta": "marty",
+            "imatge": "img/marty.jpg",
+            "label": "marty"
+        },
+        {
+            "pistes": [
+                "Qui és l’encarregada de l’anunci per megafonia?"
+            ],
+            "resposta": "patty",
+            "imatge": "img/patty.jpg",
+            "label": "patty"
+        },
+        {
+            "pistes": [
+                "Quin personatge cau de cul mentre balla?"
+            ],
+            "resposta": "putzie",
+            "imatge": "img/putzie.jpg",
+            "label": "putzie"
+        },
+        {
+            "pistes": [
+                "Qui té un accent molt marcat i dolç?"
+            ],
+            "resposta": "sandy",
+            "imatge": "img/sandy.jpg",
+            "label": "sandy"
+        },
+        {
+            "pistes": [
+                "Quin és el nom de la noia que balla amb Danny al principi del concurs?"
+            ],
+            "resposta": "cha-cha",
+            "imatge": "img/cha-cha.jpg",
+            "label": "cha-cha"
+        },
+        {
+            "pistes": [
+                "Qui porta sempre un llapis de llavis a la mà?"
+            ],
+            "resposta": "rizzo",
+            "imatge": "img/rizzo.jpg",
+            "label": "rizzo"
+        },
+        {
+            "pistes": [
+                "Qui s’ofereix a conduir el cotxe a la cursa?"
+            ],
+            "resposta": "danny",
+            "imatge": "img/danny.jpg",
+            "label": "danny"
+        },
+        {
+            "pistes": [
+                "Quin grup porta jaquetes de cuir negre?"
+            ],
+            "resposta": "tbirds",
+            "imatge": "img/tbirds.jpg",
+            "label": "tbirds"
+        },
+        {
+            "pistes": [
+                "Quin grup porta jaquetes roses?"
+            ],
+            "resposta": "pinkladies",
+            "imatge": "img/pinkladies.jpg",
+            "label": "pinkladies"
+        },
+        {
+            "pistes": [
+                "Qui és el noi amb ulleres que balla de manera divertida?"
+            ],
+            "resposta": "sonny",
+            "imatge": "img/sonny.jpg",
+            "label": "sonny"
+        },
+        {
+            "pistes": [
+                "Quin és el millor amic de Putzie?"
+            ],
+            "resposta": "doody",
+            "imatge": "img/doody.jpg",
+            "label": "doody"
+        }
+    ],
+    "expert": [
+        {
+            "pistes": [
+                "Quin és el nom complet de Danny?"
+            ],
+            "resposta": "danny zuko",
+            "imatge": "img/dannyzuko.jpg",
+            "label": "danny zuko"
+        },
+        {
+            "pistes": [
+                "Quin instrument toca Doody?"
+            ],
+            "resposta": "guitarra",
+            "imatge": "img/guitarra.jpg",
+            "label": "guitarra"
+        },
+        {
+            "pistes": [
+                "Qui convida Sandy a la seva festa de pijames?"
+            ],
+            "resposta": "rizzo",
+            "imatge": "img/rizzo.jpg",
+            "label": "rizzo"
+        },
+        {
+            "pistes": [
+                "Quin és el sobrenom de Leo?"
+            ],
+            "resposta": "balmudo",
+            "imatge": "img/balmudo.jpg",
+            "label": "balmudo"
+        },
+        {
+            "pistes": [
+                "Quin amic de Danny porta un pentinat alt amb molt brillantina?"
+            ],
+            "resposta": "sonny",
+            "imatge": "img/sonny.jpg",
+            "label": "sonny"
+        },
+        {
+            "pistes": [
+                "Qui fa veure que està malalta per evitar educació física?"
+            ],
+            "resposta": "marty",
+            "imatge": "img/marty.jpg",
+            "label": "marty"
+        },
+        {
+            "pistes": [
+                "Quin color és el vestit que porta Sandy a la cursa final?"
+            ],
+            "resposta": "negre",
+            "imatge": "img/negre.jpg",
+            "label": "negre"
+        },
+        {
+            "pistes": [
+                "On treballa Vince Fontaine?"
+            ],
+            "resposta": "ràdio",
+            "imatge": "img/radio.jpg",
+            "label": "ràdio"
+        },
+        {
+            "pistes": [
+                "Quin és el nom de la banda rival dels T-Birds?"
+            ],
+            "resposta": "scorpions",
+            "imatge": "img/scorpions.jpg",
+            "label": "scorpions"
+        },
+        {
+            "pistes": [
+                "Quin balla Cha-Cha amb Danny?"
+            ],
+            "resposta": "concursdeball",
+            "imatge": "img/concursdeball.jpg",
+            "label": "concursdeball"
+        },
+        {
+            "pistes": [
+                "Qui porta una camisa de quadres vermells al taller?"
+            ],
+            "resposta": "kenickie",
+            "imatge": "img/kenickie.jpg",
+            "label": "kenickie"
+        },
+        {
+            "pistes": [
+                "Qui condueix el cotxe negre al final?"
+            ],
+            "resposta": "balmudo",
+            "imatge": "img/balmudo.jpg",
+            "label": "balmudo"
+        },
+        {
+            "pistes": [
+                "Qui fa de presentador al concurs de ball?"
+            ],
+            "resposta": "vince fontaine",
+            "imatge": "img/vincefontaine.jpg",
+            "label": "vince fontaine"
+        },
+        {
+            "pistes": [
+                "Quin color és el jersei de Patty durant el partit?"
+            ],
+            "resposta": "blanc",
+            "imatge": "img/blanc.jpg",
+            "label": "blanc"
+        },
+        {
+            "pistes": [
+                "Qui ajuda Frenchy a la cafeteria?"
+            ],
+            "resposta": "sandy",
+            "imatge": "img/sandy.jpg",
+            "label": "sandy"
+        },
+        {
+            "pistes": [
+                "Quin amic de Danny porta una motxilla gran?"
+            ],
+            "resposta": "putzie",
+            "imatge": "img/putzie.jpg",
+            "label": "putzie"
+        },
+        {
+            "pistes": [
+                "Qui porta una faldilla amb estampat de gosset?"
+            ],
+            "resposta": "sandy",
+            "imatge": "img/sandy.jpg",
+            "label": "sandy"
+        },
+        {
+            "pistes": [
+                "Quin és el plat preferit de Jan?"
+            ],
+            "resposta": "pastís",
+            "imatge": "img/pastis.jpg",
+            "label": "pastís"
+        },
+        {
+            "pistes": [
+                "Qui fa el paper de “dolent” a la carrera final?"
+            ],
+            "resposta": "balmudo",
+            "imatge": "img/balmudo.jpg",
+            "label": "balmudo"
+        },
+        {
+            "pistes": [
+                "Qui porta una samarreta blanca sota la jaqueta negra?"
+            ],
+            "resposta": "danny",
+            "imatge": "img/danny.jpg",
+            "label": "danny"
+        },
+        {
+            "pistes": [
+                "Quin amic de Danny té el cabell més clar?"
+            ],
+            "resposta": "doody",
+            "imatge": "img/doody.jpg",
+            "label": "doody"
+        },
+        {
+            "pistes": [
+                "Qui està enamorat de Rizzo?"
+            ],
+            "resposta": "kenickie",
+            "imatge": "img/kenickie.jpg",
+            "label": "kenickie"
+        },
+        {
+            "pistes": [
+                "Qui porta una jaqueta amb cremalleres metàl·liques?"
+            ],
+            "resposta": "balmudo",
+            "imatge": "img/balmudo.jpg",
+            "label": "balmudo"
+        },
+        {
+            "pistes": [
+                "Quin color és el cotxe dels Scorpions?"
+            ],
+            "resposta": "negre",
+            "imatge": "img/negre.jpg",
+            "label": "negre"
+        },
+        {
+            "pistes": [
+                "Qui fa veure que Sandy no li importa?"
+            ],
+            "resposta": "danny",
+            "imatge": "img/danny.jpg",
+            "label": "danny"
+        },
+        {
+            "pistes": [
+                "Quin ball és televisat?"
+            ],
+            "resposta": "concursdeball",
+            "imatge": "img/concursdeball.jpg",
+            "label": "concursdeball"
+        },
+        {
+            "pistes": [
+                "Qui té un tatuatge al braç?"
+            ],
+            "resposta": "kenickie",
+            "imatge": "img/kenickie.jpg",
+            "label": "kenickie"
+        },
+        {
+            "pistes": [
+                "Quin amic de Danny porta una gorra plana?"
+            ],
+            "resposta": "putzie",
+            "imatge": "img/putzie.jpg",
+            "label": "putzie"
+        },
+        {
+            "pistes": [
+                "Qui duu sabates de xarol negres?"
+            ],
+            "resposta": "danny",
+            "imatge": "img/danny.jpg",
+            "label": "danny"
+        },
+        {
+            "pistes": [
+                "Qui porta una jaqueta plena de pols al taller?"
+            ],
+            "resposta": "doody",
+            "imatge": "img/doody.jpg",
+            "label": "doody"
+        },
+        {
+            "pistes": [
+                "Qui és la millor ballarina del concurs?"
+            ],
+            "resposta": "cha-cha",
+            "imatge": "img/cha-cha.jpg",
+            "label": "cha-cha"
+        },
+        {
+            "pistes": [
+                "Qui porta una camisa blava a la cafeteria?"
+            ],
+            "resposta": "sonny",
+            "imatge": "img/sonny.jpg",
+            "label": "sonny"
+        },
+        {
+            "pistes": [
+                "Qui ajuda Danny a arreglar el cotxe?"
+            ],
+            "resposta": "tbirds",
+            "imatge": "img/tbirds.jpg",
+            "label": "tbirds"
+        },
+        {
+            "pistes": [
+                "Quin és el nom del cotxe de Kenickie?"
+            ],
+            "resposta": "greased lightning",
+            "imatge": "img/greasedlightning.jpg",
+            "label": "greased lightning"
+        },
+        {
+            "pistes": [
+                "Qui té por de parlar davant la classe?"
+            ],
+            "resposta": "jan",
+            "imatge": "img/jan.jpg",
+            "label": "jan"
+        },
+        {
+            "pistes": [
+                "Qui porta un mocador al coll de color rosa?"
+            ],
+            "resposta": "marty",
+            "imatge": "img/marty.jpg",
+            "label": "marty"
+        },
+        {
+            "pistes": [
+                "Quin color és el vestit de Cha-Cha?"
+            ],
+            "resposta": "vermell",
+            "imatge": "img/vermell.jpg",
+            "label": "vermell"
+        },
+        {
+            "pistes": [
+                "Qui beu llet amb galetes a la festa de pijames?"
+            ],
+            "resposta": "frenchy",
+            "imatge": "img/frenchy.jpg",
+            "label": "frenchy"
+        },
+        {
+            "pistes": [
+                "Qui condueix el cotxe durant la cursa?"
+            ],
+            "resposta": "danny",
+            "imatge": "img/danny.jpg",
+            "label": "danny"
+        },
+        {
+            "pistes": [
+                "Qui està al costat de Frenchy al gimnàs?"
+            ],
+            "resposta": "sandy",
+            "imatge": "img/sandy.jpg",
+            "label": "sandy"
+        },
+        {
+            "pistes": [
+                "Quin és el color del vestit de Rizzo durant el ball?"
+            ],
+            "resposta": "rosa",
+            "imatge": "img/rosa.jpg",
+            "label": "rosa"
+        },
+        {
+            "pistes": [
+                "Qui porta una camisa blanca i tirants negres?"
+            ],
+            "resposta": "balmudo",
+            "imatge": "img/balmudo.jpg",
+            "label": "balmudo"
+        },
+        {
+            "pistes": [
+                "Qui és l’únic que menja durant el concurs de ball?"
+            ],
+            "resposta": "sonny",
+            "imatge": "img/sonny.jpg",
+            "label": "sonny"
+        },
+        {
+            "pistes": [
+                "Qui porta una diadema negra?"
+            ],
+            "resposta": "rizzo",
+            "imatge": "img/rizzo.jpg",
+            "label": "rizzo"
+        },
+        {
+            "pistes": [
+                "Qui porta una camisa de ratlles al taller?"
+            ],
+            "resposta": "putzie",
+            "imatge": "img/putzie.jpg",
+            "label": "putzie"
+        },
+        {
+            "pistes": [
+                "Qui fa la volta amb cotxe després de guanyar?"
+            ],
+            "resposta": "danny",
+            "imatge": "img/danny.jpg",
+            "label": "danny"
+        },
+        {
+            "pistes": [
+                "Quin amic de Danny es cau a la pista de ball?"
+            ],
+            "resposta": "putzie",
+            "imatge": "img/putzie.jpg",
+            "label": "putzie"
+        },
+        {
+            "pistes": [
+                "Qui ajuda Cha-Cha a preparar-se?"
+            ],
+            "resposta": "balmudo",
+            "imatge": "img/balmudo.jpg",
+            "label": "balmudo"
+        },
+        {
+            "pistes": [
+                "Qui porta una jaqueta sense mànigues?"
+            ],
+            "resposta": "doody",
+            "imatge": "img/doody.jpg",
+            "label": "doody"
+        },
+        {
+            "pistes": [
+                "Quin és el cognom de Sandy?"
+            ],
+            "resposta": "olsson",
+            "imatge": "",
+            "label": "olsson",
+            "opcions": [
+                "johnson",
+                "smith",
+                "brown",
+                "miller",
+                "wilson",
+                "anderson"
+            ]
+        }
+    ],
+    "ultra": []
 }
