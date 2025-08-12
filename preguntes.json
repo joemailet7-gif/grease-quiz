@@ -7,12 +7,12 @@
       "resposta": "sandy",
       "imatge": "img/sandy.jpg",
       "label": "sandy",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "sandy",
-        "doody",
-        "rizzo",
-        "jan"
+        "murdock",
+        "cha-cha",
+        "frenchy"
       ]
     },
     {
@@ -22,12 +22,12 @@
       "resposta": "danny",
       "imatge": "img/danny.jpg",
       "label": "danny",
-      "tipus": "objecte",
+      "tipus": "personatge",
       "opcions": [
         "danny",
-        "guitarra",
-        "motocicleta",
-        "casc"
+        "calhoun",
+        "vince fontaine",
+        "sandy"
       ]
     },
     {
@@ -37,12 +37,12 @@
       "resposta": "rizzo",
       "imatge": "img/rizzo.jpg",
       "label": "rizzo",
-      "tipus": "objecte",
+      "tipus": "personatge",
       "opcions": [
         "rizzo",
-        "guitarra",
-        "motocicleta",
-        "casc"
+        "danny",
+        "doody",
+        "marty"
       ]
     },
     {
@@ -52,12 +52,12 @@
       "resposta": "kenickie",
       "imatge": "img/kenickie.jpg",
       "label": "kenickie",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "kenickie",
-        "doody",
-        "rizzo",
-        "jan"
+        "calhoun",
+        "sonny",
+        "marty"
       ]
     },
     {
@@ -67,12 +67,12 @@
       "resposta": "frenchy",
       "imatge": "img/frenchy.jpg",
       "label": "frenchy",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "frenchy",
-        "doody",
-        "rizzo",
-        "jan"
+        "jan",
+        "balmudo",
+        "calhoun"
       ]
     },
     {
@@ -82,12 +82,12 @@
       "resposta": "kenickie",
       "imatge": "img/kenickie.jpg",
       "label": "kenickie",
-      "tipus": "vehicle",
+      "tipus": "personatge",
       "opcions": [
         "kenickie",
-        "greased lightning",
-        "lightning star",
-        "thunder roadster"
+        "sandy",
+        "frenchy",
+        "calhoun"
       ]
     },
     {
@@ -100,8 +100,8 @@
       "tipus": "grup",
       "opcions": [
         "pinkladies",
-        "scorpions",
         "tbirds",
+        "scorpions",
         "the racers"
       ]
     },
@@ -112,12 +112,12 @@
       "resposta": "danny",
       "imatge": "img/danny.jpg",
       "label": "danny",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "danny",
-        "doody",
-        "rizzo",
-        "jan"
+        "sandy",
+        "balmudo",
+        "vince fontaine"
       ]
     },
     {
@@ -127,12 +127,12 @@
       "resposta": "jan",
       "imatge": "img/jan.jpg",
       "label": "jan",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "jan",
-        "doody",
-        "rizzo",
-        "danny"
+        "danny",
+        "vince fontaine",
+        "patty"
       ]
     },
     {
@@ -142,12 +142,12 @@
       "resposta": "sonny",
       "imatge": "img/sonny.jpg",
       "label": "sonny",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "sonny",
-        "doody",
-        "rizzo",
-        "jan"
+        "calhoun",
+        "marty",
+        "sandy"
       ]
     },
     {
@@ -160,9 +160,9 @@
       "tipus": "grup",
       "opcions": [
         "tbirds",
-        "scorpions",
+        "street queens",
         "pinkladies",
-        "the racers"
+        "black jackets"
       ]
     },
     {
@@ -172,12 +172,12 @@
       "resposta": "concursdeball",
       "imatge": "img/concursdeball.jpg",
       "label": "concursdeball",
-      "tipus": "event",
+      "tipus": "esdeveniment",
       "opcions": [
         "concursdeball",
         "festa de fi de curs",
-        "graduacio",
-        "opció 3"
+        "trobada al gimnàs",
+        "graduacio"
       ]
     },
     {
@@ -187,12 +187,12 @@
       "resposta": "frenchy",
       "imatge": "img/frenchy.jpg",
       "label": "frenchy",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "frenchy",
-        "doody",
-        "rizzo",
-        "jan"
+        "sandy",
+        "cha-cha",
+        "marty"
       ]
     },
     {
@@ -202,12 +202,12 @@
       "resposta": "frenchy",
       "imatge": "img/frenchy.jpg",
       "label": "frenchy",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "frenchy",
-        "doody",
-        "rizzo",
-        "jan"
+        "danny",
+        "murdock",
+        "danny zuko"
       ]
     },
     {
@@ -220,8 +220,8 @@
       "tipus": "color",
       "opcions": [
         "blanc",
+        "ros",
         "negre",
-        "vermell",
         "rosa"
       ]
     },
@@ -232,12 +232,12 @@
       "resposta": "marty",
       "imatge": "img/marty.jpg",
       "label": "marty",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "marty",
-        "doody",
-        "rizzo",
-        "jan"
+        "putzie",
+        "calhoun",
+        "kenickie"
       ]
     },
     {
@@ -247,12 +247,12 @@
       "resposta": "danny",
       "imatge": "img/danny.jpg",
       "label": "danny",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "danny",
-        "doody",
-        "rizzo",
-        "jan"
+        "cha-cha",
+        "murdock",
+        "balmudo"
       ]
     },
     {
@@ -262,11 +262,11 @@
       "resposta": "platja",
       "imatge": "img/platja.jpg",
       "label": "platja",
-      "tipus": "lloc",
+      "tipus": "ubicació",
       "opcions": [
         "platja",
-        "rydell",
         "ràdio",
+        "taller",
         "cafeteria"
       ]
     },
@@ -280,9 +280,9 @@
       "tipus": "esport",
       "opcions": [
         "futbolamericà",
-        "bàsquet",
         "beisbol",
-        "voleibol"
+        "voleibol",
+        "bàsquet"
       ]
     },
     {
@@ -292,12 +292,12 @@
       "resposta": "murdock",
       "imatge": "img/murdock.jpg",
       "label": "murdock",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "murdock",
-        "doody",
-        "rizzo",
-        "jan"
+        "putzie",
+        "danny zuko",
+        "danny"
       ]
     },
     {
@@ -310,9 +310,9 @@
       "tipus": "color",
       "opcions": [
         "negre",
-        "blanc",
-        "vermell",
-        "rosa"
+        "ros",
+        "rosa",
+        "blanc"
       ]
     },
     {
@@ -322,12 +322,12 @@
       "resposta": "balmudo",
       "imatge": "img/balmudo.jpg",
       "label": "balmudo",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "balmudo",
-        "doody",
-        "rizzo",
-        "jan"
+        "danny",
+        "murdock",
+        "doody"
       ]
     },
     {
@@ -337,7 +337,7 @@
       "resposta": "rydell",
       "imatge": "img/rydell.jpg",
       "label": "rydell",
-      "tipus": "lloc",
+      "tipus": "ubicació",
       "opcions": [
         "rydell",
         "cafeteria",
@@ -353,12 +353,12 @@
       "resposta": "danny",
       "imatge": "img/danny.jpg",
       "label": "danny",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "danny",
-        "doody",
-        "rizzo",
-        "jan"
+        "murdock",
+        "vince fontaine",
+        "calhoun"
       ]
     },
     {
@@ -368,11 +368,11 @@
       "resposta": "calhoun",
       "imatge": "img/calhoun.jpg",
       "label": "calhoun",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "calhoun",
-        "doody",
-        "rizzo",
+        "danny zuko",
+        "marty",
         "jan"
       ]
     },
@@ -383,12 +383,12 @@
       "resposta": "patty",
       "imatge": "img/patty.jpg",
       "label": "patty",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "patty",
         "doody",
         "rizzo",
-        "jan"
+        "vince fontaine"
       ]
     },
     {
@@ -398,11 +398,11 @@
       "resposta": "putzie",
       "imatge": "img/putzie.jpg",
       "label": "putzie",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "putzie",
-        "doody",
-        "rizzo",
+        "danny zuko",
+        "sonny",
         "jan"
       ]
     },
@@ -413,7 +413,7 @@
       "resposta": "kenickie",
       "imatge": "img/kenickie.jpg",
       "label": "kenickie",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "kenickie",
         "danny",
@@ -428,12 +428,12 @@
       "resposta": "sandy",
       "imatge": "img/sandy.jpg",
       "label": "sandy",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "sandy",
-        "doody",
-        "rizzo",
-        "jan"
+        "cha-cha",
+        "putzie",
+        "kenickie"
       ]
     },
     {
@@ -443,12 +443,12 @@
       "resposta": "concursdeball",
       "imatge": "img/concursdeball.jpg",
       "label": "concursdeball",
-      "tipus": "event",
+      "tipus": "esdeveniment",
       "opcions": [
         "concursdeball",
-        "festa de fi de curs",
+        "trobada al gimnàs",
         "graduacio",
-        "opció 3"
+        "festa de fi de curs"
       ]
     },
     {
@@ -458,12 +458,12 @@
       "resposta": "tbirds",
       "imatge": "img/tbirds.jpg",
       "label": "tbirds",
-      "tipus": "objecte",
+      "tipus": "grup",
       "opcions": [
         "tbirds",
-        "guitarra",
-        "motocicleta",
-        "casc"
+        "the racers",
+        "street queens",
+        "black jackets"
       ]
     },
     {
@@ -476,9 +476,9 @@
       "tipus": "color",
       "opcions": [
         "ros",
-        "negre",
+        "vermell",
         "blanc",
-        "vermell"
+        "rosa"
       ]
     },
     {
@@ -488,12 +488,12 @@
       "resposta": "kenickie",
       "imatge": "img/kenickie.jpg",
       "label": "kenickie",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "kenickie",
-        "doody",
-        "rizzo",
-        "jan"
+        "marty",
+        "jan",
+        "putzie"
       ]
     },
     {
@@ -503,12 +503,12 @@
       "resposta": "doody",
       "imatge": "img/doody.jpg",
       "label": "doody",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "doody",
-        "rizzo",
-        "jan",
-        "danny"
+        "cha-cha",
+        "balmudo",
+        "putzie"
       ]
     },
     {
@@ -518,12 +518,12 @@
       "resposta": "sonny",
       "imatge": "img/sonny.jpg",
       "label": "sonny",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "sonny",
-        "doody",
-        "rizzo",
-        "jan"
+        "marty",
+        "murdock",
+        "vince fontaine"
       ]
     },
     {
@@ -533,7 +533,7 @@
       "resposta": "balmudo",
       "imatge": "img/balmudo.jpg",
       "label": "balmudo",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "balmudo",
         "kenickie",
@@ -548,12 +548,12 @@
       "resposta": "danny",
       "imatge": "img/danny.jpg",
       "label": "danny",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "danny",
-        "doody",
         "rizzo",
-        "jan"
+        "sonny",
+        "patty"
       ]
     },
     {
@@ -563,12 +563,12 @@
       "resposta": "sandy",
       "imatge": "img/sandy.jpg",
       "label": "sandy",
-      "tipus": "event",
+      "tipus": "personatge",
       "opcions": [
         "sandy",
-        "concursdeball",
-        "festa de fi de curs",
-        "graduacio"
+        "patty",
+        "balmudo",
+        "jan"
       ]
     },
     {
@@ -578,12 +578,12 @@
       "resposta": "marty",
       "imatge": "img/marty.jpg",
       "label": "marty",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "marty",
-        "doody",
-        "rizzo",
-        "jan"
+        "putzie",
+        "cha-cha",
+        "murdock"
       ]
     },
     {
@@ -593,12 +593,12 @@
       "resposta": "patty",
       "imatge": "img/patty.jpg",
       "label": "patty",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "patty",
-        "doody",
-        "rizzo",
-        "jan"
+        "danny",
+        "jan",
+        "balmudo"
       ]
     },
     {
@@ -608,12 +608,12 @@
       "resposta": "putzie",
       "imatge": "img/putzie.jpg",
       "label": "putzie",
-      "tipus": "event",
+      "tipus": "personatge",
       "opcions": [
         "putzie",
-        "concursdeball",
-        "festa de fi de curs",
-        "graduacio"
+        "frenchy",
+        "rizzo",
+        "danny zuko"
       ]
     },
     {
@@ -623,12 +623,12 @@
       "resposta": "sandy",
       "imatge": "img/sandy.jpg",
       "label": "sandy",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "sandy",
-        "doody",
-        "rizzo",
-        "jan"
+        "danny zuko",
+        "patty",
+        "danny"
       ]
     },
     {
@@ -638,7 +638,7 @@
       "resposta": "cha-cha",
       "imatge": "img/cha-cha.jpg",
       "label": "cha-cha",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "cha-cha",
         "sandy",
@@ -653,12 +653,12 @@
       "resposta": "rizzo",
       "imatge": "img/rizzo.jpg",
       "label": "rizzo",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "rizzo",
-        "doody",
-        "jan",
-        "danny"
+        "vince fontaine",
+        "calhoun",
+        "cha-cha"
       ]
     },
     {
@@ -668,12 +668,12 @@
       "resposta": "danny",
       "imatge": "img/danny.jpg",
       "label": "danny",
-      "tipus": "vehicle",
+      "tipus": "personatge",
       "opcions": [
         "danny",
-        "greased lightning",
-        "lightning star",
-        "thunder roadster"
+        "sonny",
+        "jan",
+        "marty"
       ]
     },
     {
@@ -686,9 +686,9 @@
       "tipus": "grup",
       "opcions": [
         "tbirds",
+        "the racers",
         "scorpions",
-        "pinkladies",
-        "the racers"
+        "street queens"
       ]
     },
     {
@@ -701,9 +701,9 @@
       "tipus": "grup",
       "opcions": [
         "pinkladies",
-        "scorpions",
-        "tbirds",
-        "the racers"
+        "black jackets",
+        "the racers",
+        "street queens"
       ]
     },
     {
@@ -713,12 +713,12 @@
       "resposta": "sonny",
       "imatge": "img/sonny.jpg",
       "label": "sonny",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "sonny",
-        "doody",
         "rizzo",
-        "jan"
+        "doody",
+        "murdock"
       ]
     },
     {
@@ -728,12 +728,12 @@
       "resposta": "doody",
       "imatge": "img/doody.jpg",
       "label": "doody",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "doody",
         "rizzo",
-        "jan",
-        "danny"
+        "danny",
+        "cha-cha"
       ]
     }
   ],
@@ -745,12 +745,12 @@
       "resposta": "danny zuko",
       "imatge": "img/dannyzuko.jpg",
       "label": "danny zuko",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "danny zuko",
-        "doody",
-        "rizzo",
-        "jan"
+        "cha-cha",
+        "vince fontaine",
+        "sonny"
       ]
     },
     {
@@ -760,12 +760,12 @@
       "resposta": "guitarra",
       "imatge": "img/guitarra.jpg",
       "label": "guitarra",
-      "tipus": "instrument",
+      "tipus": "objecte",
       "opcions": [
         "guitarra",
-        "opció 1",
-        "opció 2",
-        "opció 3"
+        "pastís",
+        "roda",
+        "greased lightning"
       ]
     },
     {
@@ -775,12 +775,12 @@
       "resposta": "rizzo",
       "imatge": "img/rizzo.jpg",
       "label": "rizzo",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "rizzo",
-        "doody",
-        "jan",
-        "danny"
+        "vince fontaine",
+        "sandy",
+        "marty"
       ]
     },
     {
@@ -790,12 +790,12 @@
       "resposta": "balmudo",
       "imatge": "img/balmudo.jpg",
       "label": "balmudo",
-      "tipus": "sobrenom",
+      "tipus": "personatge",
       "opcions": [
         "balmudo",
-        "opció 1",
-        "opció 2",
-        "opció 3"
+        "frenchy",
+        "doody",
+        "sonny"
       ]
     },
     {
@@ -805,12 +805,12 @@
       "resposta": "sonny",
       "imatge": "img/sonny.jpg",
       "label": "sonny",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "sonny",
-        "doody",
-        "rizzo",
-        "jan"
+        "balmudo",
+        "cha-cha",
+        "frenchy"
       ]
     },
     {
@@ -820,12 +820,12 @@
       "resposta": "marty",
       "imatge": "img/marty.jpg",
       "label": "marty",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "marty",
-        "doody",
-        "rizzo",
-        "jan"
+        "putzie",
+        "murdock",
+        "sonny"
       ]
     },
     {
@@ -838,9 +838,9 @@
       "tipus": "color",
       "opcions": [
         "negre",
+        "rosa",
         "blanc",
-        "vermell",
-        "rosa"
+        "vermell"
       ]
     },
     {
@@ -850,12 +850,12 @@
       "resposta": "ràdio",
       "imatge": "img/radio.jpg",
       "label": "ràdio",
-      "tipus": "event",
+      "tipus": "ubicació",
       "opcions": [
         "ràdio",
-        "concursdeball",
-        "festa de fi de curs",
-        "graduacio"
+        "taller",
+        "cafeteria",
+        "rydell"
       ]
     },
     {
@@ -868,9 +868,9 @@
       "tipus": "grup",
       "opcions": [
         "scorpions",
-        "tbirds",
-        "pinkladies",
-        "the racers"
+        "street queens",
+        "black jackets",
+        "tbirds"
       ]
     },
     {
@@ -880,12 +880,12 @@
       "resposta": "concursdeball",
       "imatge": "img/concursdeball.jpg",
       "label": "concursdeball",
-      "tipus": "event",
+      "tipus": "esdeveniment",
       "opcions": [
         "concursdeball",
         "festa de fi de curs",
         "graduacio",
-        "opció 3"
+        "trobada al gimnàs"
       ]
     },
     {
@@ -895,12 +895,12 @@
       "resposta": "kenickie",
       "imatge": "img/kenickie.jpg",
       "label": "kenickie",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "kenickie",
-        "doody",
-        "rizzo",
-        "jan"
+        "calhoun",
+        "danny",
+        "vince fontaine"
       ]
     },
     {
@@ -910,12 +910,12 @@
       "resposta": "balmudo",
       "imatge": "img/balmudo.jpg",
       "label": "balmudo",
-      "tipus": "vehicle",
+      "tipus": "personatge",
       "opcions": [
         "balmudo",
-        "greased lightning",
-        "lightning star",
-        "thunder roadster"
+        "jan",
+        "kenickie",
+        "danny"
       ]
     },
     {
@@ -925,12 +925,12 @@
       "resposta": "vince fontaine",
       "imatge": "img/vincefontaine.jpg",
       "label": "vince fontaine",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "vince fontaine",
+        "danny",
         "doody",
-        "rizzo",
-        "jan"
+        "marty"
       ]
     },
     {
@@ -955,12 +955,12 @@
       "resposta": "sandy",
       "imatge": "img/sandy.jpg",
       "label": "sandy",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "sandy",
-        "doody",
-        "rizzo",
-        "jan"
+        "danny zuko",
+        "kenickie",
+        "calhoun"
       ]
     },
     {
@@ -970,12 +970,12 @@
       "resposta": "putzie",
       "imatge": "img/putzie.jpg",
       "label": "putzie",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "putzie",
-        "doody",
-        "rizzo",
-        "jan"
+        "patty",
+        "marty",
+        "balmudo"
       ]
     },
     {
@@ -985,12 +985,12 @@
       "resposta": "sandy",
       "imatge": "img/sandy.jpg",
       "label": "sandy",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "sandy",
-        "doody",
+        "cha-cha",
         "rizzo",
-        "jan"
+        "danny"
       ]
     },
     {
@@ -1000,12 +1000,12 @@
       "resposta": "pastís",
       "imatge": "img/pastis.jpg",
       "label": "pastís",
-      "tipus": "persona",
+      "tipus": "objecte",
       "opcions": [
         "pastís",
-        "doody",
-        "rizzo",
-        "jan"
+        "guants",
+        "casc",
+        "guitarra"
       ]
     },
     {
@@ -1015,7 +1015,7 @@
       "resposta": "balmudo",
       "imatge": "img/balmudo.jpg",
       "label": "balmudo",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "balmudo",
         "kenickie",
@@ -1030,12 +1030,12 @@
       "resposta": "danny",
       "imatge": "img/danny.jpg",
       "label": "danny",
-      "tipus": "objecte",
+      "tipus": "personatge",
       "opcions": [
         "danny",
-        "guitarra",
-        "motocicleta",
-        "casc"
+        "putzie",
+        "kenickie",
+        "calhoun"
       ]
     },
     {
@@ -1045,12 +1045,12 @@
       "resposta": "doody",
       "imatge": "img/doody.jpg",
       "label": "doody",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "doody",
-        "rizzo",
-        "jan",
-        "danny"
+        "danny",
+        "sandy",
+        "kenickie"
       ]
     },
     {
@@ -1060,12 +1060,12 @@
       "resposta": "kenickie",
       "imatge": "img/kenickie.jpg",
       "label": "kenickie",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "kenickie",
-        "doody",
-        "rizzo",
-        "jan"
+        "sonny",
+        "jan",
+        "vince fontaine"
       ]
     },
     {
@@ -1075,12 +1075,12 @@
       "resposta": "balmudo",
       "imatge": "img/balmudo.jpg",
       "label": "balmudo",
-      "tipus": "objecte",
+      "tipus": "personatge",
       "opcions": [
         "balmudo",
-        "guitarra",
-        "motocicleta",
-        "casc"
+        "murdock",
+        "cha-cha",
+        "danny"
       ]
     },
     {
@@ -1094,8 +1094,8 @@
       "opcions": [
         "negre",
         "blanc",
-        "vermell",
-        "rosa"
+        "rosa",
+        "ros"
       ]
     },
     {
@@ -1105,12 +1105,12 @@
       "resposta": "danny",
       "imatge": "img/danny.jpg",
       "label": "danny",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "danny",
-        "doody",
-        "rizzo",
-        "jan"
+        "marty",
+        "kenickie",
+        "sandy"
       ]
     },
     {
@@ -1120,12 +1120,12 @@
       "resposta": "concursdeball",
       "imatge": "img/concursdeball.jpg",
       "label": "concursdeball",
-      "tipus": "event",
+      "tipus": "esdeveniment",
       "opcions": [
         "concursdeball",
+        "trobada al gimnàs",
         "festa de fi de curs",
-        "graduacio",
-        "opció 3"
+        "graduacio"
       ]
     },
     {
@@ -1135,12 +1135,12 @@
       "resposta": "kenickie",
       "imatge": "img/kenickie.jpg",
       "label": "kenickie",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "kenickie",
-        "doody",
-        "rizzo",
-        "jan"
+        "frenchy",
+        "marty",
+        "doody"
       ]
     },
     {
@@ -1150,12 +1150,12 @@
       "resposta": "putzie",
       "imatge": "img/putzie.jpg",
       "label": "putzie",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "putzie",
-        "doody",
-        "rizzo",
-        "jan"
+        "danny zuko",
+        "patty",
+        "kenickie"
       ]
     },
     {
@@ -1165,12 +1165,12 @@
       "resposta": "danny",
       "imatge": "img/danny.jpg",
       "label": "danny",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "danny",
-        "doody",
+        "balmudo",
         "rizzo",
-        "jan"
+        "marty"
       ]
     },
     {
@@ -1180,12 +1180,12 @@
       "resposta": "doody",
       "imatge": "img/doody.jpg",
       "label": "doody",
-      "tipus": "objecte",
+      "tipus": "personatge",
       "opcions": [
         "doody",
-        "guitarra",
-        "motocicleta",
-        "casc"
+        "murdock",
+        "patty",
+        "sandy"
       ]
     },
     {
@@ -1195,12 +1195,12 @@
       "resposta": "cha-cha",
       "imatge": "img/cha-cha.jpg",
       "label": "cha-cha",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "cha-cha",
-        "doody",
-        "rizzo",
-        "jan"
+        "danny",
+        "putzie",
+        "sandy"
       ]
     },
     {
@@ -1210,12 +1210,12 @@
       "resposta": "sonny",
       "imatge": "img/sonny.jpg",
       "label": "sonny",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "sonny",
-        "doody",
-        "rizzo",
-        "jan"
+        "kenickie",
+        "vince fontaine",
+        "doody"
       ]
     },
     {
@@ -1225,12 +1225,12 @@
       "resposta": "tbirds",
       "imatge": "img/tbirds.jpg",
       "label": "tbirds",
-      "tipus": "vehicle",
+      "tipus": "grup",
       "opcions": [
         "tbirds",
-        "greased lightning",
-        "lightning star",
-        "thunder roadster"
+        "scorpions",
+        "the racers",
+        "pinkladies"
       ]
     },
     {
@@ -1240,12 +1240,12 @@
       "resposta": "greased lightning",
       "imatge": "img/greasedlightning.jpg",
       "label": "greased lightning",
-      "tipus": "vehicle",
+      "tipus": "objecte",
       "opcions": [
         "greased lightning",
-        "lightning star",
-        "thunder roadster",
-        "chrome phantom"
+        "guants",
+        "roda",
+        "motocicleta"
       ]
     },
     {
@@ -1255,12 +1255,12 @@
       "resposta": "jan",
       "imatge": "img/jan.jpg",
       "label": "jan",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "jan",
-        "doody",
-        "rizzo",
-        "danny"
+        "kenickie",
+        "murdock",
+        "rizzo"
       ]
     },
     {
@@ -1270,12 +1270,12 @@
       "resposta": "marty",
       "imatge": "img/marty.jpg",
       "label": "marty",
-      "tipus": "color",
+      "tipus": "personatge",
       "opcions": [
         "marty",
-        "negre",
-        "blanc",
-        "vermell"
+        "frenchy",
+        "rizzo",
+        "danny"
       ]
     },
     {
@@ -1288,9 +1288,9 @@
       "tipus": "color",
       "opcions": [
         "vermell",
-        "negre",
-        "blanc",
-        "rosa"
+        "rosa",
+        "ros",
+        "blanc"
       ]
     },
     {
@@ -1300,12 +1300,12 @@
       "resposta": "frenchy",
       "imatge": "img/frenchy.jpg",
       "label": "frenchy",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "frenchy",
-        "doody",
-        "rizzo",
-        "jan"
+        "jan",
+        "marty",
+        "kenickie"
       ]
     },
     {
@@ -1315,12 +1315,12 @@
       "resposta": "danny",
       "imatge": "img/danny.jpg",
       "label": "danny",
-      "tipus": "vehicle",
+      "tipus": "personatge",
       "opcions": [
         "danny",
-        "greased lightning",
-        "lightning star",
-        "thunder roadster"
+        "putzie",
+        "vince fontaine",
+        "balmudo"
       ]
     },
     {
@@ -1330,12 +1330,12 @@
       "resposta": "sandy",
       "imatge": "img/sandy.jpg",
       "label": "sandy",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "sandy",
-        "doody",
-        "rizzo",
-        "jan"
+        "balmudo",
+        "putzie",
+        "danny zuko"
       ]
     },
     {
@@ -1348,9 +1348,9 @@
       "tipus": "color",
       "opcions": [
         "rosa",
+        "vermell",
         "negre",
-        "blanc",
-        "vermell"
+        "blanc"
       ]
     },
     {
@@ -1360,12 +1360,12 @@
       "resposta": "balmudo",
       "imatge": "img/balmudo.jpg",
       "label": "balmudo",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "balmudo",
-        "doody",
-        "rizzo",
-        "jan"
+        "putzie",
+        "kenickie",
+        "rizzo"
       ]
     },
     {
@@ -1375,12 +1375,12 @@
       "resposta": "sonny",
       "imatge": "img/sonny.jpg",
       "label": "sonny",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "sonny",
+        "patty",
         "doody",
-        "rizzo",
-        "jan"
+        "calhoun"
       ]
     },
     {
@@ -1390,11 +1390,11 @@
       "resposta": "rizzo",
       "imatge": "img/rizzo.jpg",
       "label": "rizzo",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "rizzo",
-        "doody",
         "jan",
+        "calhoun",
         "danny"
       ]
     },
@@ -1405,12 +1405,12 @@
       "resposta": "putzie",
       "imatge": "img/putzie.jpg",
       "label": "putzie",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "putzie",
-        "doody",
-        "rizzo",
-        "jan"
+        "vince fontaine",
+        "danny",
+        "doody"
       ]
     },
     {
@@ -1420,12 +1420,12 @@
       "resposta": "danny",
       "imatge": "img/danny.jpg",
       "label": "danny",
-      "tipus": "vehicle",
+      "tipus": "personatge",
       "opcions": [
         "danny",
-        "greased lightning",
-        "lightning star",
-        "thunder roadster"
+        "jan",
+        "kenickie",
+        "murdock"
       ]
     },
     {
@@ -1435,12 +1435,12 @@
       "resposta": "putzie",
       "imatge": "img/putzie.jpg",
       "label": "putzie",
-      "tipus": "event",
+      "tipus": "personatge",
       "opcions": [
         "putzie",
-        "concursdeball",
-        "festa de fi de curs",
-        "graduacio"
+        "balmudo",
+        "jan",
+        "murdock"
       ]
     },
     {
@@ -1450,12 +1450,12 @@
       "resposta": "balmudo",
       "imatge": "img/balmudo.jpg",
       "label": "balmudo",
-      "tipus": "persona",
+      "tipus": "personatge",
       "opcions": [
         "balmudo",
-        "doody",
+        "putzie",
         "rizzo",
-        "jan"
+        "patty"
       ]
     },
     {
@@ -1465,12 +1465,12 @@
       "resposta": "doody",
       "imatge": "img/doody.jpg",
       "label": "doody",
-      "tipus": "objecte",
+      "tipus": "personatge",
       "opcions": [
         "doody",
-        "guitarra",
-        "motocicleta",
-        "casc"
+        "cha-cha",
+        "sandy",
+        "patty"
       ]
     },
     {
@@ -1482,9 +1482,9 @@
       "label": "olsson",
       "opcions": [
         "olsson",
-        "balmudo",
         "johnson",
-        "smith"
+        "smith",
+        "williams"
       ],
       "tipus": "cognom"
     }

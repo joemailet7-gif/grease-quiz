@@ -254,7 +254,12 @@
   function normalizeEntry(e){
     // Accept both legacy {pregunta,resposta,imatge,dificultat} and new {pistes:[],resposta,imatge,label}
     var pistes = Array.isArray(e.pistes) ? e.pistes.slice() : (e.pregunta ? [e.pregunta] : []);
-    return { answer: (e.resposta||'').toLowerCase().trim(), pistes: pistes, image: e.imatge || null, label: (e.label || e.resposta || '').trim(), type: e.tipus || null, presetChoices: e.opcions || null, commonChoiceImage: e.imatge_comuna_opcions || null };
+    return {
+      answer: (e.resposta||'').toLowerCase().trim(),
+      pistes: pistes,
+      image: e.imatge || null,
+      label: (e.label || e.resposta || '').trim()
+    };
   }
 
   function take(list, n){
@@ -348,12 +353,13 @@ function buildAnswerSet(pool){
     var answersMap = buildAnswerSet(pool);
     var allAnswers = Object.keys(answersMap);
     var decorated = pool.map(function(q){
-      var correctType = (answersMap[q.answer] && answersMap[q.answer].type) ? answersMap[q.answer].type : guessType(q.label||q.answer);
+        var ansInfo = answersMap[q.answer] || {}; 
+  var correctType = ansInfo.type || q.type || guessType(q.label||q.answer) || guessTypeFromQuestion(prompt) || 'personatge';
       var sameType = allAnswers.filter(a => a!==q.answer && ((answersMap[a]&&answersMap[a].type)||guessType(a))===correctType);
       var pickFrom = sameType.length>=3 ? sameType : allAnswers.filter(a => a!==q.answer);
       var others = shuffle(pickFrom).slice(0,3);
       var opts = shuffle([q.answer].concat(others));
-      return { answer:q.answer, pistes:q.pistes, image:q.image, label:q.label, choices:opts, answersMap:answersMap, type:correctType };
+      return { answer:q.answer, pistes:q.pistes, image:q.image, label:q.label, choices:opts, answersMap:answersMap, type:correctType, commonChoiceImage:q.commonChoiceImage||null };
     });
     return decorated;
   }
@@ -571,6 +577,55 @@ function buildAnswerSet(pool){
 
   function init(){ bindAll(); }
   if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', init); } else { init(); }
+
+// === Tipus robustos (v2) ===
+function norm(s){
+  return String(s||'').toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .replace(/\s+/g,' ').trim();
+}
+const TYPE_SETS = {
+  color: new Set(['negre','rosa','blanc','vermell','groc','blau','verd','gris','taronja','ros','lila']),
+  grup: new Set(['tbirds','t-birds','t birds','pinkladies','pink ladies','scorpions']),
+  vehicle: new Set([]), // no fem servir vehicle; 'greased lightning' és objecte
+  esport: new Set(['futbolamerica','futbol american','futbolamericà','basquet','bàsquet','beisbol','voleibol']),
+  lloc: new Set(['platja','rydell','radio','ràdio','cafeteria','taller','gimnas','gimnàs','bar']),
+  cognom: new Set(['olsson','zuko']),
+  objecte: new Set(['guitarra','jaqueta','pentinat','greased lightning','greasedlightning','pastis','pastís']),
+  event: new Set(['concursdeball','concurs de ball','festa de fi de curs','graduacio','cursa de cotxes'])
+};
+function inType(a,type){
+  const n=norm(a);
+  if(TYPE_SETS[type].has(n)) return true;
+  if(TYPE_SETS[type].has(n.replace(/\s+/g,''))) return true;
+  return false;
+}
+function guessType(answer){
+  if(!answer) return 'personatge';
+  if(inType(answer,'color')) return 'color';
+  if(inType(answer,'grup')) return 'grup';
+  if(inType(answer,'objecte')) return 'objecte';
+  if(inType(answer,'esport')) return 'esport';
+  if(inType(answer,'lloc')) return 'lloc';
+  if(inType(answer,'cognom')) return 'cognom';
+  if(inType(answer,'event')) return 'event';
+  return 'personatge';
+}
+function guessTypeFromQuestion(text){
+  const t = ' ' + norm(text) + ' ';
+  function hasWord(w){ return new RegExp('(^|\\s)'+w+'(\\s|$)').test(t); }
+  if(t.includes(' color ') || t.includes(' jersei ')) return 'color';
+  if(t.includes(' grup ')) return 'grup';
+  if(t.includes(' cotxe ') || t.includes(' vehicle ') || t.includes(' greased ')) return 'objecte';
+  if(hasWord('esport')) return 'esport';
+  if(hasWord('cognom')) return 'cognom';
+  if(hasWord('on') || hasWord('lloc')) return 'lloc';
+  if(t.includes(' ball ') || t.includes(' concurs ')) return 'event';
+  if(hasWord('vestit') || hasWord('jaqueta') || hasWord('roba')) return 'objecte';
+  if(hasWord('qui')) return 'personatge';
+  return null;
+}
+
 })();</script>
 </body>
 </html>
