@@ -66,7 +66,7 @@
 </style>
 </head>
 <body>
-  <span class="version">v5.6</span>
+  <span class="version">v5.7</span>
   <div class="wrap">
     <div class="topbar">
       <div class="brand"><h1>Qui sóc?</h1></div>
@@ -210,7 +210,14 @@
   var KEY='grease_hist_engineB2';
 
   function shuffle(a){ for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;} return a; }
-  function setToggle(btn, active){ if(!btn) return; btn.classList[active?'add':'remove']('active'); btn.setAttribute('aria-pressed', String(active)); }
+  function setToggle(btn, active){
+    if(!btn) return;
+    try{
+      btn.classList.toggle('active', !!active);
+      btn.setAttribute('aria-pressed', String(!!active));
+      var lab = btn.querySelector('.label'); if(lab) { /* no-op */ }
+    }catch(e){ /* ignore */ }
+  }
 
   // Audio blips
   function beep(f,d,t,v){ if(!audioOn) return; try{ if(!actx){ actx=new (window.AudioContext||window.webkitAudioContext)(); } var o=actx.createOscillator(),g=actx.createGain(); o.type=t||'sine'; o.frequency.value=f||880; g.gain.value=v||0.08; o.connect(g).connect(actx.destination); o.start(); o.stop(actx.currentTime+(d||0.10)); }catch(e){} }
@@ -567,6 +574,15 @@ function buildAnswerSet(pool){
   }
 
   function init(){ bindAll(); }
+  window.addEventListener('error', function(ev){
+    try{
+      var d=document.createElement('div'); d.style.position='fixed'; d.style.bottom='8px'; d.style.right='8px';
+      d.style.background='rgba(255,0,0,.12)'; d.style.color='#fff'; d.style.font='12px/1.4 system-ui, sans-serif';
+      d.style.padding='6px 8px'; d.style.border='1px solid rgba(255,255,255,.2)'; d.style.borderRadius='8px'; d.style.zIndex=99999;
+      d.textContent='JS error: '+(ev.message||'')+' (consulta la consola)';
+      document.body.appendChild(d); setTimeout(function(){ d.remove(); }, 6000);
+    }catch(e){}
+  });
   if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', init); } else { init(); }
 })();</script>
 </body>
