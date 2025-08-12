@@ -264,13 +264,26 @@
     var a=list.slice(); shuffle(a); return a.slice(0,n).map(normalizeEntry);
   }
 
+  function guessType(answer){
+    var a = (answer||'').toLowerCase();
+    var COLORS = {'negre':1,'rosa':1,'blanc':1,'vermell':1,'groc':1,'blau':1,'verd':1};
+    var GROUPS = {'tbirds':1,'t-birds':1,'pink ladies':1,'scorpions':1};
+    var OBJECTS = {'guitarra':1,'cotxe':1,'greased lightning':1,'jaqueta':1,'pentinat':1};
+    var SPORTS = {'futbolamericà':1,'futbol american':1};
+    if (COLORS[a]) return 'color';
+    if (GROUPS[a]) return 'grup';
+    if (OBJECTS[a]) return 'objecte';
+    if (SPORTS[a]) return 'esport';
+    return 'persona';
+  }
+
   function buildAnswerSet(pool){
     // Map answer -> {label,image}
     var map={};
     for(var i=0;i<pool.length;i++){
       var x=pool[i];
       if(!map[x.answer]){
-        map[x.answer] = { label: x.label || x.answer, image: x.image || null };
+        map[x.answer] = { label: x.label || x.answer, image: x.image || null, type: guessType(x.label||x.answer) };
       } else {
         // fill image/label if missing
         if(!map[x.answer].image && x.image) map[x.answer].image = x.image;
@@ -306,10 +319,12 @@
     var answersMap = buildAnswerSet(pool);
     var allAnswers = Object.keys(answersMap);
     var decorated = pool.map(function(q){
-      // choices: correct + 3 random others
-      var others = shuffle(allAnswers.filter(a => a!==q.answer)).slice(0,3);
+      var correctType = (answersMap[q.answer] && answersMap[q.answer].type) ? answersMap[q.answer].type : guessType(q.label||q.answer);
+      var sameType = allAnswers.filter(a => a!==q.answer && ((answersMap[a]&&answersMap[a].type)||guessType(a))===correctType);
+      var pickFrom = sameType.length>=3 ? sameType : allAnswers.filter(a => a!==q.answer);
+      var others = shuffle(pickFrom).slice(0,3);
       var opts = shuffle([q.answer].concat(others));
-      return { answer:q.answer, pistes:q.pistes, image:q.image, label:q.label, choices:opts, answersMap:answersMap };
+      return { answer:q.answer, pistes:q.pistes, image:q.image, label:q.label, choices:opts, answersMap:answersMap, type:correctType };
     });
     return decorated;
   }
@@ -361,7 +376,21 @@
   }
   function addClue(){
     var src = Array.isArray(current.pistes) ? current.pistes : [];
-    if(revealed>=src.length){ els.revealBtn.disabled=true; return; }
+    var dynamic = [];
+    var ans = current.label || current.answer;
+    var t = (current.type) ? current.type : guessType(ans);
+    dynamic.push('Tipus: '+t);
+    if(ans && ans.length){
+      dynamic.push('Comença per: '+ (ans.charAt(0).toUpperCase()));
+      dynamic.push('Nombre de lletres: '+ ans.replace(/\s+/g,'').length);
+    }
+    var allClues = src.concat(dynamic);
+    if(revealed>=allClues.length){ els.revealBtn.disabled=true; return; }
+    var d=document.createElement('div'); d.className='clue'; d.setAttribute('data-n', revealed+1);
+    d.textContent=allClues[revealed];
+    els.clues.appendChild(d); revealed++;
+    if(revealed>=allClues.length) els.revealBtn.disabled=true;
+  }
     var d=document.createElement('div'); d.className='clue'; d.setAttribute('data-n', (revealed+1)); d.textContent=src[revealed]; els.clues.appendChild(d); revealed++;
     if(revealed>=src.length) els.revealBtn.disabled=true;
   }
