@@ -66,7 +66,7 @@
 </style>
 </head>
 <body>
-  <span class="version">v5.2.2</span>
+  \1v2.1.0\2
   <div class="wrap">
     <div class="topbar">
       <div class="brand"><h1>Qui sóc?</h1></div>
@@ -254,12 +254,7 @@
   function normalizeEntry(e){
     // Accept both legacy {pregunta,resposta,imatge,dificultat} and new {pistes:[],resposta,imatge,label}
     var pistes = Array.isArray(e.pistes) ? e.pistes.slice() : (e.pregunta ? [e.pregunta] : []);
-    return {
-      answer: (e.resposta||'').toLowerCase().trim(),
-      pistes: pistes,
-      image: e.imatge || null,
-      label: (e.label || e.resposta || '').trim()
-    };
+    return { answer: (e.resposta||'').toLowerCase().trim(), pistes: pistes, image: e.imatge || null, label: (e.label || e.resposta || '').trim(), type: e.tipus || null, choicesFromJson: e.opcions || null, commonChoiceImage: e.imatge_comuna_opcions || null };
   }
 
   function take(list, n){
@@ -311,21 +306,33 @@
     if(SURN.indexOf(a)>=0) return 'cognom';
     return 'persona';
   }
+
 function buildAnswerSet(pool){
-    // Map answer -> {label,image}
     var map={};
+    function addEntry(ans, label, img, typeHint){
+      var key=(ans||'').toLowerCase().trim();
+      if(!key) return;
+      if(!map[key]){
+        map[key] = { label: (label||ans), image: img||null, type: typeHint || guessType(label||ans) };
+      } else {
+        if(!map[key].image && img) map[key].image = img;
+        if(!map[key].label && label) map[key].label = label;
+        if(!map[key].type && typeHint) map[key].type = typeHint;
+      }
+    }
     for(var i=0;i<pool.length;i++){
       var x=pool[i];
-      if(!map[x.answer]){
-        map[x.answer] = { label: x.label || x.answer, image: x.image || null, type: guessType(x.label||x.answer) };
-      } else {
-        // fill image/label if missing
-        if(!map[x.answer].image && x.image) map[x.answer].image = x.image;
-        if(!map[x.answer].label && x.label) map[x.answer].label = x.label;
+      addEntry(x.answer, x.label||x.answer, x.image||null, x.type||null);
+      if (Array.isArray(x.choicesFromJson)) {
+        for (var j=0;j<x.choicesFromJson.length;j++){
+          var c = x.choicesFromJson[j];
+          // Register choices as well, without forcing type
+          addEntry(c, c, null, null);
+        }
       }
     }
     return map;
-  }
+}
 
   function buildBank(modeName, rounds){
     var pool=[];
@@ -352,16 +359,44 @@ function buildAnswerSet(pool){
     // Decorate with choices using global answer set
     var answersMap = buildAnswerSet(pool);
     var allAnswers = Object.keys(answersMap);
-    var decorated = pool.map(function(q){
-        var ansInfo = answersMap[q.answer] || {}; 
+    
+var decorated = pool.map(function(q){
+  var prompt = (Array.isArray(q.pistes) && q.pistes[0]) ? q.pistes[0] : (q.pregunta||'');
+  var ansInfo = answersMap[q.answer] || {};
   var correctType = ansInfo.type || q.type || guessType(q.label||q.answer) || guessTypeFromQuestion(prompt) || 'personatge';
-      var sameType = allAnswers.filter(a => a!==q.answer && ((answersMap[a]&&answersMap[a].type)||guessType(a))===correctType);
-      var pickFrom = sameType.length>=3 ? sameType : allAnswers.filter(a => a!==q.answer);
-      var others = shuffle(pickFrom).slice(0,3);
-      var opts = shuffle([q.answer].concat(others));
-      return { answer:q.answer, pistes:q.pistes, image:q.image, label:q.label, choices:opts, answersMap:answersMap, type:correctType, commonChoiceImage:q.commonChoiceImage||null };
+
+  var opts = null;
+  if (Array.isArray(q.choicesFromJson) && q.choicesFromJson.length>=2){
+    // Use only the JSON-specified options; shuffle for variety but keep the set intact
+    var uniq = Array.from(new Set(q.choicesFromJson.map(function(s){return String(s||'').toLowerCase().trim();})));
+    // Ensure the correct answer is present
+    if (uniq.indexOf(q.answer)===-1) uniq.unshift(q.answer);
+    // Limit to 4 options
+    var finalSet = uniq.slice(0,4);
+    // If fewer than 4, pad with same-type answers (but only as last resort)
+    if (finalSet.length<4){
+      var sameType = Object.keys(answersMap).filter(function(a){
+        return a!==q.answer && (answersMap[a]&&answersMap[a].type)===correctType;
+      });
+      for (var k=0;k<sameType.length && finalSet.length<4;k++){
+        if (finalSet.indexOf(sameType[k])===-1) finalSet.push(sameType[k]);
+      }
+    }
+    opts = shuffle(finalSet);
+  } else {
+    // Fallback: build same-type choices from the entire answer set
+    var sameType = Object.keys(answersMap).filter(function(a){
+      return a!==q.answer && (answersMap[a]&&answersMap[a].type)===correctType;
     });
-    return decorated;
+    var pickFrom = sameType.length>=3 ? sameType : Object.keys(answersMap).filter(function(a){return a!==q.answer;});
+    var others = shuffle(pickFrom).slice(0,3);
+    opts = shuffle([q.answer].concat(others));
+  }
+
+  return { answer:q.answer, pistes:q.pistes, image:q.image, label:q.label, choices:opts, answersMap:answersMap, type:correctType, commonChoiceImage:q.commonChoiceImage||q.commonChoiceImage||null };
+});
+return decorated;
+
   }
 
   function resetUI(){
@@ -577,55 +612,6 @@ function buildAnswerSet(pool){
 
   function init(){ bindAll(); }
   if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', init); } else { init(); }
-
-// === Tipus robustos (v2) ===
-function norm(s){
-  return String(s||'').toLowerCase()
-    .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
-    .replace(/\s+/g,' ').trim();
-}
-const TYPE_SETS = {
-  color: new Set(['negre','rosa','blanc','vermell','groc','blau','verd','gris','taronja','ros','lila']),
-  grup: new Set(['tbirds','t-birds','t birds','pinkladies','pink ladies','scorpions']),
-  vehicle: new Set([]), // no fem servir vehicle; 'greased lightning' és objecte
-  esport: new Set(['futbolamerica','futbol american','futbolamericà','basquet','bàsquet','beisbol','voleibol']),
-  lloc: new Set(['platja','rydell','radio','ràdio','cafeteria','taller','gimnas','gimnàs','bar']),
-  cognom: new Set(['olsson','zuko']),
-  objecte: new Set(['guitarra','jaqueta','pentinat','greased lightning','greasedlightning','pastis','pastís']),
-  event: new Set(['concursdeball','concurs de ball','festa de fi de curs','graduacio','cursa de cotxes'])
-};
-function inType(a,type){
-  const n=norm(a);
-  if(TYPE_SETS[type].has(n)) return true;
-  if(TYPE_SETS[type].has(n.replace(/\s+/g,''))) return true;
-  return false;
-}
-function guessType(answer){
-  if(!answer) return 'personatge';
-  if(inType(answer,'color')) return 'color';
-  if(inType(answer,'grup')) return 'grup';
-  if(inType(answer,'objecte')) return 'objecte';
-  if(inType(answer,'esport')) return 'esport';
-  if(inType(answer,'lloc')) return 'lloc';
-  if(inType(answer,'cognom')) return 'cognom';
-  if(inType(answer,'event')) return 'event';
-  return 'personatge';
-}
-function guessTypeFromQuestion(text){
-  const t = ' ' + norm(text) + ' ';
-  function hasWord(w){ return new RegExp('(^|\\s)'+w+'(\\s|$)').test(t); }
-  if(t.includes(' color ') || t.includes(' jersei ')) return 'color';
-  if(t.includes(' grup ')) return 'grup';
-  if(t.includes(' cotxe ') || t.includes(' vehicle ') || t.includes(' greased ')) return 'objecte';
-  if(hasWord('esport')) return 'esport';
-  if(hasWord('cognom')) return 'cognom';
-  if(hasWord('on') || hasWord('lloc')) return 'lloc';
-  if(t.includes(' ball ') || t.includes(' concurs ')) return 'event';
-  if(hasWord('vestit') || hasWord('jaqueta') || hasWord('roba')) return 'objecte';
-  if(hasWord('qui')) return 'personatge';
-  return null;
-}
-
 })();</script>
 </body>
 </html>
