@@ -208,7 +208,7 @@
   var KEY='grease_hist_engineB2';
 
   function shuffle(a){ for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;} return a; }
-  function setToggle(btn, active){ if(!btn) return; btn.classList[active?'add':'remove']('active'); btn.setAttribute('aria-pressed', String(active)); }
+  function setToggle(btn, active){ try{ if(!btn) return; btn.classList.toggle('active', !!active); btn.setAttribute('aria-pressed', String(!!active)); }catch(e){} }
 
   // Audio blips
   function beep(f,d,t,v){ if(!audioOn) return; try{ if(!actx){ actx=new (window.AudioContext||window.webkitAudioContext)(); } var o=actx.createOscillator(),g=actx.createGain(); o.type=t||'sine'; o.frequency.value=f||880; g.gain.value=v||0.08; o.connect(g).connect(actx.destination); o.start(); o.stop(actx.currentTime+(d||0.10)); }catch(e){} }
