@@ -76,7 +76,8 @@
 </head>
 <body>
   
-  <div class="version">v5.3</div>
+  
+  <div class="version">v5.4</div>
   <div class="wrap">
     <div class="topbar">
       <div class="brand"><h1>Quiz challenge</h1></div>
@@ -520,10 +521,61 @@ return decorated;
     els.revealBtn.disabled = false;
   }
 
-  function guessImageFor(answer, answersMap, fallbackImage){
+  
+function buildImageCandidates(answer, answersMap, fallbackImage){
+  var cands = [];
   var info = answersMap && answersMap[answer] ? answersMap[answer] : null;
-  if (info && info.image) return info.image;
-  return fallbackImage || 'img/question.jpg';
+  if (info && info.image) cands.push(info.image);
+
+  var a = String(answer||'').trim();
+  var low = a.toLowerCase();
+  var noAcc = low.normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  var noSpace = noAcc.replace(/\s+/g,'');
+  var withSpaces = noAcc.replace(/-/g,' ').replace(/\s+/g,' ').trim(); // allow hyphen->space
+
+  // Known remaps from your /img listing (vincefontaine, futbolamerican, radio, cha-cha, etc.)
+  var remap = {
+    'vince fontaine':'vincefontaine',
+    'ràdio':'radio',
+    'radio':'radio',
+    'futbolamericà':'futbolamerican',
+    'futbolamerica':'futbolamerican',
+    'bàsquet':'basquet',
+    'basquet':'basquet',
+    'cha-cha':'cha-cha'
+  };
+  var key = low;
+  if (remap[key]){
+    cands.push('img/'+remap[key]+'.jpg');
+  }
+
+  // Try common patterns seen in your folder:
+  // exact with spaces, hyphenated, no spaces, accentless
+  cands.push('img/'+low+'.jpg');
+  cands.push('img/'+withSpaces+'.jpg');
+  cands.push('img/'+noSpace+'.jpg');
+
+  // Also try png/jpeg variants
+  cands.push('img/'+low+'.png');
+  cands.push('img/'+noSpace+'.png');
+  cands.push('img/'+low+'.jpeg');
+  cands.push('img/'+noSpace+'.jpeg');
+
+  // Always end with fallback
+  if (fallbackImage) cands.push(fallbackImage);
+  cands.push('img/question.jpg');
+
+  // Deduplicate while preserving order
+  var seen={}, out=[];
+  for (var i=0;i<cands.length;i++){
+    var u=cands[i]; if(u && !seen[u]){ seen[u]=1; out.push(u); }
+  }
+  return out;
+}
+
+function guessImageFor(answer, answersMap, fallbackImage){
+  var cands = buildImageCandidates(answer, answersMap, fallbackImage);
+  return cands[0];
 }
   function guessLabelFor(answer, answersMap){
   var info = answersMap && answersMap[answer] ? answersMap[answer] : null;
@@ -538,9 +590,19 @@ return decorated;
       var id=arr[i];
       var b=document.createElement('button'); b.className='option'; b.dataset.id=id;
       var im=document.createElement('img'); im.className='avatar';
-      im.src = current.commonChoiceImage ? current.commonChoiceImage : guessImageFor(id, current.answersMap, 'img/question.jpg');
+      var candList = buildImageCandidates(id, current.answersMap, 'img/question.jpg');
+      im.setAttribute('data-cands', JSON.stringify(candList));
+      im.setAttribute('data-idx', '0');
+      im.src = current.commonChoiceImage ? current.commonChoiceImage : candList[0];
       im.alt='';
-      im.onerror=function(){ this.style.opacity=.15; };
+      im.onerror=function(){
+        try{
+          var arr = JSON.parse(this.getAttribute('data-cands')||'[]');
+          var idx = parseInt(this.getAttribute('data-idx')||'0',10);
+          if (idx < arr.length-1){ idx++; this.setAttribute('data-idx', String(idx)); this.src = arr[idx]; return; }
+        }catch(e){}
+        this.style.opacity=.15;
+      };
       var t=document.createElement('div'); t.className='optText'; t.textContent=guessLabelFor(id, current.answersMap);
       b.appendChild(im); b.appendChild(t); b.addEventListener('click', onAnswer); els.options.appendChild(b);
     }
