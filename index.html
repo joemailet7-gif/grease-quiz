@@ -316,6 +316,49 @@
     return 'persona';
   }
 
+
+function prettyLabel(input){
+  var s = String(input||'').trim();
+
+  var map = {
+    'tbirds': 'T-Birds',
+    't-birds': 'T-Birds',
+    'pinkladies': 'Pink Ladies',
+    'greasedlightning': 'Greased Lightning',
+    'concursdeball': 'Concurs de ball',
+    'futbolamerica': 'Futbol americà',
+    'futbolamerican': 'Futbol americà',
+    'futbolamericà': 'Futbol americà',
+    'vincefontaine': 'Vince Fontaine',
+    'vince fontaine': 'Vince Fontaine',
+    'dannyzuko': 'Danny Zuko',
+    'danny zuko': 'Danny Zuko'
+  };
+
+  // normalize to compare map keys robustly
+  var norm = s.toLowerCase()
+              .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+              .replace(/\s+/g,'');
+  if (map[norm]) return map[norm];
+
+  // If already has spaces, just Title Case
+  if (/\s/.test(s)) {
+    return s.toLowerCase().replace(/\b[a-zà-ÿ]/g, function(c){ return c.toUpperCase(); });
+  }
+
+  // Heuristic separations for common compounds
+  var t = s.toLowerCase()
+    .replace(/(greased)(lightning)/, '$1 $2')
+    .replace(/(vince)(fontaine)/, '$1 $2')
+    .replace(/(pink)(ladies)/, '$1 $2')
+    .replace(/^(t)[- ]?(birds)$/,'T-Birds')
+    .replace(/(concurs)(de)(ball)/, '$1 $2 $3')
+    .replace(/(futbol)(america[àa]?)/, '$1 americà');
+
+  // Title Case result
+  return t.replace(/\b[a-zà-ÿ]/g, function(c){ return c.toUpperCase(); });
+}
+
 function buildAnswerSet(pool){
     var map={};
     function addEntry(ans, label, img, typeHint){
@@ -488,15 +531,30 @@ return decorated;
   }
 
   function guessImageFor(answer, answersMap, fallbackImage){
-    var info = answersMap && answersMap[answer] ? answersMap[answer] : null;
-    var img = (info && info.image) ? info.image : (fallbackImage || ('img/'+answer+'.jpg'));
-    return img;
-  }
+  var info = answersMap && answersMap[answer] ? answersMap[answer] : null;
+  if (info && info.image) return info.image;
+  // Build robust fallback candidates
+  var a = String(answer||'').toLowerCase().trim();
+  var base = 'img/';
+  var noAcc = a.normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  var noSpace = a.replace(/\s+/g,'');
+  var cand = [
+    fallbackImage,
+    base + a + '.jpg',
+    base + noSpace + '.jpg',
+    base + noAcc + '.jpg',
+    base + noSpace + '.png',
+    base + a + '.png',
+    base + noSpace + '.jpeg',
+    base + a + '.jpeg'
+  ].filter(Boolean);
+  return cand[0];
+}
   function guessLabelFor(answer, answersMap){
-    var info = answersMap && answersMap[answer] ? answersMap[answer] : null;
-    var label = (info && info.label) ? info.label : answer;
-    return label;
-  }
+  var info = answersMap && answersMap[answer] ? answersMap[answer] : null;
+  var raw = (info && info.label) ? info.label : answer;
+  return prettyLabel(raw);
+}
 
   function renderOptions(){
     els.options.innerHTML='';
