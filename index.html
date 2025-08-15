@@ -77,6 +77,7 @@
 <body>
   <div class=\"version\">v5.2</div>
   
+  <div class="version">v5.2</div>
   <div class="wrap">
     <div class="topbar">
       <div class="brand"><h1>Quiz challenge</h1></div>
@@ -251,15 +252,12 @@
     try{
       const res = await fetch(url,{cache:'no-store'});
       if(res.ok) return await res.json();
-    }catch(e){ /* ignore */ }
+    }catch(e){}
     return null;
   }
   DATA = await tryFetch('preguntes_mod.json');
   if(!DATA){ DATA = await tryFetch('preguntes.json'); }
-  if(!DATA){
-    alert('No s’han pogut carregar les preguntes. Comprova que el fitxer preguntes.json o preguntes_mod.json existeix i torna-ho a provar.');
-    throw new Error('No s’ha pogut carregar cap fitxer de preguntes');
-  }
+  if(!DATA){ alert('No s’han pogut carregar les preguntes.'); throw new Error('No questions file'); }
 });
     if(!res.ok){ throw new Error('No s’ha pogut carregar preguntes.json'); }
     DATA = await res.json();
@@ -347,17 +345,16 @@ function prettyLabel(input){
   };
   var norm = s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,'');
   if (map[norm]) return map[norm];
-  if (/\s/.test(s)) return s.toLowerCase().replace(/\b[a-zà-ÿ]/g, c=>c.toUpperCase());
-  var t = s.toLowerCase()
+  if (/\s/.test(s)) return s.toLowerCase().replace(/\b[a-zà-ÿ]/g, function(c){ return c.toUpperCase(); });
+  var t2 = s.toLowerCase()
     .replace(/(greased)(lightning)/, '$1 $2')
     .replace(/(vince)(fontaine)/, '$1 $2')
     .replace(/(pink)(ladies)/, '$1 $2')
     .replace(/^(t)[- ]?(birds)$/,'T-Birds')
     .replace(/(concurs)(de)(ball)/, '$1 $2 $3')
     .replace(/(futbol)(america[àa]?)/, '$1 americà');
-  return t.replace(/\b[a-zà-ÿ]/g, c=>c.toUpperCase());
+  return t2.replace(/\b[a-zà-ÿ]/g, function(c){ return c.toUpperCase(); });
 }
-
 function buildAnswerSet(pool){
     var map={};
     function addEntry(ans, label, img, typeHint){
