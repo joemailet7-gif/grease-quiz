@@ -310,7 +310,7 @@
       "tipus": "color",
       "opcions": [
         "negre",
-        "ros",
+        "groc",
         "rosa",
         "blanc"
       ]
@@ -924,7 +924,7 @@
       ],
       "resposta": "vince fontaine",
       "imatge": "img/vincefontaine.jpg",
-      "label": "vince fontaine",
+      "label": "vincefontaine",
       "tipus": "personatge",
       "opcions": [
         "vince fontaine",
@@ -1080,7 +1080,7 @@
         "negre",
         "blanc",
         "rosa",
-        "ros"
+        "blau"
       ]
     },
     {
@@ -1274,7 +1274,7 @@
       "opcions": [
         "vermell",
         "rosa",
-        "ros",
+        "groc",
         "blanc"
       ]
     },
@@ -1474,5 +1474,282 @@
       "tipus": "cognom"
     }
   ],
-  "ultra": []
+  "ultra": [
+    {
+      "pregunta": "Qui diu: “¡Sandy, estás preciosa!”",
+      "resposta": "danny",
+      "imatge": "img/danny.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “¡Eres un cerdo, Danny Zuko!”",
+      "resposta": "sandy",
+      "imatge": "img/sandy.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “¡Vamos, chicas, al gimnasio!”",
+      "resposta": "rizzo",
+      "imatge": "img/rizzo.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “No pienso ir con un chulo de barrio”",
+      "resposta": "sandy",
+      "imatge": "img/sandy.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “¡Quédate con tu chaqueta de cuero!”",
+      "resposta": "sandy",
+      "imatge": "img/sandy.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “¡Eh, Zuko, compórtate!”",
+      "resposta": "kenickie",
+      "imatge": "img/kenickie.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “¡Sois unos gamberros!”",
+      "resposta": "patty",
+      "imatge": "img/patty.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “¡No me toques el pelo!”",
+      "resposta": "sonny",
+      "imatge": "img/sonny.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “¡Arranca ya, Kenickie!”",
+      "resposta": "danny",
+      "imatge": "img/danny.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “¡Venga, chicas, vamos al vestuario!”",
+      "resposta": "jan",
+      "imatge": "img/jan.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “¡No me rompas el corazón!”",
+      "resposta": "marty",
+      "imatge": "img/marty.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “¡Soy el rey del mambo!”",
+      "resposta": "balmudo",
+      "imatge": "img/balmudo.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “¡No te acerques a mí, Zuko!”",
+      "resposta": "sandy",
+      "imatge": "img/sandy.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “¡Vas a perder, Zuko!”",
+      "resposta": "balmudo",
+      "imatge": "img/balmudo.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “¡Eso no es un coche, es una tartana!”",
+      "resposta": "balmudo",
+      "imatge": "img/balmudo.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “¡Se te ha caído la goma de mascar!”",
+      "resposta": "frenchy",
+      "imatge": "img/frenchy.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “Digues-li que sóc de bona família.”",
+      "resposta": "sandy",
+      "imatge": "img/sandy.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “Greased Lightning serà imparable!”",
+      "resposta": "kenickie",
+      "imatge": "img/kenickie.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “Zuko, al meu despatx ara mateix.”",
+      "resposta": "calhoun",
+      "imatge": "img/calhoun.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “Tinc el cabell rosa… desastre total!”",
+      "resposta": "frenchy",
+      "imatge": "img/frenchy.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “Benvinguts al ball televisat de Rydell!”",
+      "resposta": "vince fontaine",
+      "imatge": "img/vincefontaine.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “No em tornareu a deixar en ridícul.”",
+      "resposta": "danny",
+      "imatge": "img/danny.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “Soc una Pink Lady, no una santa.”",
+      "resposta": "rizzo",
+      "imatge": "img/rizzo.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “Danny, has d’escollir: esport o xicota.”",
+      "resposta": "calhoun",
+      "imatge": "img/calhoun.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “No estic feta per a l’escola de bellesa.”",
+      "resposta": "frenchy",
+      "imatge": "img/frenchy.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “Mira com brilla, és Greased Lightning!”",
+      "resposta": "doody",
+      "imatge": "img/doody.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “Aquest any guanyarem el concurs de ball.”",
+      "resposta": "cha-cha",
+      "imatge": "img/cha-cha.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “Pink Ladies a punt, nenes.”",
+      "resposta": "marty",
+      "imatge": "img/marty.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “Som els T-Birds, troncs!”",
+      "resposta": "sonny",
+      "imatge": "img/sonny.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “A la platja tot és més fàcil.”",
+      "resposta": "danny",
+      "imatge": "img/danny.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “No em prenguis el pèl, Zuko.”",
+      "resposta": "kenickie",
+      "imatge": "img/kenickie.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “A classe de mecànica no es juga!”",
+      "resposta": "murdock",
+      "imatge": "img/murdock.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “No em tornis a dir nena.”",
+      "resposta": "sandy",
+      "imatge": "img/sandy.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “Encén el motor i vola.”",
+      "resposta": "danny",
+      "imatge": "img/danny.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “Això és un programa en directe!”",
+      "resposta": "vince fontaine",
+      "imatge": "img/vincefontaine.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “Tranquil·les, que no mossego.”",
+      "resposta": "cha-cha",
+      "imatge": "img/cha-cha.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “Aquest pentinat és art.”",
+      "resposta": "sonny",
+      "imatge": "img/sonny.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “On és la meva diadema?”",
+      "resposta": "patty",
+      "imatge": "img/patty.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “Som-hi, T-Birds, a córrer!”",
+      "resposta": "danny",
+      "imatge": "img/danny.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “Això és una carrera, no un passeig.”",
+      "resposta": "balmudo",
+      "imatge": "img/balmudo.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “No m’agrada la dissecció.”",
+      "resposta": "jan",
+      "imatge": "img/jan.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “Aquest és el meu millor costat.”",
+      "resposta": "marty",
+      "imatge": "img/marty.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “Zuko, ets un cas perdut.”",
+      "resposta": "calhoun",
+      "imatge": "img/calhoun.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “La ràdio no enganya.”",
+      "resposta": "vince fontaine",
+      "imatge": "img/vincefontaine.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “Et queda bé la jaqueta, Sandy.”",
+      "resposta": "frenchy",
+      "imatge": "img/frenchy.jpg",
+      "dificultat": "ultra"
+    },
+    {
+      "pregunta": "Qui diu: “Treu les mans del meu cotxe.”",
+      "resposta": "kenickie",
+      "imatge": "img/kenickie.jpg",
+      "dificultat": "ultra"
+    }
+  ]
 }

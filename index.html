@@ -263,6 +263,11 @@
   function normalizeEntry(e){
     // Accept both legacy {pregunta,resposta,imatge,dificultat} and new {pistes:[],resposta,imatge,label}
     var pistes = Array.isArray(e.pistes) ? e.pistes.slice() : (e.pregunta ? [e.pregunta] : []);
+    var img = e.imatge || null;
+    if (img && typeof img === 'string' && !/^img\//.test(img)) { img = 'img/' + img; }
+    return { answer: (e.resposta||'').toLowerCase().trim(), pistes: pistes, image: img, label: (e.label || e.resposta || '').trim(), type: e.tipus || null, choicesFromJson: e.opcions || null, commonChoiceImage: e.imatge_comuna_opcions || null };
+  } and new {pistes:[],resposta,imatge,label}
+    var pistes = Array.isArray(e.pistes) ? e.pistes.slice() : (e.pregunta ? [e.pregunta] : []);
     return { answer: (e.resposta||'').toLowerCase().trim(), pistes: pistes, image: e.imatge || null, label: (e.label || e.resposta || '').trim(), type: e.tipus || null, choicesFromJson: e.opcions || null, commonChoiceImage: e.imatge_comuna_opcions || null };
   }
 
@@ -533,22 +538,7 @@ return decorated;
   function guessImageFor(answer, answersMap, fallbackImage){
   var info = answersMap && answersMap[answer] ? answersMap[answer] : null;
   if (info && info.image) return info.image;
-  // Build robust fallback candidates
-  var a = String(answer||'').toLowerCase().trim();
-  var base = 'img/';
-  var noAcc = a.normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-  var noSpace = a.replace(/\s+/g,'');
-  var cand = [
-    fallbackImage,
-    base + a + '.jpg',
-    base + noSpace + '.jpg',
-    base + noAcc + '.jpg',
-    base + noSpace + '.png',
-    base + a + '.png',
-    base + noSpace + '.jpeg',
-    base + a + '.jpeg'
-  ].filter(Boolean);
-  return cand[0];
+  return fallbackImage || 'img/question.jpg';
 }
   function guessLabelFor(answer, answersMap){
   var info = answersMap && answersMap[answer] ? answersMap[answer] : null;
@@ -563,7 +553,7 @@ return decorated;
       var id=arr[i];
       var b=document.createElement('button'); b.className='option'; b.dataset.id=id;
       var im=document.createElement('img'); im.className='avatar';
-      im.src = current.commonChoiceImage ? current.commonChoiceImage : guessImageFor(id, current.answersMap, null);
+      im.src = current.commonChoiceImage ? current.commonChoiceImage : guessImageFor(id, current.answersMap, 'img/question.jpg');
       im.alt='';
       im.onerror=function(){ this.style.opacity=.15; };
       var t=document.createElement('div'); t.className='optText'; t.textContent=guessLabelFor(id, current.answersMap);
