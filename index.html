@@ -75,7 +75,8 @@
 </style>
 </head>
 <body>
-  \1v2.1.0\2
+  <div class=\"version\">v5.2</div>
+  
   <div class="wrap">
     <div class="topbar">
       <div class="brand"><h1>Quiz challenge</h1></div>
@@ -246,7 +247,20 @@
   // Load JSON
   var DATA=null;
   async function loadQuestions(){
-    const res = await fetch('preguntes.json',{cache:'no-store'});
+  async function tryFetch(url){
+    try{
+      const res = await fetch(url,{cache:'no-store'});
+      if(res.ok) return await res.json();
+    }catch(e){ /* ignore */ }
+    return null;
+  }
+  DATA = await tryFetch('preguntes_mod.json');
+  if(!DATA){ DATA = await tryFetch('preguntes.json'); }
+  if(!DATA){
+    alert('No s’han pogut carregar les preguntes. Comprova que el fitxer preguntes.json o preguntes_mod.json existeix i torna-ho a provar.');
+    throw new Error('No s’ha pogut carregar cap fitxer de preguntes');
+  }
+});
     if(!res.ok){ throw new Error('No s’ha pogut carregar preguntes.json'); }
     DATA = await res.json();
   }
