@@ -261,12 +261,11 @@
   }
 
   function normalizeEntry(e){
-    // Accept both legacy {pregunta,resposta,imatge,dificultat} and new {pistes:[],resposta,imatge,label}
-    var pistes = Array.isArray(e.pistes) ? e.pistes.slice() : (e.pregunta ? [e.pregunta] : []);
-    var img = e.imatge || null;
-    if (img && typeof img === 'string' && !/^img\//.test(img)) { img = 'img/' + img; }
-    return { answer: (e.resposta||'').toLowerCase().trim(), pistes: pistes, image: img, label: (e.label || e.resposta || '').trim(), type: e.tipus || null, choicesFromJson: e.opcions || null, commonChoiceImage: e.imatge_comuna_opcions || null };
-  } and new {pistes:[],resposta,imatge,label}
+  var pistes = Array.isArray(e.pistes) ? e.pistes.slice() : (e.pregunta ? [e.pregunta] : []);
+  var img = e.imatge || null;
+  if (img && typeof img === 'string' && !/^img\//.test(img)) { img = 'img/' + img; }
+  return { answer: (e.resposta||'').toLowerCase().trim(), pistes: pistes, image: img, label: (e.label || e.resposta || '').trim(), type: e.tipus || null, choicesFromJson: e.opcions || null, commonChoiceImage: e.imatge_comuna_opcions || null };
+} and new {pistes:[],resposta,imatge,label}
     var pistes = Array.isArray(e.pistes) ? e.pistes.slice() : (e.pregunta ? [e.pregunta] : []);
     return { answer: (e.resposta||'').toLowerCase().trim(), pistes: pistes, image: e.imatge || null, label: (e.label || e.resposta || '').trim(), type: e.tipus || null, choicesFromJson: e.opcions || null, commonChoiceImage: e.imatge_comuna_opcions || null };
   }
@@ -324,34 +323,17 @@
 
 function prettyLabel(input){
   var s = String(input||'').trim();
-
   var map = {
-    'tbirds': 'T-Birds',
-    't-birds': 'T-Birds',
-    'pinkladies': 'Pink Ladies',
-    'greasedlightning': 'Greased Lightning',
+    'tbirds': 'T-Birds', 't-birds': 'T-Birds',
+    'pinkladies': 'Pink Ladies', 'greasedlightning': 'Greased Lightning',
     'concursdeball': 'Concurs de ball',
-    'futbolamerica': 'Futbol americà',
-    'futbolamerican': 'Futbol americà',
-    'futbolamericà': 'Futbol americà',
-    'vincefontaine': 'Vince Fontaine',
-    'vince fontaine': 'Vince Fontaine',
-    'dannyzuko': 'Danny Zuko',
-    'danny zuko': 'Danny Zuko'
+    'futbolamerica': 'Futbol americà', 'futbolamerican': 'Futbol americà', 'futbolamericà': 'Futbol americà',
+    'vincefontaine': 'Vince Fontaine', 'vince fontaine': 'Vince Fontaine',
+    'dannyzuko': 'Danny Zuko', 'danny zuko': 'Danny Zuko'
   };
-
-  // normalize to compare map keys robustly
-  var norm = s.toLowerCase()
-              .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
-              .replace(/\s+/g,'');
+  var norm = s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,'');
   if (map[norm]) return map[norm];
-
-  // If already has spaces, just Title Case
-  if (/\s/.test(s)) {
-    return s.toLowerCase().replace(/\b[a-zà-ÿ]/g, function(c){ return c.toUpperCase(); });
-  }
-
-  // Heuristic separations for common compounds
+  if (/\s/.test(s)) return s.toLowerCase().replace(/\b[a-zà-ÿ]/g, c=>c.toUpperCase());
   var t = s.toLowerCase()
     .replace(/(greased)(lightning)/, '$1 $2')
     .replace(/(vince)(fontaine)/, '$1 $2')
@@ -359,9 +341,7 @@ function prettyLabel(input){
     .replace(/^(t)[- ]?(birds)$/,'T-Birds')
     .replace(/(concurs)(de)(ball)/, '$1 $2 $3')
     .replace(/(futbol)(america[àa]?)/, '$1 americà');
-
-  // Title Case result
-  return t.replace(/\b[a-zà-ÿ]/g, function(c){ return c.toUpperCase(); });
+  return t.replace(/\b[a-zà-ÿ]/g, c=>c.toUpperCase());
 }
 
 function buildAnswerSet(pool){
