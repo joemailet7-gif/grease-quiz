@@ -77,7 +77,8 @@
 <body>
   
   
-  <div class="version">v5.4</div>
+  
+  <div class="version">v5.5</div>
   <div class="wrap">
     <div class="topbar">
       <div class="brand"><h1>Quiz challenge</h1></div>
@@ -501,7 +502,49 @@ return decorated;
     if(revealed>=gen.length) els.revealBtn.disabled=true;
   }
 
-  function renderClues(first){
+  
+function translateQuoteToSpanish(s){
+  // Only touch lines starting with 'Qui diu:' and containing quotes “...” or "..." 
+  var rx = /^\s*Qui diu:\s*[“"](.*?)[”"]\s*$/i;
+  var m = s.match(rx);
+  if(!m) return s;
+  var inner = m[1];
+
+  // Light, targeted replacements (Catalan -> Spanish)
+  var rep = [
+    [/Sóc/g, 'Soy'], [/Soc/g, 'Soy'],
+    [/Som-hi/g, 'Vamos'], [/Som/g, 'Somos'],
+    [/Benvinguts/g, 'Bienvenidos'],
+    [/Digues-li/g, 'Dile'], [/Digues/g, 'Di'],
+    [/No em/g, 'No me'], [/No m’/g, 'No me '], [/No m'/g, 'No me '],
+    [/No et/g, 'No te'], [/No t’/g, 'No te '], [/No t'/g, 'No te '],
+    [/Treu/g, 'Quita'], [/Tireu/g, 'Quitad'],
+    [/Encén/g, 'Enciende'], [/Engega/g, 'Enciende'],
+    [/Aix[oó]/g, 'Eso'],
+    [/On és/g, 'Dónde está'],
+    [/Tranquil·les/g, 'Tranquilas'], [/Tranquil·lament/g, 'Tranquilamente'],
+    [/cabell/g, 'pelo'], [/cotxe/g, 'coche'], [/cursa/g, 'carrera'],
+    [/jaqueta/g, 'chaqueta'], [/xicota/g, 'novia'],
+    [/ràdio/g, 'radio'], [/platja/g, 'playa'], [/gimn[àa]s/g, 'gimnasio'],
+    [/nena/g, 'nena'], // same, leave
+    [/Pink Ladies?/g, 'Pink Ladies'], // keep brand
+    [/Greased Lightning/g, 'Greased Lightning'] // keep brand
+  ];
+
+  var out = inner;
+  for (var i=0;i<rep.length;i++){
+    out = out.replace(rep[i][0], rep[i][1]);
+  }
+
+  // Basic punctuation/spacing fixes
+  out = out.replace(/\s{2,}/g,' ').trim();
+
+  // Replace inside original string keeping the Catalan wrapper "Qui diu: «...?»"
+  // Use Spanish quotes with same smart quotes “ ”
+  return s.replace(rx, function(){ return 'Qui diu: “'+out+'”'; });
+}
+
+function renderClues(first){
     // Show the main question/prompt (not counted as a revealed hint)
     els.clues.innerHTML='';
     var prompt = '';
@@ -512,6 +555,8 @@ return decorated;
     } else {
       prompt = 'Endevina la resposta correcta';
     }
+    // If it's a quote prompt, translate the inner quoted text to Spanish
+    prompt = translateQuoteToSpanish(prompt);
     var d=document.createElement('div'); d.className='clue'; d.setAttribute('data-n','Q');
     d.textContent = prompt;
     els.clues.appendChild(d);
