@@ -75,9 +75,8 @@
 </style>
 </head>
 <body>
-  <div class=\"version\">v5.2</div>
   
-  <div class="version">v5.2</div>
+  <div class="version">v5.3</div>
   <div class="wrap">
     <div class="topbar">
       <div class="brand"><h1>Quiz challenge</h1></div>
@@ -258,10 +257,7 @@
   DATA = await tryFetch('preguntes_mod.json');
   if(!DATA){ DATA = await tryFetch('preguntes.json'); }
   if(!DATA){ alert('No s’han pogut carregar les preguntes.'); throw new Error('No questions file'); }
-});
-    if(!res.ok){ throw new Error('No s’ha pogut carregar preguntes.json'); }
-    DATA = await res.json();
-  }
+}
 
   function uniqueByKey(arr){
     var seen={}, out=[];
@@ -277,10 +273,7 @@
   var img = e.imatge || null;
   if (img && typeof img === 'string' && !/^img\//.test(img)) { img = 'img/' + img; }
   return { answer: (e.resposta||'').toLowerCase().trim(), pistes: pistes, image: img, label: (e.label || e.resposta || '').trim(), type: e.tipus || null, choicesFromJson: e.opcions || null, commonChoiceImage: e.imatge_comuna_opcions || null };
-} and new {pistes:[],resposta,imatge,label}
-    var pistes = Array.isArray(e.pistes) ? e.pistes.slice() : (e.pregunta ? [e.pregunta] : []);
-    return { answer: (e.resposta||'').toLowerCase().trim(), pistes: pistes, image: e.imatge || null, label: (e.label || e.resposta || '').trim(), type: e.tipus || null, choicesFromJson: e.opcions || null, commonChoiceImage: e.imatge_comuna_opcions || null };
-  }
+}
 
   function take(list, n){
     var a=list.slice(); shuffle(a); return a.slice(0,n).map(normalizeEntry);
@@ -355,6 +348,7 @@ function prettyLabel(input){
     .replace(/(futbol)(america[àa]?)/, '$1 americà');
   return t2.replace(/\b[a-zà-ÿ]/g, function(c){ return c.toUpperCase(); });
 }
+
 function buildAnswerSet(pool){
     var map={};
     function addEntry(ans, label, img, typeHint){
